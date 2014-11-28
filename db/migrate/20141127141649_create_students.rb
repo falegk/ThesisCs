@@ -5,6 +5,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :phone
       t.string :am
       t.string :email_communication
+      t.boolean :dissertation_completed, default: false
       t.text   :skills
       t.text   :description
 

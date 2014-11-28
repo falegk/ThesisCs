@@ -11,15 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141127153607) do
+ActiveRecord::Schema.define(version: 20141127173857) do
+
+  create_table "management_dissertations", force: true do |t|
+    t.integer  "students_id"
+    t.integer  "projects_id"
+    t.datetime "delivery_date"
+    t.datetime "extension_date"
+    t.string   "status",         default: "standby"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "management_dissertations", ["students_id", "projects_id"], name: "index_management_dissertations_on_students_id_and_projects_id"
+  add_index "management_dissertations", ["students_id"], name: "index_management_dissertations_on_students_id"
 
   create_table "projects", force: true do |t|
+    t.integer  "teacher_id"
+    t.integer  "student_id"
     t.string   "title"
     t.string   "description"
     t.text     "skills_required"
+    t.boolean  "completed",       default: false
     t.binary   "attached"
-    t.integer  "teacher_id"
-    t.integer  "student_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -27,20 +41,12 @@ ActiveRecord::Schema.define(version: 20141127153607) do
   add_index "projects", ["student_id"], name: "index_projects_on_student_id"
   add_index "projects", ["teacher_id"], name: "index_projects_on_teacher_id"
 
-  create_table "projects_students", id: false, force: true do |t|
-    t.integer "project_id"
-    t.integer "student_id"
-    t.string  "status",     default: "standby"
-  end
-
-  add_index "projects_students", ["project_id", "student_id"], name: "index_projects_students_on_project_id_and_student_id"
-  add_index "projects_students", ["student_id"], name: "index_projects_students_on_student_id"
-
   create_table "students", force: true do |t|
     t.string   "department"
     t.string   "phone"
     t.string   "am"
     t.string   "email_communication"
+    t.boolean  "dissertation_completed", default: false
     t.text     "skills"
     t.text     "description"
     t.integer  "user_id"
