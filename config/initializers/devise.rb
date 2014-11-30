@@ -1,10 +1,21 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  # ==> LDAP Configuration 
+   config.ldap_logger = true
+   config.ldap_create_user = true
+  # config.ldap_update_password = true
+  # config.ldap_config = "#{Rails.root}/config/ldap.yml"
+  # config.ldap_check_group_membership = false
+  # config.ldap_check_group_membership_without_admin = false
+  # config.ldap_check_attributes = false
+  # config.ldap_use_admin_to_bind = false
+  # config.ldap_ad_group_check = false
+
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = 'fca0e93035054206f46ec4c46b981db7ea82f29d8b038e45e97a2fbe2f578e83e85b2a6de90dddfbc730c76d4b8c95f98ce8997720f05cae7a10bd7e672b6a4d'
+  # config.secret_key = '58902737f1e2474e1b00b9cd339def744cd602e4a4f88bcff7baf1495ccfc1db5a886159348f8294aad2258298543a759c9ca9b1c46493c92e8231157fcb16c1'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -29,7 +40,7 @@ Devise.setup do |config|
   # session. If you need permissions, you should implement that in a before filter.
   # You can also supply a hash where the value is a boolean determining whether
   # or not authentication should be aborted when the value is not present.
-  # config.authentication_keys = [ :email ]
+   config.authentication_keys = [ :email ]
 
   # Configure parameters from the request object used for authentication. Each entry
   # given should be a request method and it will automatically be passed to the
@@ -97,7 +108,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = 'dc1586468f76aea7af2376fef61b6b3da072f9b7a8ad2b5ad0f8b8378198c76eb3d5111e3930a568b1c6904156628d86ed81c5a53e27f9ea9f6eb6eb05218f25'
+  # config.pepper = '51e38c4f4afd51f2bb21e2d8ef142898a1b42d0f96beaeeab1f1e8e125bb494a92615ed0cb4d51589cae05a016b78a8dcba7bb1dddec3247f72eb701775a181b'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

@@ -1,0 +1,29 @@
+<h1>Users#profile</h1>
+<p>Find me in app/views/users/profile.html.erb</p>
+
+Dissertation completed: <%= @us.student.dissertation_completed %><br/>
+Department: <%= @us.student.department  %>
+<br/>
+<br/>
+<%= form_for @us, url: user_path(@us) do |user| %>
+
+    <%= user.fields_for :student do |s|  %>
+
+        <%= s.select :department,[['Μηχανικών πληροφορικής Τ.Ε','Μηχανικών πληροφορικής Τ.Ε']],
+                       {:prompt => "Department"},
+                       {class: "form-control", required: "requires", width: 3 }%><br/>
+
+        <%= s.label :phone %>
+        <%= s.text_field :phone %><br/>
+
+        <%= s.label :am %>
+        <%= s.text_field :am %><br/>
+
+        <%= s.label :skills %>
+        <%= s.text_field :skills %><br/>
+
+    <% end %>
+
+    <%= user.submit "Save" %>
+
+<% end %>

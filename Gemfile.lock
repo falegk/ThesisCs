@@ -134,6 +134,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   coffee-rails (~> 4.0.0)
+  devise
   devise_ldap_authenticatable!
   jbuilder (~> 2.0)
   jquery-rails

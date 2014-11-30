@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  root 'welcome#index'
+
+  devise_for :users,
+             path_names: { sign_in: "login", sign_out: "logout"}
+
+  get 'welcome/index'
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+
+  resources :projects
+  resources :users
+  resources :students
+
+  get 'profile' => 'users#profile'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -12,8 +22,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
+     #resources :users
   # Example resource route with options:
   #   resources :products do
   #     member do
