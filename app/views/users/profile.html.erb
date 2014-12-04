@@ -1,11 +1,9 @@
 <h1>Users#profile</h1>
 <p>Find me in app/views/users/profile.html.erb</p>
 
-Dissertation completed: <%= @us.student.dissertation_completed %><br/>
-Department: <%= @us.student.department  %>
 <br/>
 <br/>
-<%= form_for @us, url: user_path(@us) do |user| %>
+<%= form_for @user, url: user_path(@user) do |user| %>
 
     <%= user.fields_for :student do |s|  %>
 

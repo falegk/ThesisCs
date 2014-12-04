@@ -1,6 +1,8 @@
 class CreateStudents < ActiveRecord::Migration
   def change
     create_table :students do |t|
+      t.references :user, index: true
+
       t.string :department
       t.string :phone
       t.string :am
@@ -9,7 +11,6 @@ class CreateStudents < ActiveRecord::Migration
       t.text   :skills
       t.text   :description
 
-      t.references :user, index: true
       t.timestamps
     end
   end

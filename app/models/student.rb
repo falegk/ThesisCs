@@ -1,7 +1,9 @@
 class Student < ActiveRecord::Base
-  belongs_to :user
-  has_many :management_dissertations
-  #has_many :projects, through: :management_dissertations
 
-  accepts_nested_attributes_for :management_dissertations
+  belongs_to :user
+  has_many :project_assignments
+  has_one :project, through: :project_assignments
+
+  accepts_nested_attributes_for :project
+
 end

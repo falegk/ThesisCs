@@ -11,37 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141129123713) do
+ActiveRecord::Schema.define(version: 20141204131021) do
 
-  create_table "management_dissertations", force: true do |t|
-    t.integer  "students_id"
-    t.integer  "projects_id"
-    t.datetime "delivery_date"
-    t.datetime "extension_date"
-    t.string   "status",         default: "standby"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "project_assignments", force: true do |t|
+    t.integer "projects_id"
+    t.integer "students_id"
   end
 
-  add_index "management_dissertations", ["students_id", "projects_id"], name: "index_management_dissertations_on_students_id_and_projects_id"
-  add_index "management_dissertations", ["students_id"], name: "index_management_dissertations_on_students_id"
-
   create_table "projects", force: true do |t|
-    t.integer  "teacher_id"
-    t.integer  "student_id"
     t.string   "title"
     t.string   "description"
     t.text     "skills_required"
-    t.boolean  "completed",       default: false
+    t.string   "status",          default: "pending"
     t.binary   "attached"
+    t.string   "keywords"
+    t.datetime "start_date"
+    t.datetime "completion_date"
+    t.boolean  "prolongation",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "projects", ["student_id"], name: "index_projects_on_student_id"
-  add_index "projects", ["teacher_id"], name: "index_projects_on_teacher_id"
-
   create_table "students", force: true do |t|
+    t.integer  "user_id"
     t.string   "department"
     t.string   "phone"
     t.string   "am"
@@ -49,7 +41,6 @@ ActiveRecord::Schema.define(version: 20141129123713) do
     t.boolean  "dissertation_completed", default: false
     t.text     "skills"
     t.text     "description"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57,11 +48,12 @@ ActiveRecord::Schema.define(version: 20141129123713) do
   add_index "students", ["user_id"], name: "index_students_on_user_id"
 
   create_table "teachers", force: true do |t|
+    t.integer  "user_id"
     t.string   "department"
     t.string   "phone"
     t.string   "grade"
     t.string   "email_communication"
-    t.integer  "user_id"
+    t.text     "descriptions"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,27 +61,20 @@ ActiveRecord::Schema.define(version: 20141129123713) do
   add_index "teachers", ["user_id"], name: "index_teachers_on_user_id"
 
   create_table "users", force: true do |t|
-    t.integer  "teacher_id"
-    t.integer  "student_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.string   "email",               default: "", null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "businessCategory"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",       default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "username"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["student_id"], name: "index_users_on_student_id"
-  add_index "users", ["teacher_id"], name: "index_users_on_teacher_id"
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end

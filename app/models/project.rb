@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :teacher
-  has_many :management_dissertations
-  #has_many   :students, through: :management_dissertations
+  has_many :project_assignments
+  has_many :students, through: :project_assignments
 
-  accepts_nested_attributes_for :management_dissertations
+  accepts_nested_attributes_for :students
 end

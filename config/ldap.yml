@@ -4,20 +4,27 @@
 # environment if you need something different per enviornment.
 authorizations: &AUTHORIZATIONS
   allow_unauthenticated_bind: false
-  group_base: ou=groups,dc=test,dc=com
+  group_base: ou=people,dc=teilar,dc=gr
   ## Requires config.ldap_check_group_membership in devise.rb be true
   # Can have multiple values, must match all to be authorized
   required_groups:
     # If only a group name is given, membership will be checked against "uniqueMember"
-    - cn=admins,ou=groups,dc=test,dc=com
-    - cn=users,ou=groups,dc=test,dc=com
+    - mail=cs3171@teilar.gr,ou=people,dc=teilar,dc=gr
+    #- uid=3171,ou=people,dc=teilar,dc=gr
+    #- cn=users,ou=groups,dc=test,dc=com
     # If an array is given, the first element will be the attribute to check against, the second the group name
-    - ["moreMembers", "cn=users,ou=groups,dc=test,dc=com"]
+    - ["cs3171", "mail=esc,ou=groups,dc=test,dc=com"]
   ## Requires config.ldap_check_attributes in devise.rb to be true
   ## Can have multiple attributes and values, must match all to be authorized
   require_attribute:
-    objectClass: inetOrgPerson
-    authorizationRole: postsAdmin
+    #businessCategory:
+    #sn: ΦΑΛΕΓΚΟΣ
+    #employeeType
+    #description: "ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ"
+    #displayName: ΑΝΤΩΝΙΟΣ ΦΑΛΕΓΚΟΣ
+    #uid: 3171
+    #objectClass: inetOrgPerson
+    #authorizationRole: postsAdmin
 
 ## Environment
 
@@ -26,8 +33,9 @@ development:
   port: 389
   attribute: mail
   base: ou=people,dc=teilar,dc=gr
-  admin_user: cn=admin,dc=esc
-  admin_password: admin_password
+  #encoding: utf8
+  #admin_user: cn=admin,dc=esc
+  #admin_password: admin_password
   ssl: false
   # <<: *AUTHORIZATIONS
 
