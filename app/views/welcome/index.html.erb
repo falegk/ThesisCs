@@ -1,5 +1,56 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="row">
+  <div class="span6">
+    <div class="widget">
+      <div class="widget widget-nopad">
+        <div class="widget-header"> <i class="icon-bar-chart"></i>
+          <h3> Stats</h3>
+        </div>
+        <!-- /widget-header -->
+        <div class="widget-content">
+          <div class="widget big-stats-container">
+            <div class="widget-content">
+              <div id="big_stats" class="cf">
+                <div class="stat"> <i class="icon-anchor"></i> <span class="value">851</span> </div>
+                <!-- .stat -->
 
-<br/>
-<%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value">423</span> </div>
+                <!-- .stat -->
+
+                <div class="stat"> <i class="icon-twitter-sign"></i> <span class="value">922</span> </div>
+                <!-- .stat -->
+
+                <div class="stat"> <i class="icon-bullhorn"></i> <span class="value">25%</span> </div>
+                <!-- .stat -->
+              </div>
+            </div>
+            <!-- /widget-content -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="span6">
+      <div class="widget-header"> <i class="icon-bookmark"></i>
+        <h3>Διαδικασία ανάθεσης θέματος </h3>
+      </div>
+      <!-- /widget-header -->
+      <div class="widget-content">
+        <div class="shortcuts">
+          <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-search"></i>
+            <span class="shortcut-label">Αναζήτηση θέματος</span> </a>
+          <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-check"></i>
+            <span class="shortcut-label">Εκδήλωση ενδιαφέροντος </span> </a>
+          <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-comments-alt"></i>
+            <span class="shortcut-label">Επικοινωνία με τον καθηγητή</span> </a>
+          <a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-ok"></i>
+            <span class="shortcut-label">Ανάθεση πτυχιακής</span> </a>
+        </div>
+        <!-- /shortcuts -->
+      </div>
+      <!-- /widget-content -->
+    </div>
+  </div>
+</div>

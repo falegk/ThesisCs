@@ -1,18 +1,45 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'static_pages#home'
+
+  get 'static_pages/home'
+  get 'static_pages/help'
+
+
 
   devise_for :users,
              path_names: { sign_in: "login", sign_out: "logout"}
 
-  get 'welcome/index'
 
   # You can have the root of your site routed with "root"
+  get 'welcome/index'
+
+  get '/user/student/profile/:id' => 'students#profile', as: 'profile_student'
+  # profile_teacher_path
+  get '/user/teacher/profile/:id' => 'teachers#profile', as: 'profile_teacher'
+  get '/teacher/profile/add_project' => 'teachers#add_project', as: 'add_project'
+  get '/teacher/dashboard' => 'teachers#dashboard'
+
+  #Ανάθεσης θέματος
+  #post 'projects/:id' => 'projects#project_assignments'
+  post 'projects/:id/assigning' => 'projects#update_assignment', as: 'project_assigning'
+  post 'projects/:id/create' => 'projects#create_assignment'  # button_to 'Εκδήλωση ενδιαφέροντος',{action: "create_assignment" }, {class: "btn btn-success"}
+  post 'projects/:id/destroy' => 'projects#destroy_assignment' # button_to 'Εκδήλωση ενδιαφέροντος',{action: "destroy_assignment" }, {class: "btn btn-success"}
 
   resources :projects
   resources :users
-  resources :students
+  resources :students, path: '/user/student', only: [:index, :edit]
 
-  get 'profile' => 'users#profile'
+  resources :teachers, path: '/user/teacher' do
+    get '/projects' => 'teachers#projects'
+  end
+
+
+
+=begin
+  get 'profile'         => 'users#profile'
+  get 'profile/edit'    => 'users#edit'
+  get 'profile/:id'     => 'users#show'
+=end
 
 
   # Example of regular route:

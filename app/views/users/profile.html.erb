@@ -1,27 +1,26 @@
-<h1>Users#profile</h1>
-<p>Find me in app/views/users/profile.html.erb</p>
+<div class="row">
 
-<br/>
-<br/>
-<%= form_for @user, url: user_path(@user) do |user| %>
+  <div class="span9">
+    <div class="widget widget-nopad">
+      <div class="widget-header"> <i class="icon-list-alt"></i>
+        <h3> Στοιχεία του χρήστη <%= "#{@user.first_name} #{@user.last_name} "  %></h3>
+      </div>
+      <!-- /widget-header -->
+      <div class="widget-content">
+        <ul class="news-items">
+        <li><h4></h4><%= "#{@user.first_name} #{@user.last_name} " %></li>
+          <li><h4>Αριθμός μητρώου:</h4> <%= "#{@user.student.am}" %></li>
+          <li><h4>Τηλέφωνο:</h4> <%= "#{@user.student.phone}" %></li>
+          <li><h4>Email:</h4><%= "#{@user.email}" %></li>
+          <li><h4>Σχολή - Τμήμα:</h4> <%= "#{@user.student.department}" %></li>
+        </ul>
+      </div>
+      <!-- /widget-content -->
+    </div>
+    <!-- /widget -->
 
-    <%= user.fields_for :student do |s|  %>
 
-        <%= s.select :department,[['Μηχανικών πληροφορικής Τ.Ε','Μηχανικών πληροφορικής Τ.Ε']],
-                       {:prompt => "Department"},
-                       {class: "form-control", required: "requires", width: 3 }%><br/>
-
-        <%= s.label :phone %>
-        <%= s.text_field :phone %><br/>
-
-        <%= s.label :am %>
-        <%= s.text_field :am %><br/>
-
-        <%= s.label :skills %>
-        <%= s.text_field :skills %><br/>
-
-    <% end %>
-
-    <%= user.submit "Save" %>
-
-<% end %>
+  </div>
+  <!-- /span6 -->
+</div>
+<!-- /row -->

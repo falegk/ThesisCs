@@ -1,0 +1,23 @@
+
+<div class="row">
+    <div class="span12">
+      <div class="widget widget-plain">
+        <div class="widget-header">
+            <h3><%= 'Όνομα καθηγητή' %></h3>
+            <div class="fc-header-right">test</div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="span4">
+
+    <%= render partial: 'share/thesis2/widgets/dissertations_for_delivery', locals: {dissertations: @availableDissertations } %>
+    </div>
+ <div class="span5">
+    <!-- /widget ενεργές πτυχιακές-->
+    <%= render partial: 'share/thesis2/widgets/recently_active_dissertations', locals: {activeProjects: @activeDissertation, widgetTitle: "Ενεργές πτυχιακές"} %>
+    <!-- /widget -->
+  </div>
+</div>

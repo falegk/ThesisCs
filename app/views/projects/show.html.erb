@@ -1,0 +1,22 @@
+<% content_for :stylesheets do  %>
+    <%= stylesheet_link_tag 'chosen', 'plugins/chosen/prism' %>
+<% end %>
+<% content_for :javascripts do %>
+    <%= javascript_include_tag 'chosen.jquery.js','plugins/chosen/prism.js','plugins/chosen/chosen-configs' %>
+<% end %>
+
+<!-- Content-->
+<div class="row">
+  <div class="span8">
+    <%= render partial: 'share/thesis2/widgets/dissertation_Information' %>
+  </div>
+
+  <div class="span4">
+    <%= render partial: 'share/thesis2/widgets/options' %>
+  </div>
+
+  <div class="span4">
+    <%= render partial: 'share/thesis2/widgets/general_information_dissertation' %>
+  </div>
+</div>
+

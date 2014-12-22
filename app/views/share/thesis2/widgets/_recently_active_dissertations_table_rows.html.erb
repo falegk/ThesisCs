@@ -1,0 +1,12 @@
+<% activeProject.each do |project| %>
+        <tr>
+          <td>
+            <%= link_to project.title, project_path(project.id), {class: "news-item-title"} %>
+          </td>
+          <td>
+            <% project.students.each do |student| %>
+                <%= "#{student.user.first_name} #{student.user.last_name}" %>
+            <% end %>
+          </td>
+        </tr>
+<% end %>

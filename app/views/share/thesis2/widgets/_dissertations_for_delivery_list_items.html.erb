@@ -1,0 +1,13 @@
+<% dissertation.each do |allProjects| %>
+    <li>
+      <div class="news-item-date">
+        <span class="news-item-day"><%= allProjects.created_at.strftime("%d") %></span>
+        <span class="news-item-month"><%= allProjects.created_at.strftime("%b") %></span>
+        <span class="news-item-year"><%= allProjects.created_at.strftime("%Y") %></span>
+      </div>
+      <div class="news-item-detail">
+        <%= link_to allProjects.title, project_path(allProjects.id), {class: "news-item-title"} %>
+        <p class="news-item-preview"> <%= truncate(allProjects.description,length: 150, separator: '') %> </p>
+      </div>
+    </li>
+<% end %>

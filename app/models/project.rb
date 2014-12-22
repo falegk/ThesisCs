@@ -4,4 +4,9 @@ class Project < ActiveRecord::Base
   has_many :students, through: :project_assignments
 
   accepts_nested_attributes_for :students
+
+  serialize :student_id, Array
+
+
+  #validates :student_id, presence: true
 end

@@ -1,0 +1,26 @@
+<div class="row">
+
+  <div class="span9">
+    <div class="widget widget-nopad">
+      <div class="widget-header"> <i class="icon-list-alt"></i>
+        <h3> Στοιχεία του χρήστη <%= "#{@student.user.first_name} #{@student.user.last_name} "  %></h3>
+      </div>
+      <!-- /widget-header -->
+      <div class="widget-content">
+        <ul class="news-items">
+        <li><h4></h4><%= "#{@student.user.first_name} #{@student.user.last_name} " %></li>
+          <li><h4>Αριθμός μητρώου:</h4> <%= "#{@student.am}" %></li>
+          <li><h4>Τηλέφωνο:</h4> <%= "#{@student.phone}" %></li>
+          <li><h4>Email:</h4><%= "#{@student.user.email}" %></li>
+          <li><h4>Σχολή - Τμήμα:</h4> <%= "#{@student.department}" %></li>
+        </ul>
+      </div>
+      <!-- /widget-content -->
+    </div>
+    <!-- /widget -->
+
+
+  </div>
+  <!-- /span6 -->
+</div>
+<!-- /row -->

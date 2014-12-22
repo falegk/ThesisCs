@@ -1,0 +1,7 @@
+<div class="alert alert-success">Την πτυχιακή έχουν αναλάβει οι: <br/>
+  <strong>
+    <% detailsOfStudents.each do |s|  %>
+        <%= link_to "#{s.first_name} #{s.last_name}", profile_student_path(s.student) %><br/>
+    <% end %>
+  </strong><br/>
+</div>

@@ -1,5 +1,23 @@
-<h1>Projects#index</h1>
-<p>Find me in app/views/projects/index.html.erb</p>
+<div class="row">
+  <div class="span6">
 
+    <!-- Πτυχιακές για παράδοση-->
+    <%= render partial: 'share/thesis2/widgets/dissertations_for_delivery', locals: {dissertations: @pendingProjects } %>
+    <!-- /widget -->
 
+  </div>
+  <!-- /span6 -->
+  <div class="span6">
 
+    <!-- /widget Πρόσφατα ενεργές πτυχιακές-->
+    <%= render partial: 'share/thesis2/widgets/recently_active_dissertations', locals: {activeProjects: @activeProjects, widgetTitle: 'Πρόσφατα ενεργές πτυχιακές'} %>
+    <!-- /widget -->
+
+    <!-- /widget Πρόσφατα ολοκληρωμένες πτυχιακές-->
+    <%= render partial: 'share/thesis2/widgets/recently_completed_dissertations' %>
+    <!-- /widget -->
+
+  </div>
+  <!-- /span6 -->
+</div>
+<!-- /row -->

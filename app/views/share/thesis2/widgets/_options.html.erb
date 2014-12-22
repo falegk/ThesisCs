@@ -1,0 +1,35 @@
+<div class="widget">
+  <div class="widget-header"> <i class="icon-bookmark"></i>
+    <h3>Ανάθεση θέματος </h3>
+  </div>
+  <!-- /widget-header -->
+  <div class="widget-content">
+
+    <% if is_teacher_helper? %><!--IS TEACHER-->
+        <% if @currentProject.teacher == current_user.teacher %><!-- Η πτυχιακή ανήκει στον καθηγητή που είναι συνδεδεμένος -->
+            <% unless @given_project_to_students.empty? # Η πτυχιακή έχει δοθεί στον... %>
+                <%= render partial: 'share/thesis2/widgets/option_dissertation_has_been_given', locals: {detailsOfStudents: @detailsOfStudents} %>
+            <% else %>
+                <em>Εκδήλωσαν ενδιαφέρον</em>
+                <%= render partial: 'share/thesis2/widgets/forms/assignment_dissertation_form' %>
+            <% end %>
+        <% else %>
+            <% unless @given_project_to_students.empty? # Η πτυχιακή έχει δοθεί στον... %>
+                <%= render partial: 'share/thesis2/widgets/option_dissertation_has_been_given', locals: {detailsOfStudents: @detailsOfStudents} %>
+            <% else %>
+                <div class="alert alert-warning">Η πτυχιακή δεν έχει δοθεί σε κάποιον φοιτητή ακόμη.<br/></div>
+            <% end %>
+        <% end %>
+
+    <% elsif is_student_helper? %><!-- IS STUDENT-->
+        <% unless @given_project_to_students.empty? # Η πτυχιακή έχει δοθεί στον... %>
+            <%= render partial: 'share/thesis2/widgets/option_dissertation_has_been_given', locals: {detailsOfStudents: @detailsOfStudents} %>
+        <% else %>
+            <%= render partial: 'share/thesis2/widgets/option_dissertation_has_been_not_given' %>
+        <% end %>
+    <% end %>
+
+        <!-- /shortcuts -->
+  </div>
+  <!-- /widget-content -->
+</div>

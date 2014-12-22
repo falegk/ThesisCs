@@ -1,0 +1,66 @@
+<div class="row">
+
+  <div class="span12">
+    <div class="widget widget-nopad">
+      <div class="widget-header"> <i class="icon-list-alt"></i>
+        <h3> Επεξεργασία στοιχείων </h3>
+      </div>
+      <!-- /widget-header -->
+      <div class="widget-content">
+        <br/>
+        <%= form_for @user, url: user_path(@user) , html: {id: "edit-profile", class: "form-horizontal"} do |user| %>
+            <fieldset>
+
+              <div class="control-group">
+                <%= user.label :first_name , class: "control-label"  %>
+                <div class="controls">
+                  <%= user.text_field :first_name %><br/>
+                </div>
+              </div>
+              <div class="control-group">
+                <%= user.label :last_name , class: "control-label"  %>
+                <div class="controls">
+                  <%= user.text_field :last_name %><br/>
+                </div>
+              </div>
+            <%= user.fields_for :teacher do |s|  %>
+                  <div class="control-group">
+                    <%= s.label :department , class: "control-label"  %>
+                    <div class="controls">
+                    <%= s.select :department,[['Μηχανικών πληροφορικής Τ.Ε','Μηχανικών πληροφορικής Τ.Ε']],
+                                 {:prompt => "Επιλέξτε τμήμα"},
+                                 {class: "form-control", required: "requires", width: 3 }%><br/>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <%= s.label :phone , class: "control-label"  %>
+                    <div class="controls">
+                        <%= s.text_field :phone %><br/>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <%= s.label :grade, class: "control-label" %>
+                    <div class="controls">
+                    <%= s.text_field :grade %><br/>
+                    </div>
+                  </div>
+
+            <% end %>
+
+              <div class="form-actions right">
+                <%= user.submit "Αποθηκευση", class: "btn btn-primary" %>
+              </div>
+              </fieldset>
+        <% end %>
+      </div>
+      <!-- /widget-content -->
+    </div>
+    <!-- /widget -->
+  </div>
+  <!-- /span6 -->
+</div>
+<!-- /row -->
+
+<br/>
+<br/>
+

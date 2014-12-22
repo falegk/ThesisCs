@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204131021) do
+ActiveRecord::Schema.define(version: 20141207172350) do
 
   create_table "project_assignments", force: true do |t|
-    t.integer "projects_id"
-    t.integer "students_id"
+    t.integer "project_id"
+    t.integer "student_id"
+    t.boolean "given",      default: false, null: false
   end
 
   create_table "projects", force: true do |t|
@@ -30,7 +31,10 @@ ActiveRecord::Schema.define(version: 20141204131021) do
     t.boolean  "prolongation",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "teacher_id"
   end
+
+  add_index "projects", ["teacher_id"], name: "index_projects_on_teacher_id"
 
   create_table "students", force: true do |t|
     t.integer  "user_id"

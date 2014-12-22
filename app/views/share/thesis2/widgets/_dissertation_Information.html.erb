@@ -1,0 +1,23 @@
+<div class="widget widget-nopad ">
+  <div class="widget-header"> <i class="icon-list-alt"></i>
+    <h3> Πληροφορίες πτυχιακής εργασίας</h3>
+  </div>
+  <!-- /widget-header  -->
+  <div class="widget-content min-height">
+    <ul class="news-items">
+      <li>
+
+        <div class="news-item-detail">
+          <div class="news-item-title">
+            <h1><%= @currentProject.title %></h1><br/>
+          </div>
+          <p class="news-item-preview"> <%= @currentProject.description %> </p><br/>
+
+          <p class="news-item-preview"><strong>Keywords:</strong> <%= @currentProject.keywords %> </p>
+        </div>
+
+      </li>
+    </ul>
+  </div>
+  <!-- /widget-content -->
+</div>

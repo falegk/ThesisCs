@@ -1,0 +1,6 @@
+<%= form_for @assignment, url: project_assigning_path(@currentProject) do |f| %>
+    <%= f.select :student_id, @studentsList.collect {|d| ["#{d.student.user.last_name} #{d.student.user.first_name}",d.student_id] },
+                 {},
+                 {class: 'chosen-select', multiple: true, tabindex: '4'} %>
+    <%= f.submit 'Αναθεση', data: {confirm: 'Επαληθεύστε ότι θέλετε να δώσετε το θέμα στους φοιτητές'} %>
+<% end %>

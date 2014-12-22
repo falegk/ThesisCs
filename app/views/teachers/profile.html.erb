@@ -1,0 +1,56 @@
+<div class="row">
+
+  <div class="span5">
+    <div class="widget widget-nopad">
+      <div class="widget-header"> <i class="icon-list-alt"></i>
+        <h3> Στοιχεία Καθηγητή</h3>
+      </div>
+      <!-- /widget-header -->
+      <div class="widget-content">
+        <ul class="news-items">
+          <li><%= "#{@teacher.user.first_name} #{@teacher.user.last_name} " %></li>
+          <li><h4>Βαθμίδα:</h4><%= "#{@teacher.grade} " %></li>
+          <li><h4>Τηλέφωνο:</h4> <%= "#{@teacher.phone}" %></li>
+          <li><h4>Email:</h4><%= "#{@teacher.user.email}" %></li>
+          <li><h4>Σχολή - Τμήμα:</h4> <%= "#{@teacher.department}" %></li>
+        </ul>
+      </div>
+      <!-- /widget-content -->
+    </div>
+    <!-- /widget -->
+
+
+  </div>
+  <!-- /span6 -->
+
+    <div class="span4">
+      <div class="widget-header"> <i class="icon-bookmark"></i>
+        <h3>Επιλογες </h3>
+      </div>
+      <!-- /widget-header -->
+      <div class="widget-content">
+        <div class="shortcuts">
+          <%= link_to teacher_projects_path(@teacher), {class: "shortcut2"} do %>
+            <i class="shortcut-icon icon-search"></i><span class="shortcut-label">Θέματα πτυχιακών</span>
+          <% end %>
+          <a href="javascript:;" class="shortcut2"><i class="shortcut-icon icon-comments-alt"></i>
+            <span class="shortcut-label">Επικοινωνία με τον καθηγητή</span> </a>
+        </div>
+        <!-- /shortcuts -->
+      </div>
+      <!-- /widget-content -->
+    </div>
+
+    <div class="span3">
+      <div class="widget-header"> <i class="icon-bookmark"></i>
+        <h3>Στατιστικά </h3>
+      </div>
+      <!-- /widget-header -->
+      <div class="widget-content">
+
+      </div>
+      <!-- /widget-content -->
+    </div>
+
+</div>
+<!-- /row -->
