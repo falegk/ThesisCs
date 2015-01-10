@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_action :auth_user
   before_action :find_current_user, only: [:profile, :new, :update, :edit]
+
 
   def new
   end
@@ -20,7 +22,7 @@ class UsersController < ApplicationController
   end
 
 
-
+private
   def user_params
     params.require(:user).permit!
   end

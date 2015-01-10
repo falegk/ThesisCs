@@ -34,8 +34,8 @@
     <div class="container">
       <ul class="mainnav">
         <li class="<%= 'active' if params[:controller] == 'welcome' %>">
-          <%= link_to '#' do %>
-               <i class="icon-dashboard"></i><span>Στατιστικά</span>
+          <%= link_to root_path do %>
+               <i class="icon-dashboard"></i><span>Αρχική</span>
             <% end %>
         </li>
         <li class="<%= 'active' if params[:controller] == 'projects' %>">
@@ -48,11 +48,6 @@
               <i class="icon-group"></i><span>Καθηγητες</span>
           <% end %>
         </li>
-        <!--<li class="<%= 'active' if params[:controller] == 'students' %>">
-          <%= link_to students_path do %>
-              <i class="icon-book"></i><span>Φοιτητές</span>
-          <% end %>
-        </li>-->
         <li class="<%= 'active' if params[:controller] == 'archives' %>">
           <%= link_to '#' do %>
               <i class="icon-archive"></i><span>Αρχειο</span>
@@ -63,7 +58,7 @@
                 <li class="dropdown"><a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-long-arrow-down"></i><span>Επιλογές</span> <b class="caret"></b></a>
                   <ul class="dropdown-menu">
                     <li><%= link_to 'Dashboard', teacher_dashboard_path %></li>
-                    <li><%= link_to 'Επισκόπηση θεμάτων', teacher_projects_path(current_user.teacher.id) %></li>
+                    <li><%= link_to 'Επισκόπηση των θεμάτων μου', teacher_projects_path(current_user.teacher.id) %></li>
                     <li><%= link_to 'Προσθήκη νέου θέματος', add_project_path %></li>
                   </ul>
                 </li>

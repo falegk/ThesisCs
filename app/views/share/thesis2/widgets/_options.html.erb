@@ -7,9 +7,10 @@
 
     <% if is_teacher_helper? %><!--IS TEACHER-->
         <% if @currentProject.teacher == current_user.teacher %><!-- Η πτυχιακή ανήκει στον καθηγητή που είναι συνδεδεμένος -->
+
             <% unless @given_project_to_students.empty? # Η πτυχιακή έχει δοθεί στον... %>
                 <%= render partial: 'share/thesis2/widgets/option_dissertation_has_been_given', locals: {detailsOfStudents: @detailsOfStudents} %>
-            <% else %>
+            <% else # Η πτυχιακή δεν έχει δοθεί ... %>
                 <em>Εκδήλωσαν ενδιαφέρον</em>
                 <%= render partial: 'share/thesis2/widgets/forms/assignment_dissertation_form' %>
             <% end %>

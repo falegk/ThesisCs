@@ -1,0 +1,311 @@
+<% provide(:title, "Home") %>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Minimal Bootstarp Website Template | Home :: w3layouts</title>
+  <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+  <%= javascript_include_tag 'static-pages/jquery.min.js' %>
+
+  <%= yield :javascripts %><!-- Stylesheets for specific page -->
+
+  <!-- Custom Theme files -->
+  <%= stylesheet_link_tag 'static-pages/bootstrap',
+                          'static-pages/theme-style' %>
+  <%= yield :stylesheets %>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="application/x-javascript">
+      addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+  </script>
+
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>		<!----//webfonts---->
+  <script>
+      $(function() {
+          var pull 		= $('#pull');
+          menu 		= $('nav ul');
+          menuHeight	= menu.height();
+          $(pull).on('click', function(e) {
+              e.preventDefault();
+              menu.slideToggle();
+          });
+          $(window).resize(function(){
+              var w = $(window).width();
+              if(w > 320 && menu.is(':hidden')) {
+                  menu.removeAttr('style');
+              }
+          });
+      });
+  </script>
+</head>
+<body>
+<!----start-container---->
+<!----start-header---->
+<div id="home" class="header">
+  <div class="container">
+    <!----start-logo---->
+    <div class="logo">
+      <%= link_to( image_tag('static-pages/logo.png')) %>
+    </div>
+    <!--top-nav-->
+    <nav class="top-nav">
+      <ul class="top-nav">
+        <li class="active"><a href="#home">Αρχική</a> <span> </span></li>
+        <li class="page-scroll"><a href="#signin">Σύνδεση</a><span> </span></li>
+        <li class="page-scroll"><a href="#about">Σχετικά</a><span> </span></li>
+      </ul>
+      <%= link_to '', '', id: 'pull'  %>
+    </nav>
+    <!--//top-nav-->
+    <!----//End-logo---->
+  </div>
+</div>
+<!----//End-header---->
+<!----start-slider---->
+<div class="slider">
+  <!-- Slideshow 3 -->
+  <%= javascript_include_tag 'static-pages/responsiveslides.min.js' %>
+  <script>
+      // You can also use "$(window).load(function() {"
+      $(function () {
+          // Slideshow 3
+          $("#slider3").responsiveSlides({
+              manualControls: '#slider3-pager'
+          });
+      });
+  </script>
+  <ul class="rslides" id="slider3">
+    <li>
+      <div class="col-md-6 divice">
+        <%= image_tag 'static-pages/students.png', title: 'students' %>
+      </div>
+      <div class="col-md-6 divice-info">
+        <div class="clearfix"> </div>
+        <div class="divice-info-text">
+          <h2> Για τους φοιτητές</h2>
+          <p>Τώρα μπορείτε να αναζητήσετε και να διαλέξετε το θέμα της πτυχιακής σας εργασίας
+            ανάμεσα σε δεκάδες πτυχιακές που αναρτούν οι καθηγητές.</p>
+          <a class="btn" href="#signin"> Συνδεθείτε</a>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="col-md-6 divice">
+        <%= image_tag 'static-pages/professor.jpg', title: 'professor' %>
+      </div>
+      <div class="col-md-6 divice-info">
+        <div class="clearfix"> </div>
+        <div class="divice-info-text">
+          <h2> Για τους καθηγητές</h2>
+          <p>Αναρτήστε και διαχειριστείτε εύκολα τα θέματα των πτυχιακών σας.</p>
+          <a class="btn" href="#signin"> Συνδεθείτε</a>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+  <!-- Slideshow 3 Pager -->
+  <ul id="slider3-pager">
+   <li> <%= link_to(image_tag 'static-pages/thumb1.jpg')  %></li>
+   <li> <%= link_to(image_tag 'static-pages/thumb2.jpg')  %></li>
+  </ul>
+  <div class="clearfix"> </div>
+</div>
+<!----//End-slider---->
+
+
+<!---- start-about---->
+<div id="signin" class="about text-center">
+  <div class="container">
+    <div class="signin-info">
+      <h3><span>Σύνδεση στο </span> ThesisCs</h3>
+      <p>Δεν απαιτείται εγγραφή.<br/>
+        Η σύνδεση γίνεται μέσω LDAP με τον λογαριασμό σας στο ΤΕΙ όπως ακριβώς και στο e-class.</p>
+      <i> </i>
+      <%= form_for( resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%= f.email_field :email, autofocus: true, placeholder: 'Email (cs0000@teilar.gr)' %>
+
+            <%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
+
+          <div class="actions">
+            <%= f.submit "Σύνδεση" %>
+          </div>
+      <% end %>
+    </div>
+    <div>
+        <%= link_to 'Δεν μπορώ να συνδεθώ' %>
+    </div>
+  </div>
+</div>
+<!----//End-about---->
+
+
+<!----start-services---->
+<div id="about" class="services">
+  <h4>Σχετικά με το ThesisCs</h4>
+  <!--Horizontal Tab-->
+  <div id="horizontalTab">
+    <ul class="resp-tabs-list">
+      <li class="tab1"><span> </span></li>
+      <li class="tab2"><span> </span></li>
+      <li class="tab3"><span> </span></li>
+      <li class="tab4"><span> </span></li>
+      <li class="tab5"><span> </span></li>
+      <li class="tab6"><span> </span></li>
+    </ul>
+    <div class="resp-tabs-container">
+      <div class="tab">
+        <div class="container">
+          <div class="tab-info">
+            <div class="col-md-6 tab-divice">
+              <%= image_tag 'static-pages/divice2.png' %>
+            </div>
+            <div class="col-md-6 tab-divice-info">
+              <h3>My apps showcase</h3>
+              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
+              <a class="btn" href="#"> Buy Now</a>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab">
+        <div class="container">
+          <div class="tab-info">
+            <div class="col-md-6 tab-divice-info">
+              <h3>My apps showcase</h3>
+              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
+              <a class="btn" href="#"> Buy Now</a>
+            </div>
+            <div class="col-md-6 tab-divice">
+              <%= image_tag 'static-pages/divice2.png' %>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab">
+        <div class="container">
+          <div class="tab-info">
+            <div class="col-md-6 tab-divice">
+              <%= image_tag 'static-pages/divice2.png' %>
+            </div>
+            <div class="col-md-6 tab-divice-info">
+              <h3>My apps showcase</h3>
+              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
+              <a class="btn" href="#"> Buy Now</a>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab">
+        <div class="container">
+          <div class="tab-info">
+            <div class="col-md-6 tab-divice-info">
+              <h3>My apps showcase</h3>
+              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
+              <a class="btn" href="#"> Buy Now</a>
+            </div>
+            <div class="col-md-6 tab-divice">
+              <%= image_tag 'static-pages/divice2.png' %>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab">
+        <div class="container">
+          <div class="tab-info">
+            <div class="col-md-6 tab-divice">
+              <%= image_tag 'static-pages/divice2.png' %>
+            </div>
+            <div class="col-md-6 tab-divice-info">
+              <h3>My apps showcase</h3>
+              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
+              <a class="btn" href="#"> Buy Now</a>
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab">
+        <div class="container">
+          <div class="tab-info">
+            <div class="col-md-6 tab-divice-info">
+              <h3>My apps showcase</h3>
+              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
+              <a class="btn" href="#"> Buy Now</a>
+            </div>
+            <div class="col-md-6 tab-divice">
+              <img src="images/divice2.png" title="divice" />
+            </div>
+            <div class="clearfix"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= javascript_include_tag 'static-pages/easyResponsiveTabs.js' %>
+
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $('#horizontalTab').easyResponsiveTabs({
+              type: 'default', //Types: default, vertical, accordion
+              width: 'auto', //auto or any width like 600px
+              fit: true,   // 100% fit in a container
+              closed: 'accordion', // Start closed if in accordion view
+              activate: function(event) { // Callback function if tab is switched
+                  var $tab = $(this);
+                  var $info = $('#tabInfo');
+                  var $name = $('span', $info);
+
+                  $name.text($tab.text());
+
+                  $info.show();
+              }
+          });
+
+          $('#verticalTab').easyResponsiveTabs({
+              type: 'vertical',
+              width: 'auto',
+              fit: true
+          });
+      });
+  </script>
+</div>
+<!----//End-services---->
+
+
+<!----start-footer---->
+<div class="footer">
+  <p>Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+  <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
+</div>
+<!----//End-footer---->
+<!----//End-container---->
+<!---- start-smoth-scrolling---->
+<script type="text/javascript">
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+</script>
+<!---- start-smoth-scrolling---->
+
+</body>
+</html>
+

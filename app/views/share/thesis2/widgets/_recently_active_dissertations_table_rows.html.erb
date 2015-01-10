@@ -1,4 +1,5 @@
-<% activeProject.each do |project| %>
+<%= ajax_loadzone do %>
+    <% @activeProjects.each do |project| %>
         <tr>
           <td>
             <%= link_to project.title, project_path(project.id), {class: "news-item-title"} %>
@@ -9,4 +10,7 @@
             <% end %>
           </td>
         </tr>
+    <% end %>
 <% end %>
+
+

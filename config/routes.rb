@@ -1,21 +1,26 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
 
-  get 'static_pages/home'
-  get 'static_pages/help'
+  authenticated :user do
+    root to: 'welcome#index', as: :authenticated_root
+  end
 
+  unauthenticated do
+    as :user do
+      root to: 'static_pages#home'
+    end
+  end
 
-
+  #get 'static_pages/home'
+  #get 'static_pages/help'
   devise_for :users,
-             path_names: { sign_in: "login", sign_out: "logout"}
+             path_names: { sign_out: "logout"}
 
 
-  # You can have the root of your site routed with "root"
-  get 'welcome/index'
-
+  # profile_student_path
   get '/user/student/profile/:id' => 'students#profile', as: 'profile_student'
   # profile_teacher_path
   get '/user/teacher/profile/:id' => 'teachers#profile', as: 'profile_teacher'
+
   get '/teacher/profile/add_project' => 'teachers#add_project', as: 'add_project'
   get '/teacher/dashboard' => 'teachers#dashboard'
 
@@ -26,11 +31,12 @@ Rails.application.routes.draw do
   post 'projects/:id/destroy' => 'projects#destroy_assignment' # button_to 'Εκδήλωση ενδιαφέροντος',{action: "destroy_assignment" }, {class: "btn btn-success"}
 
   resources :projects
-  resources :users
-  resources :students, path: '/user/student', only: [:index, :edit]
+  resources :users, only: [ :new, :edit, :update ]
+  resources :students, path: '/user/student', only: [:edit]
 
   resources :teachers, path: '/user/teacher' do
     get '/projects' => 'teachers#projects'
+    get '/projects/:id/edit' => 'teachers#edit_project', as: 'edit_project'
   end
 
 

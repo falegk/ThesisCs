@@ -1945,6 +1945,14 @@ background-repeat:no-repeat;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15);
   *background-color: #6e9b13;
 }
+
+.btn-full-width {
+    border-radius: 1px;
+    width: 100%;
+    padding: 3px 0;
+    font-size: small;
+}
+
 .btn-success:hover, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
 	background-color: #6e9b13;
   color: white;
@@ -2813,10 +2821,30 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endCo
 .breadcrumb .active a {
 	color: #333333;
 }
+
+.ajaxpagination {
+    width: 100%;
+    margin: 10px auto;
+}
+
 .pagination {
 	height: 36px;
-	margin: 18px 0;
+    margin: 0 auto;
+    width: -moz-max-content;
+    text-align: center;
 }
+
+.pagination .previous_page, .current, .next_page {
+    border-color: #ddd;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 1px 1px 0;
+    float: left;
+    line-height: 34px;
+    padding: 0 14px;
+    text-decoration: none;
+}
+
 .pagination ul {
 	display: inline-block;
 *display:inline;
@@ -3644,4 +3672,10 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fbb450', endCo
 }
 .invisible {
 	visibility: hidden;
+}
+
+/* ---- ThesisCs CSS  ----- */
+
+.page-entries-info{
+    text-align: center;
 }

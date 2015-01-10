@@ -1,20 +1,27 @@
 class ProjectsController < ApplicationController
-  #before_action :department_empty?
+  before_action :auth_user
+
   # @return projects
-  before_action :all_projects, only: [ :index, :show ]
+  #before_action :all_projects, only: [ :index, :show ]
   before_action :active_projects, only: [ :index ]
   before_action :pending_projects, only: [ :index ]
-  before_action :current_project, only: [ :project_is_selected, :show, :create_assignment,:destroy_assignment, :update_assignment ]
+  before_action :current_project, only: [ :project_is_selected, :show, :update, :create_assignment,:destroy_assignment, :update_assignment ]
   # students valid
   before_action :given_to_students, only: [ :show , :names_of_students]
   before_action :names_of_students, only: [ :show ]
   #before_action :redirect_not_student, only: []
   #before_action :redirect_not_teacher, only: []
   before_action :expressed_interest, only: [ :show ]
-
+  before_action  :department_empty
 
   # routes
   def index
+    respond_to do |format|
+      format.html # index.html.erb
+      ajax_respond format, :section_id => "pendingProjectsPage"
+      ajax_respond format, :section_id => "activeProjectsPage"
+
+    end
   end
 
 
@@ -34,6 +41,9 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def edit
+  end
+
   def create
     redirect_not_teacher
     @project = Project.new(project_params)
@@ -44,6 +54,19 @@ class ProjectsController < ApplicationController
         #f.json {render json: @user, status: :created, location: @user}
       else
         f.html {render action: "new",:flash => { :error => "Error" } }
+      end
+    end
+  end
+
+  # update project from teacher /user/teacher/:id/projects/:id/edit
+  def update
+    redirect_not_teacher
+    respond_to do |f|
+      if @currentProject.update(project_params)
+        f.html {redirect_to project_path(@currentProject), :flash => { :success => "Success Update Project" }}
+        #f.json {render json: @user, status: :created, location: @user}
+      else
+        f.html {render action: "edit", :flash => { :error => "Error" } }
       end
     end
   end
@@ -100,12 +123,12 @@ class ProjectsController < ApplicationController
 
   # @return @pendingProjects
   def pending_projects
-    @pendingProjects = Project.all.where(status: 'pending').order('created_at DESC')
+    @pendingProjects = Project.all.where(status: 'pending').order('created_at DESC').paginate( :page => params[:pendingProjectsPage], :per_page => 5)
   end
 
   # @return @activeProjects
   def active_projects
-    @activeProjects = Project.all.where(status: 'active')
+    @activeProjects = Project.all.where(status: 'active').paginate( :page => params[:activeProjectsPage], :per_page => 5)
   end
 
   # @return @completedProjects

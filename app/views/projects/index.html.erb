@@ -2,7 +2,7 @@
   <div class="span6">
 
     <!-- Πτυχιακές για παράδοση-->
-    <%= render partial: 'share/thesis2/widgets/dissertations_for_delivery', locals: {dissertations: @pendingProjects } %>
+    <%= render partial: 'share/thesis2/widgets/dissertations_for_delivery', locals: { widgetTitle: 'Διαθέσιμες Πτυχιακές' } %>
     <!-- /widget -->
 
   </div>
@@ -10,7 +10,7 @@
   <div class="span6">
 
     <!-- /widget Πρόσφατα ενεργές πτυχιακές-->
-    <%= render partial: 'share/thesis2/widgets/recently_active_dissertations', locals: {activeProjects: @activeProjects, widgetTitle: 'Πρόσφατα ενεργές πτυχιακές'} %>
+    <%= render partial: 'share/thesis2/widgets/recently_active_dissertations', locals: { widgetTitle: 'Πρόσφατα ενεργές πτυχιακές'} %>
     <!-- /widget -->
 
     <!-- /widget Πρόσφατα ολοκληρωμένες πτυχιακές-->

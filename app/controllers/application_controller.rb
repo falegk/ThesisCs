@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
+  TEACHER_REGEX = /\AΕΚΠΑΙΔΕΥΤΙΚΟΣ[\p{Any}*]*\Z/
+  STUDENT_REGEX = /\AΣΠΟΥΔΑΣΤΗΣ[\p{Word}*]*\Z/
+
   layout 'thesis2/thesis2'
 
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   rescue_from DeviseLdapAuthenticatable::LdapException do |exception|
     render :text => exception, :status => 500
@@ -11,15 +14,21 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  #before_action :configure_permitted_parameters, if: :devise_controller?
-
+  # for before_action :auth_user
+  def auth_user
+    redirect_to root_path unless user_signed_in?
+  end
 
   #checks if the user has chosen department
   def department_empty
-     User.find(current_user) do |p|
-      if p.student.department == nil
-        redirect_to profile_path, notice: 'Πρέπει να επιλέξετε τμήμα.'
-     end
+    if is_student?
+      if current_user.student.department.blank?
+        redirect_to edit_student_path(current_user.student), notice: 'Πρέπει να επιλέξετε τμήμα.'
+      end
+    elsif is_teacher?
+      if current_user.teacher.department.blank?
+        redirect_to edit_teacher_path(current_user.teacher), notice: 'Πρέπει να επιλέξετε τμήμα.'
+      end
     end
   end
 
@@ -60,10 +69,14 @@ class ApplicationController < ActionController::Base
     user = User.all.find(current_user)
     if get_user_role_from_ldap(user) == 'student'
       user.create_student
+      user.update(first_name: ldap_values[:firstname],last_name: ldap_values[:lastname])
+      redirect_to edit_student_path(user.student)
     elsif get_user_role_from_ldap(user) == 'teacher'
       user.create_teacher
+      user.update(first_name: ldap_values[:firstname],last_name: ldap_values[:lastname])
+      redirect_to edit_teacher_path(user.teacher)
     end
-    user.update(first_name: ldap_values[:firstname],last_name: ldap_values[:lastname])
+
   end
 
 
@@ -71,10 +84,11 @@ class ApplicationController < ActionController::Base
   #@param user [User]
   #@return student, teacher or none [String]
   def get_user_role_from_ldap(user)
-    if user.get_ldap_userType == 'ΣΠΟΥΔΑΣΤΗΣ' #Τιμή στο businessCategory του LDAP
-      'student'
-    elsif user.get_ldap_userType == 'ΕΚΠΑΙΔΕΥΤΙΚΟΣ-ΑΝΑΠΛΗΡΩΤΗΣ ΚΑΘΗΓΗΤΗΣ' #Τιμή στο businessCategory του LDAP
+    role = user.get_ldap_userType
+    if role.match(TEACHER_REGEX) #Τιμή στο businessCategory του LDAP
       'teacher'
+    elsif role.match(STUDENT_REGEX) #Τιμή στο businessCategory του LDAP
+      'student'
     else
       'none'
     end

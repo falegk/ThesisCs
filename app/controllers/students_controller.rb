@@ -1,11 +1,11 @@
 class StudentsController < ApplicationController
+  before_action :auth_user
   before_action :find_current_user
   before_action :find_param_student, only: [:profile]
 
   # Δημόσιο προφίλ
   def profile
   end
-
 
 
 private

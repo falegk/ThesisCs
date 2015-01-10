@@ -12,11 +12,14 @@
       </tr>
       </thead>
       <tbody>
-
-        <%= render partial: 'share/thesis2/widgets/recently_active_dissertations_table_rows', locals: {activeProject: activeProjects} %>
-
+        <%= ajax_section id: "activeProjects", render:"share/thesis2/widgets/recently_active_dissertations_table_rows" %>
       </tbody>
     </table>
+    <%= ajax_links :section_id => "activeProjectsPage" do %>
+        <%= will_paginate @activeProjects, param_name: 'activeProjectsPage' %>
+    <% end %>
+
+    <a class="btn btn-full-width btn-invert btn-support-ask" href="javascript:;">Εμφάνιση Όλων</a>
   </div>
   <!-- /widget-content -->
 </div>

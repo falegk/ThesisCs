@@ -1,6 +1,6 @@
 <div class="row">
 
-  <div class="span9">
+  <div class="span6">
     <div class="widget widget-nopad">
       <div class="widget-header"> <i class="icon-list-alt"></i>
         <h3> Στοιχεία του χρήστη <%= "#{@student.user.first_name} #{@student.user.last_name} "  %></h3>
@@ -9,8 +9,10 @@
       <div class="widget-content">
         <ul class="news-items">
         <li><h4></h4><%= "#{@student.user.first_name} #{@student.user.last_name} " %></li>
-          <li><h4>Αριθμός μητρώου:</h4> <%= "#{@student.am}" %></li>
-          <li><h4>Τηλέφωνο:</h4> <%= "#{@student.phone}" %></li>
+          <% if is_teacher_helper? || current_user.student == @student %>
+            <li><h4>Αριθμός μητρώου:</h4> <%= "#{@student.am}" %></li>
+            <li><h4>Τηλέφωνο:</h4> <%= "#{@student.phone}" %></li>
+          <% end %>
           <li><h4>Email:</h4><%= "#{@student.user.email}" %></li>
           <li><h4>Σχολή - Τμήμα:</h4> <%= "#{@student.department}" %></li>
         </ul>
@@ -22,5 +24,28 @@
 
   </div>
   <!-- /span6 -->
+
+  <div class="span6">
+    <div class="widget widget-nopad">
+      <div class="widget-header"> <i class="icon-list-alt"></i>
+        <h3> Γενικά </h3>
+      </div>
+      <!-- /widget-header -->
+      <div class="widget-content">
+        <ul class="news-items">
+          <li>Δεξιότητες:  </li><br/>
+          <li>Δεν έχει αναλάβει ακόμα πτυχιακή εργασία</li>
+          <li>Έχει αναλάβει πτυχιακή με θέμα ......... και ημερομηνία παράδοσης ........</li>
+          <li>Έχει ολοκληρώση την πτυχιακή του εργασία με θέμα ...... στις .......</li>
+        </ul>
+      </div>
+      <!-- /widget-content -->
+    </div>
+    <!-- /widget -->
+
+
+  </div>
+  <!-- /span6 -->
+
 </div>
 <!-- /row -->
