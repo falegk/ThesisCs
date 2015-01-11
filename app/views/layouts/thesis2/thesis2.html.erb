@@ -8,11 +8,14 @@
 
   <%= csrf_meta_tags %>
   <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
-  <%= stylesheet_link_tag 'thesis2/bootstrap.min.css',
+  <%= stylesheet_link_tag 'application','thesis2/bootstrap.min.css',
                           'thesis2/bootstrap-responsive.min.css',
                           'thesis2/font-awesome.css',
                           'thesis2/style.css',
-                          'welcome.css'%>
+                          'welcome.css',
+                          'plugins/chosen/prism','chosen',
+                          media: "all" %>
+
   <%= yield :stylesheets %>
 
   <style type="text/css" media="all">
@@ -34,6 +37,7 @@
 <div class="main">
   <div class="main-inner">
     <div class="container">
+      <p class="notice"><%= notice %></p>
 
       <%= yield %>
 

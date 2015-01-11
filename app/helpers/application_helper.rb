@@ -30,15 +30,4 @@ module ApplicationHelper
   end
 
 
-  # Λίστα φοιτητών που έχουν πάρει την πτυχιακή
-  def students_list(project_id)
-   list = ProjectAssignment.where(given: true, project_id: project_id)
-
-
-
-    result = {
-        count: list.count
-    }
-  end
-
 end
