@@ -5,7 +5,7 @@
       </td>
       <td>
         <% project.students.each do |student| %>
-            <%= "#{student.user.first_name} #{student.user.last_name}" %>
+            <%= students_list(student,true) %>
         <% end %>
       </td>
     </tr>

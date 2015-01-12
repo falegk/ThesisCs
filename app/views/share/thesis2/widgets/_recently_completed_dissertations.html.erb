@@ -1,12 +1,22 @@
-<div class="widget">
-  <div class="widget-header"> <i class="icon-signal"></i>
-    <h3> Πρόσφατα ολοκληρωμένες πτυχιακές </h3>
+<div class="widget widget-table action-table">
+  <div class="widget-header"> <i class="icon-th-list"></i>
+    <h3><%=  'Πρόσφατα ολοκληρωμένες πτυχιακές' %>  </h3>
   </div>
   <!-- /widget-header -->
   <div class="widget-content">
-    <!-- /area-chart -->
-  </div>
-  <a class="btn btn-full-width btn-invert btn-support-ask" href="javascript:;">Εμφάνιση Όλων</a>
+    <table class="table table-striped table-bordered">
+      <thead>
+      <tr>
+        <th> Τιτλος </th>
+        <th> Φοιτητης/ες</th>
+      </tr>
+      </thead>
+      <tbody>
+      <%= render partial: "share/thesis2/widgets/recently_completed_dissertations_table_row" %>
+      </tbody>
+    </table>
 
+    <a class="btn btn-full-width btn-invert btn-support-ask" href="javascript:;">Εμφάνιση Όλων</a>
+  </div>
   <!-- /widget-content -->
 </div>

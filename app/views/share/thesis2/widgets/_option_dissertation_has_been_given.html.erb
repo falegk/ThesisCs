@@ -1,7 +1,10 @@
-<div class="alert alert-success">Την πτυχιακή έχουν αναλάβει οι: <br/>
+<div class="alert alert-success">
+  <%= plural_students_expressed_interest(@currentProject,true,false,
+                                         t('student.project.show.singular.thesis_undertaken_by'),
+                                         t('student.project.show.plural.thesis_undertaken_by')) %><br/>
   <strong>
     <% detailsOfStudents.each do |s|  %>
-        <%= link_to "#{s.first_name} #{s.last_name}", profile_student_path(s.student) %><br/>
+        <%= students_list(s,true) %><br/>
     <% end %>
   </strong><br/>
 </div>

@@ -1,0 +1,36 @@
+el:
+  messages:
+    error:
+    alert:
+    successfully:
+  data:
+    confirm:
+      changeStudents: "Με την αλλαγή φοιτητή διαγράφονται ΟΛΟΙ οι φοιτητές που έχουν αναλάβει την πτυχιακή εργασία και γίνεται πάλι διαθέσιμη προς όλους τους φοιτητές. Είστε σίγουροι για την παραπάνω ενέργεια?"
+      assignment_confirmation: "Είστε σίγουροι για την ανάθεση;"
+      delete_confirmation: "Είστε σίγουροι για την διαγραφη;"
+      completed_confirmation: "Σίγουρα θέλετε να στείλετε την πτυχιακή στο αρχείο;"
+      prolongation: "Η παράταση είναι 6 μήνες απο την ημέρα ανάθεσης του θέματος. Μόνο μία παράταση ανά θέμα μπορεί να δοθεί."
+  options:
+    edit: " Επεξεργασία"
+    delete: " Διαγραφή"
+    completion: " Ολοκλήρωση & Αρχείο"
+    student_remove: " Αφαίρεση φοιτητή"
+    removing_those_expressed_interest: " Αφαίρεση όσων εκδήλωσαν ενδιαφέρον"
+    prolongation: " Παράταση πτυχιακής"
+    buttons:
+      withdrawal_of_interest: "Απόσυρση ενδιαφέροντος"
+      expressions_of_interest: "Εκδήλωση ενδιαφέροντος"
+  student:
+    project:
+      dashboard:
+        singular:
+          expression_of_Interest: " φοιτητής έχει εκδηλώσει ενδιαφέρον"
+          given_to_the_student: "Η πτυχιακή έχει δοθεί στον φοιτητή"
+        plural:
+          expression_of_Interest: " φοιτητές έχουν εκδηλώσει ενδιαφέρον"
+          given_to_the_students: "Η πτυχιακή έχει δοθεί στους φοιτητές"
+      show:
+        singular:
+          thesis_undertaken_by: "Την πτυχιακή έχει αναλάβει ο"
+        plural:
+          thesis_undertaken_by: "Την πτυχιακή έχουν αναλάβει οι"

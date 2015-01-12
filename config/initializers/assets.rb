@@ -25,8 +25,6 @@ Rails.application.config.assets.precompile += %w( static-pages/theme-style.css )
 Rails.application.config.assets.precompile += %w( chosen/style.css )
 =end
 
-
-
 Rails.application.config.assets.precompile += %w( thesis2/jquery-1.7.2.min.js )
 Rails.application.config.assets.precompile += %w( thesis2/excanvas.min.js )
 Rails.application.config.assets.precompile += %w( thesis2/bootstrap.js )

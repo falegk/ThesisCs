@@ -32,6 +32,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # --------------- Γενικές μέθοδοι για έλεγχο των Project -----------------
+
+  # @return @currentProject
+  def current_project
+    @currentProject = Project.find(params[:id])
+  end
 
   # ------------ Γενικές μέθοδοι για έλεγχο των χρηστών --------------------
 

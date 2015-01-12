@@ -8,7 +8,7 @@
           </div>
           <div class="news-item-detail">
             <%= link_to allProjects.title, project_path(allProjects.id), {class: "news-item-title"} %>
-            <p class="news-item-preview"> <%= truncate(allProjects.description,length: 150, separator: '') %> </p>
+            <p class="news-item-preview"> <%= truncate(raw(allProjects.description),length: 150) %> </p>
           </div>
         </li>
     <% end %>

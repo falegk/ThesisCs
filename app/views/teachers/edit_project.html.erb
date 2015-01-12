@@ -20,7 +20,7 @@
                   <div class="control-group">
                     <%= project.label :description , class: "control-label"  %>
                     <div class="controls">
-                      <%= project.text_area :description %><br/>
+                      <%= project.cktext_area :description, :ckeditor => {:language => 'el-GR', :toolbar => 'mini'} %><br/>
                     </div>
                   </div>
                   <div class="control-group">

@@ -5,14 +5,16 @@
   <!-- /widget-header  -->
   <div class="widget-content">
     <ul class="news-items">
-      <li><span class="news-item-title">Καθηγητής: </span><%= link_to "#{@currentProject.teacher.user.first_name} #{@currentProject.teacher.user.last_name}",  profile_teacher_path(@currentProject.teacher) %></li>
+      <li><span class="news-item-title">Επιβλέπον Καθηγητής: </span><%= link_to "#{@currentProject.teacher.user.first_name} #{@currentProject.teacher.user.last_name}",  profile_teacher_path(@currentProject.teacher) %></li>
       <li><span class="news-item-title">Ημερομηνία καταχώρησης: </span><%= @currentProject.created_at.strftime("%d/%m/%Y") %> </li>
       <li><span class="news-item-title">Απαιτούμενα προσόντα: </span><%= @currentProject.skills_required %></li>
       <% unless @given_project_to_students.empty? %>
-          <li><span class="news-item-title">Απαιτούμενη ημερομηνία ολοκλήρωσης έως: </span><%= @currentProject.completion_date %></li>
           <li><span class="news-item-title">Έχει δοθεί παράταση; </span><%= @currentProject.prolongation ? 'Ναι' : 'Οχι' %></li>
-          <% if @currentProject.prolongation %>
-            <li><span class="news-item-title">Ημερομηνια παράταση: </span><%= @currentProject.completion_date + 6.month %></li>
+          <li><span class="news-item-title">Ημερομηνία ανάθεσης: </span><%= @currentProject.start_date.strftime("%d/%m/%Y") %></li>
+          <% if @currentProject.prolongation == false %>
+              <li><span class="news-item-title">Απαιτούμενη ημερομηνία ολοκλήρωσης έως: </span><%= @currentProject.completion_date.strftime("%d/%m/%Y") %></li>
+            <% else %>
+              <li><span class="news-item-title">Ημερομηνια παράταση: </span><%= @currentProject.completion_date + 6.month %></li>
           <% end %>
     <% end %>
     </ul>

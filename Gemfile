@@ -45,3 +45,6 @@ gem 'devise_ldap_authenticatable', :git => 'git://github.com/cschiewek/devise_ld
 # pagination
 gem 'will_paginate', '~> 3.0.5'
 gem 'ajax_pagination'
+
+# Editor
+gem 'ckeditor', github: 'galetahub/ckeditor'

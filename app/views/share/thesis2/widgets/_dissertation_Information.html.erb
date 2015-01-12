@@ -10,18 +10,11 @@
         <div class="news-item-detail">
           <div class="news-item-title">
             <% if is_teacher_helper? && (@currentProject.teacher == current_user.teacher) %>
-                <div class="options_arrow">
-                  <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
-                    <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
-                      <li><%= link_to 'Edit',  teacher_edit_project_path(current_user.teacher ,@currentProject), class: 'icon-edit icon-large' %></li>
-                      <li><a href="#"><i class=" icon-trash icon-large"></i> Delete</a></li>
-                    </ul>
-                  </div>
-                </div>
+                <%= render partial: 'share/thesis2/plugins/options_arrow', locals: {project: @currentProject} %>
             <% end %>
             <h1><%= @currentProject.title %></h1><br/>
           </div>
-          <p class="news-item-preview"> <%= @currentProject.description %> </p><br/>
+          <p class="news-item-preview"> <%= raw @currentProject.description  %> </p><br/>
 
           <p class="news-item-preview"><strong>Keywords:</strong> <%= @currentProject.keywords %> </p>
         </div>

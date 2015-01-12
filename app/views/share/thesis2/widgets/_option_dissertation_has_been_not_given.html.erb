@@ -10,9 +10,9 @@
       <strong>Προσοχή!</strong><br/>
       <p>Για να πάρετε το θέμα πρέπει να επικοινωνήσετε με τον καθηγητή.</p>
     </div>
-    <%= button_to 'Απόσυρση ενδιαφέροντος',{action: "destroy_assignment" }, {class: "btn btn-danger"} %>
+    <%= button_to t('options.buttons.withdrawal_of_interest'),{action: "destroy_assignment" }, {class: "btn btn-danger"} %>
 <% else %>
-    <%= button_to 'Εκδήλωση ενδιαφέροντος',{action: "create_assignment" }, {class: "btn btn-success"} %>
+    <%= button_to t('options.buttons.expressions_of_interest'),{action: "create_assignment" }, {class: "btn btn-success"} %>
 <% end %>
 
 <% end %>

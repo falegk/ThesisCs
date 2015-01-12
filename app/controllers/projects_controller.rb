@@ -5,7 +5,9 @@ class ProjectsController < ApplicationController
   #before_action :all_projects, only: [ :index, :show ]
   before_action :active_projects, only: [ :index ]
   before_action :pending_projects, only: [ :index ]
-  before_action :current_project, only: [ :project_is_selected, :show, :update, :create_assignment,:destroy_assignment, :update_assignment ]
+  before_action :completed_projects, only: [ :index ]
+  before_action :current_project, only: [ :show, :update,:project_completed,:project_prolongation, :create_assignment,:delete_assignments,:destroy_assignment, :update_assignment ]
+
   # students valid
   before_action :given_to_students, only: [ :show , :names_of_students]
   before_action :names_of_students, only: [ :show ]
@@ -20,7 +22,6 @@ class ProjectsController < ApplicationController
       format.html # index.html.erb
       ajax_respond format, :section_id => "pendingProjectsPage"
       ajax_respond format, :section_id => "activeProjectsPage"
-
     end
   end
 
@@ -30,8 +31,6 @@ class ProjectsController < ApplicationController
     if is_student?
       #Αν το θεμα ειναι επιλεγμενο απο τον student που ειναι συνδεμενος (true,false)
       @project_is_selected = @currentProject.project_assignments.where(student_id: current_user.student.id).exists?
-    elsif is_teacher?
-      @assignment = @currentProject.project_assignments.build
     end
 
   end
@@ -73,16 +72,37 @@ class ProjectsController < ApplicationController
 
   def update_assignment
       redirect_not_teacher
+        @currentProject.project_assignments.where(assignment_params).update_all(given: true)
+        @currentProject.project_assignments.where(given: false).destroy_all
+        ProjectAssignment.all.where(student_id: assignment_params[:student_ids], given: false).destroy_all
+        @currentProject.update!(status: 'active', start_date: Time.now, completion_date: 1.year.from_now)
 
-      @currentProject.project_assignments.where(assignment_params).update_all(given: true)
-      @currentProject.project_assignments.where(given: false).destroy_all
-      ProjectAssignment.all.where(student_id: assignment_params[:student_id], given: false).destroy_all
-      @currentProject.update!(status: 'active')
-
-    redirect_to project_path(params[:id])
+        redirect_to project_path(params[:id])
   end
 
+  def project_completed
+    redirect_not_teacher
+    @currentProject.update!(status: 'completed')
+    redirect_to teacher_dashboard_path , notice: 'Η Πτυχιακή ολοκληρώθηκε επιτυχώς.'
+  end
 
+  def project_prolongation
+    redirect_not_teacher
+    if @currentProject.prolongation == true
+      redirect_to teacher_dashboard_path , notice: 'Έχει ήδη δοθεί παράταση.'
+    else
+      @currentProject.update!(prolongation: true)
+      redirect_to teacher_dashboard_path
+    end
+  end
+
+  def delete_assignments
+    redirect_not_teacher
+    @currentProject.project_assignments.destroy_all
+    @currentProject.update!(status: 'pending', prolongation: false)
+    redirect_to teacher_dashboard_path
+
+  end
 
   # Αν δεν υπάρχει εκδήλωση ενδιαφέροντος ενός θέματος απο εναν φοιτητή ,
   # τότε (με ένα button) γίνεται δημιουργία. Άν υπάρχει τότε γίνεται διαγραφή
@@ -111,7 +131,7 @@ class ProjectsController < ApplicationController
   def names_of_students
     @detailsOfStudents = []
     @given_project_to_students.each do |s|
-      @detailsOfStudents << s.student.user
+      @detailsOfStudents << s.student
     end
      @detailsOfStudents
   end
@@ -134,11 +154,6 @@ class ProjectsController < ApplicationController
   # @return @completedProjects
   def completed_projects
     @completedProjects = Project.all.where(status: 'completed')
-  end
-
-  # @return @currentProject
-  def current_project
-    @currentProject = Project.find(params[:id])
   end
 
 

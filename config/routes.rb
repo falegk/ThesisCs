@@ -25,10 +25,12 @@ Rails.application.routes.draw do
   get '/teacher/dashboard' => 'teachers#dashboard'
 
   #Ανάθεσης θέματος
-  #post 'projects/:id' => 'projects#project_assignments'
   post 'projects/:id/assigning' => 'projects#update_assignment', as: 'project_assigning'
   post 'projects/:id/create' => 'projects#create_assignment'  # button_to 'Εκδήλωση ενδιαφέροντος',{action: "create_assignment" }, {class: "btn btn-success"}
   post 'projects/:id/destroy' => 'projects#destroy_assignment' # button_to 'Εκδήλωση ενδιαφέροντος',{action: "destroy_assignment" }, {class: "btn btn-success"}
+  post 'projects/:id/delete_assignments' => 'projects#delete_assignments', as: 'delete_project_assignments' # διαγραφή συσχέτισης
+  post 'projects/:id/prolongation' => 'projects#project_prolongation', as: 'project_prolongation'
+  post 'projects/:id/completed' => 'projects#project_completed', as: 'project_completed'
 
   resources :projects
   resources :users, only: [ :new, :edit, :update ]
