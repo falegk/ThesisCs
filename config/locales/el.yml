@@ -1,4 +1,8 @@
 el:
+  devise:
+    sessions:
+      user:
+        signed_in: "Γεια σας "
   messages:
     error:
     alert:

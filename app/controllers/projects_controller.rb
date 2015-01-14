@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   before_action :active_projects, only: [ :index ]
   before_action :pending_projects, only: [ :index ]
   before_action :completed_projects, only: [ :index ]
-  before_action :current_project, only: [ :show, :update,:project_completed,:project_prolongation, :create_assignment,:delete_assignments,:destroy_assignment, :update_assignment ]
+  before_action :current_project, only: [ :show, :update, :destroy, :project_completed,:project_prolongation, :create_assignment,:delete_assignments,:destroy_assignment, :update_assignment ]
 
   # students valid
   before_action :given_to_students, only: [ :show , :names_of_students]
@@ -43,6 +43,11 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+  def destroy
+    current_user.teacher.projects.find(params[:id]).destroy
+    redirect_to teacher_dashboard_path , notice: 'Η Πτυχιακή διαγράφηκε επιτυχώς.'
+  end
+
   def create
     redirect_not_teacher
     @project = Project.new(project_params)
@@ -52,7 +57,7 @@ class ProjectsController < ApplicationController
         f.html {redirect_to project_path(@project), :flash => { :success => "Success create" }}
         #f.json {render json: @user, status: :created, location: @user}
       else
-        f.html {render action: "new",:flash => { :error => "Error" } }
+        f.html {render template: 'teachers/add_project' , :flash => { :error => "Error" } }
       end
     end
   end
