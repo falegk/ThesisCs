@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
   before_action :expressed_interest, only: [ :show ]
   before_action  :department_empty
 
-  # routes
+
   def index
     respond_to do |format|
       format.html # index.html.erb
@@ -27,12 +27,10 @@ class ProjectsController < ApplicationController
 
 
   def show
-
     if is_student?
       #Αν το θεμα ειναι επιλεγμενο απο τον student που ειναι συνδεμενος (true,false)
       @project_is_selected = @currentProject.project_assignments.where(student_id: current_user.student.id).exists?
     end
-
   end
 
 
@@ -45,7 +43,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     current_user.teacher.projects.find(params[:id]).destroy
-    redirect_to teacher_dashboard_path , notice: 'Η Πτυχιακή διαγράφηκε επιτυχώς.'
+    redirect_to teacher_dashboard_path , :flash => { :success => t('messages.success.projects.thesis_delete_successfully') }
   end
 
   def create
@@ -54,10 +52,10 @@ class ProjectsController < ApplicationController
     @project.teacher = current_user.teacher
     respond_to do |f|
       if @project.save
-        f.html {redirect_to project_path(@project), :flash => { :success => "Success create" }}
+        f.html {redirect_to project_path(@project), :flash => { :success => t('messages.success.projects.thesis_create_successfully_html') }}
         #f.json {render json: @user, status: :created, location: @user}
       else
-        f.html {render template: 'teachers/add_project' , :flash => { :error => "Error" } }
+        f.html {render template: 'teachers/add_project' }
       end
     end
   end
@@ -67,7 +65,7 @@ class ProjectsController < ApplicationController
     redirect_not_teacher
     respond_to do |f|
       if @currentProject.update(project_params)
-        f.html {redirect_to project_path(@currentProject), :flash => { :success => "Success Update Project" }}
+        f.html {redirect_to project_path(@currentProject), :flash => { :success => t('messages.success.projects.thesis_update_successfully') }}
         #f.json {render json: @user, status: :created, location: @user}
       else
         f.html {render action: "edit", :flash => { :error => "Error" } }
@@ -82,22 +80,22 @@ class ProjectsController < ApplicationController
         ProjectAssignment.all.where(student_id: assignment_params[:student_ids], given: false).destroy_all
         @currentProject.update!(status: 'active', start_date: Time.now, completion_date: 1.year.from_now)
 
-        redirect_to project_path(params[:id])
+        redirect_to project_path(params[:id]),:flash => { :success => 'Η πτυχιακή εργασία ανατέθηκε επιτυχώς.'}
   end
 
   def project_completed
     redirect_not_teacher
     @currentProject.update!(status: 'completed')
-    redirect_to teacher_dashboard_path , notice: 'Η Πτυχιακή ολοκληρώθηκε επιτυχώς.'
+    redirect_to teacher_dashboard_path ,:flash => { :success => t('messages.success.projects.thesis_completed_successfully')}
   end
 
   def project_prolongation
     redirect_not_teacher
     if @currentProject.prolongation == true
-      redirect_to teacher_dashboard_path , notice: 'Έχει ήδη δοθεί παράταση.'
+      redirect_to teacher_dashboard_path , :flash =>  { :notice => t('messages.alert.projects.already_been_given_prolongation')}
     else
       @currentProject.update!(prolongation: true)
-      redirect_to teacher_dashboard_path
+      redirect_to teacher_dashboard_path, :flash =>  { :success => t('messages.success.projects.prolongation_has_given_successfully')}
     end
   end
 
@@ -105,8 +103,7 @@ class ProjectsController < ApplicationController
     redirect_not_teacher
     @currentProject.project_assignments.destroy_all
     @currentProject.update!(status: 'pending', prolongation: false)
-    redirect_to teacher_dashboard_path
-
+    redirect_to teacher_dashboard_path, :flash => { :success => 'Η πτυχιακή μεταφέρθηκε επιτυχώς στις "Διαθέσιμες Πτυχιακές" και είναι έτοιμη να δοθεί σε άλλους φοιτητές.' }
   end
 
   # Αν δεν υπάρχει εκδήλωση ενδιαφέροντος ενός θέματος απο εναν φοιτητή ,

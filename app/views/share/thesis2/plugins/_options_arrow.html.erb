@@ -2,7 +2,7 @@
   <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
     <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
       <li><%= link_to t('options.edit'),  teacher_edit_project_path(current_user.teacher ,project), class: 'icon-edit icon-large' %></li>
-      <li><%= link_to t('options.delete'), project, method: :delete , class: 'icon-trash icon-large',data: {confirm: 'Προσοχή! Αν υπάρχουν φοιτητές που εκδήλωσαν ενδιαφέρον θα διαγραφούν απο την λίστα αυτόματα.Είστε σίγουρος για την διαγραφή της πτυχιακης?' } %></li>
+      <li><%= link_to t('options.delete'), project, method: :delete , class: 'icon-trash icon-large',data: {confirm: 'Είστε σίγουρος για την διαγραφή?' } %></li>
       <li><%= link_to t('options.completion'), project_completed_path(project), method: :post , class: 'icon-archive icon-large', data: {confirm: t('data.confirm.completed_confirmation') } if defined? archive %></li>
       <li><%= link_to t('options.prolongation'), project_prolongation_path(project), method: :post , class: 'icon-magic icon-large',data: {confirm: t('data.confirm.prolongation') } if defined? prolongation %></li>
       <li><%= link_to t('options.student_remove'), delete_project_assignments_path(project), method: :post , class: 'icon-retweet icon-large',data: {confirm: t('data.confirm.changeStudents') } if defined? changingStudent %></li>

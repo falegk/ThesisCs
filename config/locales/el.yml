@@ -5,8 +5,18 @@ el:
         signed_in: "Γεια σας "
   messages:
     error:
+      projects:
     alert:
-    successfully:
+      projects:
+        already_been_given_prolongation: "Έχει ήδη δοθεί παράταση και δεν μπορεί να δοθεί άλλη."
+    success:
+      projects:
+        already_been_given_prolongation: "Έχει ήδη δοθεί παράταση."
+        thesis_create_successfully_html: "<strong>Η πτυχιακή σας εργασία καταχωρήθηκε επιτυχώς.</strong>"
+        thesis_update_successfully: "Η πτυχιακή σας εργασία τροποποιήθηκε επιτυχώς."
+        thesis_delete_successfully: "Η Πτυχιακή σας εργασια διαγράφηκε επιτυχώς."
+        thesis_completed_successfully: "Η Πτυχιακή ολοκληρώθηκε επιτυχώς."
+        prolongation_has_given_successfully: "Η παράταση δόθηκε επιτυχώς!"
   data:
     confirm:
       changeStudents: "Με την αλλαγή φοιτητή διαγράφονται ΟΛΟΙ οι φοιτητές που έχουν αναλάβει την πτυχιακή εργασία και γίνεται πάλι διαθέσιμη προς όλους τους φοιτητές. Είστε σίγουροι για την παραπάνω ενέργεια?"

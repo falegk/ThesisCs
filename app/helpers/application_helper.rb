@@ -10,6 +10,17 @@ module ApplicationHelper
     end
   end
 
+  def flash_class(choice)
+    case choice
+      when "notice" then "alert alert-info alert-dismissable"
+      when "success" then "alert alert-success alert-dismissable"
+      when "error" then "alert alert-error alert-dismissable"
+      when "alert" then "alert alert-dismissable"
+      else
+        "alert alert-info alert-dismissable"
+    end
+  end
+
   # έλεγχος ρόλου απο την βάση
   def get_role
     if current_user.student

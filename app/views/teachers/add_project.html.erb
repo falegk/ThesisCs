@@ -24,13 +24,24 @@
       <div class="widget-content">
         <br/>
         <%= form_for @project, url: projects_path(@project) , html: {id: "new-project", class: "form-horizontal"} do |project| %>
+            <% if @project.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@project.errors.count, "πρόβλημα","προβλήματα") %> απαγόρευσαν αυτό το θέμα να σωθεί:</h2>
+
+                  <ul>
+                    <% @project.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
             <fieldset>
 
 
               <div class="control-group">
                 <%= project.label :title , class: "control-label"  %>
                 <div class="controls">
-                  <%= project.text_field :title %><br/>
+                  <%= project.text_field :title, class: 'span6' %><br/>
                 </div>
               </div>
               <div class="control-group">
