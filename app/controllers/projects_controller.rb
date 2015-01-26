@@ -77,7 +77,7 @@ class ProjectsController < ApplicationController
       redirect_not_teacher
         @currentProject.project_assignments.where(assignment_params).update_all(given: true)
         @currentProject.project_assignments.where(given: false).destroy_all
-        ProjectAssignment.all.where(student_id: assignment_params[:student_ids], given: false).destroy_all
+        ProjectAssignment.where(assignment_params).destroy_all(given: false)
         @currentProject.update!(status: 'active', start_date: Time.now, completion_date: 1.year.from_now)
 
         redirect_to project_path(params[:id]),:flash => { :success => 'Η πτυχιακή εργασία ανατέθηκε επιτυχώς.'}
@@ -156,6 +156,11 @@ class ProjectsController < ApplicationController
   # @return @completedProjects
   def completed_projects
     @completedProjects = Project.all.where(status: 'completed')
+  end
+
+  # @return @extraProjects
+  def extra_projects
+    @extraProjects = Project.all.where(status: 'extra')
   end
 
 
