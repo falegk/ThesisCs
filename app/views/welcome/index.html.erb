@@ -3,23 +3,23 @@
     <div class="widget">
       <div class="widget widget-nopad">
         <div class="widget-header"> <i class="icon-bar-chart"></i>
-          <h3> Stats</h3>
+          <h3> Στατιστικά στοιχεία ThesisCs </h3>
         </div>
         <!-- /widget-header -->
         <div class="widget-content">
           <div class="widget big-stats-container">
             <div class="widget-content">
               <div id="big_stats" class="cf">
-                <div class="stat"> <i class="icon-anchor"></i> <span class="value">851</span> </div>
+                <div class="stat"> <i><%= image_tag 'university-images/stationery32.png' %></i> <span class="value"><%= @numberOfAvailableDissertations %></span> </div>
                 <!-- .stat -->
 
-                <div class="stat"> <i class="icon-thumbs-up-alt"></i> <span class="value">423</span> </div>
+                <div class="stat"><i><%= image_tag 'university-images/write32.png' %></i> <span class="value"> <%= @numberOfActiveDissertations %> </span>  </div>
                 <!-- .stat -->
 
-                <div class="stat"> <i class="icon-twitter-sign"></i> <span class="value">922</span> </div>
+                <div class="stat"> <i><%= image_tag 'university-images/verified32.png' %></i> <span class="value"><%= @numberOfCompletedDissertation %> </span> </div>
                 <!-- .stat -->
 
-                <div class="stat"> <i class="icon-bullhorn"></i> <span class="value">25%</span> </div>
+                <div class="stat"> <i><%= image_tag 'university-images/male32.png' %></i> <span class="value"><%= @numberOfStudents %></span> </div>
                 <!-- .stat -->
               </div>
             </div>

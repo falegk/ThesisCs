@@ -1,13 +1,16 @@
 <div class="widget widget-nopad">
   <div class="widget-header"> <i class="icon-list-alt"></i>
-    <h3> <%= widgetTitle ? widgetTitle : 'Διαθέσιμες Πτυχιακές' %> </h3>
+    <h3> <%= widgetTitle ? widgetTitle : 'Πτυχιακές' %> </h3>
   </div>
   <!-- /widget-header  -->
   <div class="widget-content">
     <ul class="news-items">
-      <%= render partial: 'teachers/share/dissertations_for_delivery_list_items',
-                 locals: { dissertation: dissertations } %>
-
+      <% if dissertations.count == 0 %>
+         <li class="fc-content-center">Δεν υπάρχουν αποτελέσματα.</li>
+      <% else %>
+          <%= render partial: 'teachers/share/dissertations_for_delivery_list_items',
+                     locals: { dissertation: dissertations } %>
+      <% end %>
     </ul>
   </div>
 

@@ -1,14 +1,10 @@
 class User < ActiveRecord::Base
-  VALID_STUDENT_CS_REGEX = /\Acs[0-9]+@teilar\.gr\Z/i
 
-  #relationships
   has_one :student, dependent: :destroy
   has_one :teacher, dependent: :destroy
 
   accepts_nested_attributes_for :teacher
   accepts_nested_attributes_for :student
-
-
 
 
   # Include default devise modules. Others available are:
@@ -27,11 +23,9 @@ class User < ActiveRecord::Base
 
   # -------------- Μέθοδοι χειρισμού του LDAP -----------------
 
-
   def get_ldap_userType
     value = Devise::LDAP::Adapter.get_ldap_param(self.email,"businessCategory").first.force_encoding("UTF-8")
     value
   end
-
 
 end

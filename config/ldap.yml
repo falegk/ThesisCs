@@ -50,11 +50,11 @@ test:
   # <<: *AUTHORIZATIONS
 
 production:
-  host: localhost
-  port: 636
-  attribute: cn
-  base: ou=people,dc=test,dc=com
-  admin_user: cn=admin,dc=test,dc=com
-  admin_password: admin_password
-  ssl: start_tls
+  host: ldap.teilar.gr
+  port: 389
+  attribute: mail
+  base: ou=people,dc=teilar,dc=gr
+  #admin_user: cn=admin,dc=test,dc=com
+  #admin_password: admin_password
+  ssl: false
   # <<: *AUTHORIZATIONS

@@ -1,14 +1,11 @@
 <div class="widget-content">
   <div class="shortcuts">
     <% @allTeachers.each do |t| %>
-
         <%= link_to profile_teacher_path(t.id), {class: 'shortcut'} do %>
-            <%= image_tag 'message_avatar1.png' %>
            <h3><span class="shortcut-label"><%= "#{t.user.first_name.downcase} #{t.user.last_name}" %></span></h3>
             <span class="shortcut-label"><%= t.projects.where(status: 'pending').count %> Διαθέσιμες πτυχιακές</span>
-  <% end %>
-
         <% end %>
+    <% end %>
   </div>
   <!-- /shortcuts -->
 </div>

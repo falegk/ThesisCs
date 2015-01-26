@@ -2,9 +2,8 @@
 <div class="row">
     <div class="span12">
       <div class="widget widget-plain">
-        <div class="widget-header">
-            <h3><%= 'Όνομα καθηγητή' %></h3>
-            <div class="fc-header-right">test</div>
+        <div class="widget-header center-block">
+            <h3><%= " #{@teacher.user.first_name} #{@teacher.user.last_name}" %></h3>
         </div>
       </div>
     </div>
@@ -16,12 +15,25 @@
     <%= render partial: 'teachers/share/dissertations_for_delivery',
                locals: {widgetTitle: "Διαθέσιμες πτυχιακές",
                         dissertations: @availableDissertations } %>
+
+    <%= render partial: 'teachers/share/dissertations_for_delivery',
+               locals: {widgetTitle: "Επιπλέον πτυχιακές",
+                        dissertations: @extraDissertations } if @extraDissertations.count > 0 %>
     </div>
- <div class="span5">
+
+ <div class="span4">
     <!-- /widget ενεργές πτυχιακές-->
-    <%= render partial: 'teachers/share/recently_active_dissertations',
+    <%= render partial: 'teachers/share/dissertations_table_widget',
                locals: {widgetTitle: "Ενεργές πτυχιακές",
-                        activeProjects: @activeDissertation } %>
+                        activeProjects: @activeDissertations } %>
+    <!-- /widget -->
+  </div>
+
+  <div class="span4">
+    <!-- /widget ενεργές πτυχιακές-->
+    <%= render partial: 'teachers/share/dissertations_table_widget',
+               locals: {widgetTitle: "Ολοκληρωμένες πτυχιακές",
+                        activeProjects: @completedDissertations } %>
     <!-- /widget -->
   </div>
 </div>

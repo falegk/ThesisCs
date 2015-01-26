@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141207172350) do
+ActiveRecord::Schema.define(version: 20150121180716) do
 
   create_table "project_assignments", force: true do |t|
     t.integer "project_id"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20141207172350) do
 
   create_table "projects", force: true do |t|
     t.string   "title"
-    t.string   "description"
-    t.text     "skills_required"
+    t.text     "description"
+    t.string   "skills_required"
     t.string   "status",          default: "pending"
     t.binary   "attached"
     t.string   "keywords"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141207172350) do
     t.integer  "teacher_id"
   end
 
-  add_index "projects", ["teacher_id"], name: "index_projects_on_teacher_id"
+  add_index "projects", ["teacher_id"], name: "index_projects_on_teacher_id", using: :btree
 
   create_table "students", force: true do |t|
     t.integer  "user_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20141207172350) do
     t.datetime "updated_at"
   end
 
-  add_index "students", ["user_id"], name: "index_students_on_user_id"
+  add_index "students", ["user_id"], name: "index_students_on_user_id", using: :btree
 
   create_table "teachers", force: true do |t|
     t.integer  "user_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20141207172350) do
     t.datetime "updated_at"
   end
 
-  add_index "teachers", ["user_id"], name: "index_teachers_on_user_id"
+  add_index "teachers", ["user_id"], name: "index_teachers_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",               default: "", null: false
@@ -79,6 +79,6 @@ ActiveRecord::Schema.define(version: 20141207172350) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

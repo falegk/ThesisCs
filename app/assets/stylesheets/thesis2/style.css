@@ -751,6 +751,11 @@ html .fc, .fc table {
 	clear: both;
 	background: #f9f9f9
 }
+
+.fc-content-center {
+    text-align: center;
+    padding: 10px;
+}
 .fc-view {
 	width: 100%;
 	overflow: hidden

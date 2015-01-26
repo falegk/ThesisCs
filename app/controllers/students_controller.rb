@@ -5,6 +5,8 @@ class StudentsController < ApplicationController
 
   # Δημόσιο προφίλ
   def profile
+    @given_project_to_student = @student.project_assignments.where(given: true)
+
   end
 
 

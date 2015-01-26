@@ -4,6 +4,9 @@
   </div>
   <!-- /widget-header -->
   <div class="widget-content">
+    <% if activeProjects.count == 0 %>
+       <div class="fc-content-center">Δεν υπάρχουν αποτελέσματα.</div>
+    <% else %>
     <table class="table table-striped table-bordered">
       <thead>
       <tr>
@@ -12,8 +15,9 @@
       </tr>
       </thead>
       <tbody>
-      <%= render partial: 'teachers/share/recently_active_dissertations_table_rows',
-                 locals: {activeProject: activeProjects } %>
+          <%= render partial: 'teachers/share/dissertations_table_widget_rows',
+                     locals: {activeProject: activeProjects } %>
+      <% end %>
       </tbody>
     </table>
 

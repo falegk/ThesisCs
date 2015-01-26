@@ -33,10 +33,18 @@
       <!-- /widget-header -->
       <div class="widget-content">
         <ul class="news-items">
-          <li>Δεξιότητες:  </li><br/>
-          <li>Δεν έχει αναλάβει ακόμα πτυχιακή εργασία</li>
-          <li>Έχει αναλάβει πτυχιακή με θέμα ......... και ημερομηνία παράδοσης ........</li>
-          <li>Έχει ολοκληρώση την πτυχιακή του εργασία με θέμα ...... στις .......</li>
+          <% if is_teacher_helper? || is_student_helper? %>
+              <% unless @given_project_to_student.empty? # Η πτυχιακή έχει δοθεί στον... %>
+                  <li><div class="alert alert-info">Έχει αναλάβει πτυχιακή εργασία με θέμα <strong><%= link_to "#{@student.project_assignments.first.project.title}",project_path(@student.project_assignments.first.project)  %></strong> και
+                    απαιτούμενη ημερομηνία παράδοσης <strong><%= @student.project_assignments.first.project.completion_date.strftime("%d-%m-%y") %></strong></div> </li>
+                  <% if @student.dissertation_completed == true %>
+                      <li>Έχει ολοκληρώση την πτυχιακή του εργασία. </li>
+                  <% end %>
+              <% else %>
+                  <li><div class="alert alert-warning">Δεν έχει αναλάβει ακόμα πτυχιακή εργασία.</div> </li>
+              <% end %>
+          <% end %>
+          <li><%= "Δεξιότητες: #{@student.skills}" %></li>
         </ul>
       </div>
       <!-- /widget-content -->
