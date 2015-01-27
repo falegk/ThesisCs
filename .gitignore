@@ -10,6 +10,7 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
+config/database.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
@@ -20,3 +21,5 @@
 /config/deploy
 /config/deploy.rb
 Capfile
+config/environments/development.rb
+config/environments/test.rb
