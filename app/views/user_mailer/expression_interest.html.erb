@@ -4,14 +4,16 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<h1>Welcome to example.com, <%= @user.name %></h1>
+<h3>Γεια σας κ.<%= @teacherInfo.user.last_name %></h3>
 <p>
-  You have successfully signed up to example.com,
-  your username is: <%= @user.login %>.<br>
+  Ο φοιτητής <strong><%= link_to "#{@studentInfo.user.first_name} #{@studentInfo.user.last_name}", profile_student_url(@studentInfo)  %></strong>  ,
+  εκδήλωσε ενδιαφέρον για την πτυχιακή εργασία με θέμα :<strong><%= @projectInfo.title %>.</strong><br>
 </p>
 <p>
-  To login to the site, just follow this link: <%= @url %>.
+  <strong>Στοιχεία επικοινωνίας φοιτητή: </strong></br>
+  Email Επικοινωνίας: <%= @studentInfo.email_communication %></br>
+  Τηλέφωνο: <%= @studentInfo.phone %>
 </p>
-<p>Thanks for joining and have a great day!</p>
+<p>Για περισσότερες ενέργειες μεταβείτε στο ThesisCs.teilar.gr</p>
 </body>
 </html>

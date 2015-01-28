@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "thesiscs@teilar.gr"
+  default from: 'ThesisCs <thesiscs@teilar.gr>'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -7,26 +7,26 @@ class UserMailer < ActionMailer::Base
   #   en.user_mailer.expression_interest.subject
   #
   def expression_interest(teacher, student, project)
-    @teacher = teacher
-    @student = student
-    @project = project
+    @teacherInfo = teacher
+    @studentInfo = student
+    @projectInfo = project
 
-    mail to: "to@teacher.org", subject: "Εκδήλωση ενδιαφέροντος για πτυχιακή"
+    mail to: @teacherInfo.email_communication, subject: "Εκδήλωση ενδιαφέροντος για πτυχιακή"
   end
 
   def deadline_completion(teacher, student, project)
-    @teacher = teacher
-    @student = student
-    @project = project
+    @teacherInfo = teacher
+    @studentInfo = student
+    @projectInfo = project
 
-    mail to: "to@student.org", subject: "Προθεσμία ολοκλήρωσης πτυχιακής εργασίας"
+    mail to: "" , subject: "Προθεσμία ολοκλήρωσης πτυχιακής εργασίας"
   end
 
   def project_assignment(teacher, student, project)
-    @teacher = teacher
-    @student = student
-    @project = project
+    @teacherInfo = teacher
+    @studentInfo = student
+    @projectInfo = project
 
-    mail to: "to@student.org", subject: "Ανάθεση θέματος πτυχιακής εργασία"
+    mail to: @studentInfo.email_communication, subject: "Ανάθεση θέματος πτυχιακής εργασία"
   end
 end

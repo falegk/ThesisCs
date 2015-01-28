@@ -21,8 +21,11 @@
 /config/deploy
 /config/deploy.rb
 Capfile
+
+# others
 /config/environments/development.rb
 /config/environments/production.rb
 /config/environments/test.rb
-
+config/secrets.yml
 test
+
