@@ -11,8 +11,6 @@ class ProjectsController < ApplicationController
   # students valid
   before_action :given_to_students, only: [ :show , :names_of_students]
   before_action :names_of_students, only: [ :show ]
-  #before_action :redirect_not_student, only: []
-  #before_action :redirect_not_teacher, only: []
   before_action :expressed_interest, only: [ :show ]
   before_action  :department_empty
 
@@ -75,15 +73,21 @@ class ProjectsController < ApplicationController
 
   def update_assignment
       redirect_not_teacher
+      begin
+      Project.transaction do
         @currentProject.project_assignments.where(assignment_params).update_all(given: true)
         @currentProject.project_assignments.where(given: false).destroy_all
         ProjectAssignment.where(assignment_params).destroy_all(given: false)
         @currentProject.update!(status: 'active', start_date: Time.now, completion_date: 1.year.from_now)
-
+      end
         @currentProject.project_assignments.where(given: true).each do |p|
           UserMailer.project_assignment(current_user.teacher,p.student,@currentProject).deliver
         end
         redirect_to project_path(params[:id]),:flash => { :success => 'Η πτυχιακή εργασία ανατέθηκε επιτυχώς.'}
+      rescue
+        redirect_to project_path(params[:id]),:flash => { :error => 'Αποτυχία ανάθεσης.'}
+      end
+
   end
 
   def project_completed
@@ -104,9 +108,16 @@ class ProjectsController < ApplicationController
 
   def delete_assignments
     redirect_not_teacher
-    @currentProject.project_assignments.destroy_all
-    @currentProject.update!(status: 'pending', prolongation: false)
-    redirect_to teacher_dashboard_path, :flash => { :success => 'Η πτυχιακή μεταφέρθηκε επιτυχώς στις "Διαθέσιμες Πτυχιακές" και είναι έτοιμη να δοθεί σε άλλους φοιτητές.' }
+    begin
+      Project.transaction do
+        @currentProject.project_assignments.destroy_all
+        @currentProject.update!(status: 'pending', prolongation: false)
+      end
+      redirect_to teacher_dashboard_path, :flash => { :success => 'Η πτυχιακή μεταφέρθηκε επιτυχώς στις "Διαθέσιμες Πτυχιακές" και είναι έτοιμη να δοθεί σε άλλους φοιτητές.' }
+    rescue
+      redirect_to teacher_dashboard_path, :flash => { :error => 'Η ενέργεια απέτυχε.' }
+    end
+
   end
 
   # Expression of interest from the student
