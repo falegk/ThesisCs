@@ -535,11 +535,12 @@ h2.resp-accordion:first-child {
 	background-size:cover;
 }
 .tab-divice-info h3{
-	font-size: 3em;
+	font-size: 1em;
 	font-weight: 100;
 	color: #fff;
 	margin-bottom:1em;
-	text-transform:uppercase;
+
+	/*text-transform:uppercase;*/
 }
 .tab-divice-info p{
 	color:#FFF;

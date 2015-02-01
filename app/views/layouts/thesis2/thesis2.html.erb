@@ -61,5 +61,16 @@
                            'application.js' %>
 
 <%= yield :javascripts %><!-- Stylesheets for specific page -->
+<% if params[:controller] == 'static_pages' %>
+<script>
+
+    $(function () {
+
+        $('.faq-list').goFaq ();
+
+    });
+
+</script>
+    <% end %>
 </body>
 </html>

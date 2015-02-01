@@ -54,7 +54,7 @@
       <ul class="top-nav">
         <li class="active"><a href="#home">Αρχική</a> <span> </span></li>
         <li class="page-scroll"><a href="#signin">Σύνδεση</a><span> </span></li>
-        <li class="page-scroll"><a href="#about">Σχετικά</a><span> </span></li>
+        <li class="page-scroll"><a href="#usefull">Χρήσιμα</a><span> </span></li>
       </ul>
       <%= link_to '', '', id: 'pull'  %>
     </nav>
@@ -79,7 +79,7 @@
   <ul class="rslides" id="slider3">
     <li>
       <div class="col-md-6 divice">
-        <%= image_tag 'static-pages/students.png', title: 'students' %>
+        <%= image_tag 'static-pages/student_2.gif', width: '250px', height: '200px', title: 'students' %>
       </div>
       <div class="col-md-6 divice-info">
         <div class="clearfix"> </div>
@@ -93,7 +93,7 @@
     </li>
     <li>
       <div class="col-md-6 divice">
-        <%= image_tag 'static-pages/professor.jpg', title: 'professor' %>
+        <%= image_tag 'static-pages/teacher.png', width: '250px',height: '200px', title: 'professor' %>
       </div>
       <div class="col-md-6 divice-info">
         <div class="clearfix"> </div>
@@ -107,10 +107,10 @@
 
   </ul>
   <!-- Slideshow 3 Pager -->
-  <!--<ul id="slider3-pager">
-   <li> <%= link_to(image_tag 'university-images/male32.png')  %></li>
-   <li> <%= link_to(image_tag 'university-images/career32.png')  %></li>
-  </ul>-->
+  <ul id="slider3-pager">
+   <li> <%= link_to 'Φοιτητές | '  %></li>
+   <li> <%= link_to 'Καθηγητές' %></li>
+  </ul>
   <div class="clearfix"> </div>
 </div>
 <!----//End-slider---->
@@ -135,7 +135,7 @@
       <% end %>
     </div>
     <div>
-        <%= link_to 'Δεν μπορώ να συνδεθώ' %>
+        <%= link_to 'Δεν μπορώ να συνδεθώ', faq_path(anchor: 'faq-1') %>
     </div>
   </div>
 </div>
@@ -143,105 +143,30 @@
 
 
 <!----start-services---->
-<!--
-<div id="about" class="services">
+
+<div id="usefull" class="services">
   <h4>Σχετικά με το ThesisCs</h4>
-  &lt;!&ndash;Horizontal Tab&ndash;&gt;
   <div id="horizontalTab">
-    <ul class="resp-tabs-list">
-      <li class="tab1"><span> </span></li>
-      <li class="tab2"><span> </span></li>
-      <li class="tab3"><span> </span></li>
-      <li class="tab4"><span> </span></li>
-      <li class="tab5"><span> </span></li>
-      <li class="tab6"><span> </span></li>
-    </ul>
-    <div class="resp-tabs-container">
       <div class="tab">
         <div class="container">
           <div class="tab-info">
-            <div class="col-md-6 tab-divice">
-              <%= image_tag 'static-pages/divice2.png' %>
+            <div class="col-md-4 tab-divice-info">
+              <h3>Συχνές ερωτήσεις FAQ</h3>
+              <p>Κάποιες από τις ερωτήσεις σας έχουν ήδη απαντηθεί...</br></br>
+               <%= link_to 'Δείτε στις συχνές ερωτήσεις.', faq_path  %> </p>
             </div>
-            <div class="col-md-6 tab-divice-info">
-              <h3>My apps showcase</h3>
-              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
-              <a class="btn" href="#"> Buy Now</a>
+            <div class="col-md-4 tab-divice-info">
+              <h3>Σύνδεση χρηστών με LDAP</h3>
+              <p>Δεν απαιτείται εγγραφή στο σύστημα.</br>
+                Η Σύνδεση γίνεται με τα στοιχεία που έχετε πάρει απο το ΤΕΙ</br>
+                <%= link_to 'Σύνδεση χρηστών με LDAP', ldap_path %>
+              </p>
             </div>
-            <div class="clearfix"> </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab">
-        <div class="container">
-          <div class="tab-info">
-            <div class="col-md-6 tab-divice-info">
-              <h3>My apps showcase</h3>
-              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
-              <a class="btn" href="#"> Buy Now</a>
-            </div>
-            <div class="col-md-6 tab-divice">
-              <%= image_tag 'static-pages/divice2.png' %>
-            </div>
-            <div class="clearfix"> </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab">
-        <div class="container">
-          <div class="tab-info">
-            <div class="col-md-6 tab-divice">
-              <%= image_tag 'static-pages/divice2.png' %>
-            </div>
-            <div class="col-md-6 tab-divice-info">
-              <h3>My apps showcase</h3>
-              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
-              <a class="btn" href="#"> Buy Now</a>
-            </div>
-            <div class="clearfix"> </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab">
-        <div class="container">
-          <div class="tab-info">
-            <div class="col-md-6 tab-divice-info">
-              <h3>My apps showcase</h3>
-              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
-              <a class="btn" href="#"> Buy Now</a>
-            </div>
-            <div class="col-md-6 tab-divice">
-              <%= image_tag 'static-pages/divice2.png' %>
-            </div>
-            <div class="clearfix"> </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab">
-        <div class="container">
-          <div class="tab-info">
-            <div class="col-md-6 tab-divice">
-              <%= image_tag 'static-pages/divice2.png' %>
-            </div>
-            <div class="col-md-6 tab-divice-info">
-              <h3>My apps showcase</h3>
-              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
-              <a class="btn" href="#"> Buy Now</a>
-            </div>
-            <div class="clearfix"> </div>
-          </div>
-        </div>
-      </div>
-      <div class="tab">
-        <div class="container">
-          <div class="tab-info">
-            <div class="col-md-6 tab-divice-info">
-              <h3>My apps showcase</h3>
-              <p>Lorem Ipsum is simply dummy text printing and typesetting industry.</p>
-              <a class="btn" href="#"> Buy Now</a>
-            </div>
-            <div class="col-md-6 tab-divice">
-              <img src="images/divice2.png" title="divice" />
+            <div class="col-md-4 tab-divice-info">
+              <h3> Σχετικά με το ThesisCs</h3>
+              <p>Λίγα λόγια για την δημιουργία του ThesisCs</br></br></br>
+              <%= link_to 'Σκοπός της Δημιουργίας', about_path %>
+              </p>
             </div>
             <div class="clearfix"> </div>
           </div>
@@ -277,12 +202,12 @@
       });
   </script>
 </div>
--->
 <!----//End-services---->
 
 
 <!----start-footer---->
 <div class="footer">
+  <p> 2015 © thesiscs.teilar.gr </p>
   <p>Template by <a href="http://w3layouts.com/">W3layouts</a></p>
   <a href="#home" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
 </div>

@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   end
 
   #get 'static_pages/home'
-  #get 'static_pages/help'
+  get '/ldap' => 'static_pages#ldap', as: 'ldap'
+  get '/about' => 'static_pages#about' , as: 'about'
+  get '/faq' => 'static_pages#faq', as: 'faq'
+
   devise_for :users,
              path_names: { sign_out: "logout"}
 
@@ -40,14 +43,6 @@ Rails.application.routes.draw do
     get '/projects' => 'teachers#projects'
     get '/projects/:id/edit' => 'teachers#edit_project', as: 'edit_project'
   end
-
-
-
-=begin
-  get 'profile'         => 'users#profile'
-  get 'profile/edit'    => 'users#edit'
-  get 'profile/:id'     => 'users#show'
-=end
 
 
   # Example of regular route:

@@ -33,11 +33,12 @@
 
   <div class="row">
     <div class="span6">
-      <div class="widget-header"> <i class="icon-bookmark"></i>
-        <h3>Διαδικασία ανάθεσης θέματος </h3>
-      </div>
-      <!-- /widget-header -->
-      <div class="widget-content">
+      <div class="widget">
+          <div class="widget-header"> <i class="icon-bookmark"></i>
+            <h3>Διαδικασία ανάθεσης θέματος </h3>
+          </div>
+          <!-- /widget-header -->
+          <div class="widget-content">
         <div class="shortcuts">
           <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-search"></i>
             <span class="shortcut-label">Αναζήτηση θέματος</span> </a>
@@ -51,6 +52,9 @@
         <!-- /shortcuts -->
       </div>
       <!-- /widget-content -->
+      </div>
+      <%= render 'welcome/share/quick_manual' %>
+
     </div>
   </div>
 </div>

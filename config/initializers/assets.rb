@@ -20,6 +20,7 @@ Rails.application.config.assets.precompile += %w( plugins/chosen/prism.css )
 # Static Pages
 Rails.application.config.assets.precompile += %w( static-pages/bootstrap.css )
 Rails.application.config.assets.precompile += %w( static-pages/theme-style.css )
+Rails.application.config.assets.precompile += %w( plugins/faq.css )
 
 =begin
 Rails.application.config.assets.precompile += %w( chosen/style.css )
@@ -37,7 +38,7 @@ Rails.application.config.assets.precompile += %w( plugins/chosen/chosen-configs.
 Rails.application.config.assets.precompile += %w( static-pages/jquery.min.js )
 Rails.application.config.assets.precompile += %w( static-pages/responsiveslides.min.js )
 Rails.application.config.assets.precompile += %w( static-pages/easyResponsiveTabs.js )
-
+Rails.application.config.assets.precompile += %w( plugins/faq.js )
 
 
 
