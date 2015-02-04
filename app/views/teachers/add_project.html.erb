@@ -1,18 +1,47 @@
-<% if Project.where(teacher_id: current_user.teacher, status: ['active', 'pending']).count >= 10 %>
-    <div class="row">
-      <div class="span12">
-        <div class="widget widget-nopad">
-          <!-- /widget-header -->
-          <div class="widget-content">
-            <ul>
-               <p>Έχετε τουλάχιστον 10 ανεβασμένες πτυχιακές στο σύνολο (διαθέσιμες / ενεργές).</p>
-               <p>Για να προσθέσετε νέες πτυχιακή πρέπει να ολοκληρωθεί ή να διαγραφεί κάποια απο τις υπάρχουσες.</p>
-            </ul>
+<% if Project.where(teacher_id: current_user.teacher, status: ['active', 'pending']).count >= ThesisCs::Application::NUMBER_OF_PENDING_DISSERTATIONS %>
+    <% if Project.where(teacher_id: current_user.teacher, status: 'extra').count >= ThesisCs::Application::NUMBER_OF_EXTRA_DISSERTATIONS %>
+        <div class="row">
+          <div class="span12">
+            <div id="target-1" class="widget">
+              <div class="widget-content">
+               <p>Έχετε τουλάχιστον 10 ανεβασμένες πτυχιακές και 2 επιπλέον στο σύνολο (διαθέσιμες / ενεργές / επιπλέον ).</p>
+               <p>Για να προσθέσετε νέες πτυχιακή πρέπει να <strong>ολοκληρωθεί ή να διαγραφεί</strong> κάποια απο τις υπάρχουσες.</p>
+              </div>
+            </div>
+         </div>
+        </div>
+    <% else %>
+        <div class="row">
+          <div class="span12">
+            <div id="target-1" class="widget">
+              <div class="widget-content">
+                <p>Έχετε συμπληρώσει το όριο των 10 πτυχιακών εργασιών.</p>
+                <p>Μπορείτε να ανεβάσετε ακόμη 2 πτυχιακές, που θα εμφανίζονται στην ενότητα <strong>"Επιπλέον πτυχιακές"</strong>.</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
+        <div class="row">
+          <div class="span12">
+            <div class="widget widget-nopad">
+              <div class="widget-header"><i class="icon-list-alt"></i>
+                <h3> Προσθήκη νέας πτυχιακής </h3>
+              </div>
+              <!-- /widget-header -->
+              <div class="widget-content">
+                <br/>
+        <%= render partial: 'teachers/share/form', locals: {status: 'extra'} %>
+              </div>
+              <!-- /widget-content -->
+            </div>
+            <!-- /widget -->
+          </div>
+
+          <!-- /span6 -->
+        </div>
+        <!-- /row -->
+    <% end %>
 <% else %>
 <div class="row">
   <div class="span12">
@@ -23,51 +52,7 @@
       <!-- /widget-header -->
       <div class="widget-content">
         <br/>
-        <%= form_for @project, url: projects_path(@project) , html: {id: "new-project", class: "form-horizontal"} do |project| %>
-            <% if @project.errors.any? %>
-                <div id="error_explanation">
-                  <h2><%= pluralize(@project.errors.count, "πρόβλημα","προβλήματα") %> απαγόρευσαν αυτό το θέμα να σωθεί:</h2>
-
-                  <ul>
-                    <% @project.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
-                    <% end %>
-                  </ul>
-                </div>
-            <% end %>
-            <fieldset>
-
-
-              <div class="control-group">
-                <%= project.label :title , class: "control-label"  %>
-                <div class="controls">
-                  <%= project.text_field :title, class: 'span6' %><br/>
-                </div>
-              </div>
-              <div class="control-group">
-                <%= project.label :description , class: "control-label"  %>
-                <div class="controls">
-                  <%= project.cktext_area :description, :ckeditor => {:language => 'el-GR', :toolbar => 'mini'} %><br/>
-                </div>
-              </div>
-                  <div class="control-group">
-                    <%= project.label :skills_required , class: "control-label"  %>
-                    <div class="controls">
-                      <%= project.text_field :skills_required %><br/>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <%= project.label :keywords, class: "control-label" %>
-                    <div class="controls">
-                      <%= project.text_field :keywords %><br/>
-                    </div>
-                  </div>
-
-              <div class="form-actions right">
-                <%= project.submit "Αποθηκευση", class: "btn btn-primary" %>
-              </div>
-            </fieldset>
-        <% end %>
+        <%= render partial: 'teachers/share/form' %>
 
       </div>
       <!-- /widget-content -->

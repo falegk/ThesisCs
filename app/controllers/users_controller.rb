@@ -13,10 +13,10 @@ class UsersController < ApplicationController
   def update
     respond_to do |f|
       if @user.update(user_params)
-        f.html {redirect_to is_student? ? profile_student_path(current_user.student) : profile_teacher_path(current_user.teacher), :flash => { :success => "Success Update" }}
+        f.html {redirect_to is_student? ? profile_student_path(current_user.student) : profile_teacher_path(current_user.teacher), :flash => { :success => t('messages.success.data_storage')}}
         #f.json {render json: @user, status: :created, location: @user}
       else
-        f.html {render action: "new",:flash => { :error => "Error" } }
+        f.html {redirect_to :back ,:flash => { :error => "Κάτι πήγε στραβά. Σιγουρευτείτε ότι συμπληρώσατε όλα τα απαραίτητα πεδία." } }
       end
     end
   end

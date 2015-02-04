@@ -6,4 +6,7 @@ class Student < ActiveRecord::Base
 
   accepts_nested_attributes_for :project
 
+  validates :email_communication, presence: true
+  validates :department, presence: true
+
 end

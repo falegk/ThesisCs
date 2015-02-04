@@ -8,6 +8,11 @@ Bundler.require(*Rails.groups)
 
 module ThesisCs
   class Application < Rails::Application
+
+    # Global variable
+      NUMBER_OF_PENDING_DISSERTATIONS = 10
+      NUMBER_OF_EXTRA_DISSERTATIONS = 2
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

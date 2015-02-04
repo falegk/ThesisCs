@@ -1,0 +1,51 @@
+<% if defined? status
+    @status = status
+   end
+%>
+<%= form_for @project, url: projects_path(@project) , html: {id: "new-project", class: "form-horizontal"} do |project| %>
+    <% if @project.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@project.errors.count, "πρόβλημα απαγόρευσε","προβλήματα απαγόρευσαν") %>  αυτό το θέμα να σωθεί:</h2>
+          <ul>
+            <% @project.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <fieldset>
+
+      <% if @status == 'extra' %>
+          <%= project.hidden_field :status, value: 'extra' %>
+      <% end%>
+
+      <div class="control-group">
+        <%= project.label :title, t('projects.title'), class: "control-label"  %>
+        <div class="controls">
+          <%= project.text_field :title, class: 'span6', required: "requires" %><br/>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= project.label :description, t('projects.description'), class: "control-label"  %>
+        <div class="controls">
+          <%= project.cktext_area :description, :ckeditor => {:language => 'el-GR', :toolbar => 'mini'} %><br/>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= project.label :skills_required, t('projects.skills_required'), class: "control-label"  %>
+        <div class="controls">
+          <%= project.text_field :skills_required %><br/>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= project.label :keywords, t('projects.keywords'), class: "control-label" %>
+        <div class="controls">
+          <%= project.text_field :keywords %><br/>
+        </div>
+      </div>
+
+      <div class="form-actions right">
+        <%= project.submit t("options.save"), class: "btn btn-primary" %>
+      </div>
+    </fieldset>
+<% end %>

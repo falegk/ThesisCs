@@ -26,7 +26,7 @@ class TeachersController < ApplicationController
 
   def dashboard
     redirect_not_teacher
-    @pendingProjectsCurrentTeacher = Project.all.where(teacher_id: current_user.teacher, status: 'pending')
+    @pendingProjectsCurrentTeacher = Project.all.where(teacher_id: current_user.teacher, status: ['pending','extra'])
     @activeProjectsOfCurrentTeacher = Project.all.where(teacher_id: current_user.teacher, status: 'active')
     @studentsByProject = ProjectAssignment.where(given: false, project_id: @projectsCurrentTeacher)
   end

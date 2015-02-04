@@ -159,7 +159,7 @@ class ProjectsController < ApplicationController
 
   # @return @pendingProjects
   def pending_projects
-    @pendingProjects = Project.all.where(status: 'pending').order('created_at DESC').paginate( :page => params[:pendingProjectsPage], :per_page => 5)
+    @pendingProjects = Project.all.where(status: ['pending', 'extra ']).order('created_at DESC').paginate( :page => params[:pendingProjectsPage], :per_page => 5)
   end
 
   # @return @activeProjects

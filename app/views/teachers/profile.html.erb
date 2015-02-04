@@ -9,10 +9,10 @@
       <div class="widget-content">
         <ul class="news-items">
           <li><%= "#{@teacher.user.first_name} #{@teacher.user.last_name} " %></li>
-          <li><h4>Βαθμίδα:</h4><%= "#{@teacher.grade} " %></li>
-          <li><h4>Τηλέφωνο:</h4> <%= "#{@teacher.phone}" %></li>
-          <li><h4>Email:</h4><%= "#{@teacher.user.email}" %></li>
-          <li><h4>Σχολή - Τμήμα:</h4> <%= "#{@teacher.department}" %></li>
+          <li><h4><%= t("users.grade") %></h4><%= "#{@teacher.grade} " %></li>
+          <li><h4><%= t("users.phone") %></h4> <%= "#{@teacher.phone}" %></li>
+          <li><h4><%= t("users.email_communication") %></h4><%= "#{@teacher.user.email}" %></li>
+          <li><h4><%= t("users.department") %></h4> <%= "#{@teacher.department}" %></li>
         </ul>
       </div>
       <!-- /widget-content -->
@@ -22,10 +22,9 @@
 
   </div>
   <!-- /span6 -->
-
-    <div class="span4">
+    <div class="span6">
       <div class="widget-header"> <i class="icon-bookmark"></i>
-        <h3>Επιλογες </h3>
+        <h3>Επιλογές </h3>
       </div>
       <!-- /widget-header -->
       <div class="widget-content">
@@ -41,16 +40,6 @@
       <!-- /widget-content -->
     </div>
 
-    <div class="span3">
-      <div class="widget-header"> <i class="icon-bookmark"></i>
-        <h3>Στατιστικά </h3>
-      </div>
-      <!-- /widget-header -->
-      <div class="widget-content">
-
-      </div>
-      <!-- /widget-content -->
-    </div>
 
 </div>
 <!-- /row -->

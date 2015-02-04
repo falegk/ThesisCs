@@ -12,20 +12,26 @@
             <fieldset>
 
               <div class="control-group">
-                <%= user.label :first_name , class: "control-label"  %>
+                <%= user.label :first_name,t("users.first_name"), class: "control-label"  %>
                 <div class="controls">
                   <%= user.text_field :first_name %><br/>
                 </div>
               </div>
               <div class="control-group">
-                <%= user.label :last_name , class: "control-label"  %>
+                <%= user.label :last_name, t('users.last_name'), class: "control-label"  %>
                 <div class="controls">
                   <%= user.text_field :last_name %><br/>
                 </div>
               </div>
+              <div class="control-group">
+                <%= user.label :email, t('users.email_communication'), class: "control-label required" %>
+                <div class="controls">
+                  <%= user.email_field :email, required: "requires" %>
+                </div>
+              </div>
             <%= user.fields_for :teacher do |s|  %>
                   <div class="control-group">
-                    <%= s.label :department , class: "control-label"  %>
+                    <%= s.label :department, t('users.department'), class: "control-label required"  %>
                     <div class="controls">
                     <%= s.select :department,[['Μηχανικών πληροφορικής Τ.Ε','Μηχανικών πληροφορικής Τ.Ε']],
                                  {:prompt => "Επιλέξτε τμήμα"},
@@ -33,13 +39,13 @@
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= s.label :phone , class: "control-label"  %>
+                    <%= s.label :phone, t('users.phone'), class: "control-label"  %>
                     <div class="controls">
-                        <%= s.text_field :phone %><br/>
+                        <%= s.text_field :phone, maxlength: 10 %><br/>
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= s.label :grade, class: "control-label" %>
+                    <%= s.label :grade, t('users.grade'), class: "control-label" %>
                     <div class="controls">
                     <%= s.text_field :grade %><br/>
                     </div>
@@ -48,7 +54,7 @@
             <% end %>
 
               <div class="form-actions right">
-                <%= user.submit "Αποθηκευση", class: "btn btn-primary" %>
+                <%= user.submit t('options.save'), class: "btn btn-primary" %>
               </div>
               </fieldset>
         <% end %>

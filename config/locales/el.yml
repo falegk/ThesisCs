@@ -2,21 +2,23 @@ el:
   devise:
     sessions:
       user:
-        signed_in: "Γεια σας "
+        signed_in: "Καλωσήρθατε στο ThesisCs "
   messages:
     error:
       projects:
+      data_storage: "Αποτυχία αποθήκευση δεδομένων."
     alert:
       projects:
         already_been_given_prolongation: "Έχει ήδη δοθεί παράταση και δεν μπορεί να δοθεί άλλη."
     success:
       projects:
         already_been_given_prolongation: "Έχει ήδη δοθεί παράταση."
-        thesis_create_successfully_html: "<strong>Η πτυχιακή σας εργασία καταχωρήθηκε επιτυχώς.</strong>"
+        thesis_create_successfully_html: "Η πτυχιακή σας εργασία καταχωρήθηκε επιτυχώς."
         thesis_update_successfully: "Η πτυχιακή σας εργασία τροποποιήθηκε επιτυχώς."
         thesis_delete_successfully: "Η Πτυχιακή σας εργασια διαγράφηκε επιτυχώς."
         thesis_completed_successfully: "Η Πτυχιακή ολοκληρώθηκε επιτυχώς."
         prolongation_has_given_successfully: "Η παράταση δόθηκε επιτυχώς!"
+      data_storage: "Επιτυχής αποθήκευση δεδομένων"
   data:
     confirm:
       changeStudents: "Με την αλλαγή φοιτητή διαγράφονται ΟΛΟΙ οι φοιτητές που έχουν αναλάβει την πτυχιακή εργασία και γίνεται πάλι διαθέσιμη προς όλους τους φοιτητές. Είστε σίγουροι για την παραπάνω ενέργεια?"
@@ -34,6 +36,7 @@ el:
     buttons:
       withdrawal_of_interest: "Απόσυρση ενδιαφέροντος"
       expressions_of_interest: "Εκδήλωση ενδιαφέροντος"
+    save: "Αποθήκευση"
   student:
     project:
       dashboard:
@@ -48,3 +51,15 @@ el:
           thesis_undertaken_by: "Την πτυχιακή έχει αναλάβει ο"
         plural:
           thesis_undertaken_by: "Την πτυχιακή έχουν αναλάβει οι"
+  users:
+    first_name: "Όνομα"
+    last_name: "Επώνυμο"
+    email_communication: "Email Επικοινωνίας"
+    department: "Τμήμα"
+    phone: "Τηλέφωνο"
+    grade: "Βαθμίδα"
+  projects:
+    title: "Τίτλος"
+    description: "Περιγραφή"
+    skills_required: "Απαιτούμενες δεξιότητες"
+    keywords: "Λέξης κλειδιά"

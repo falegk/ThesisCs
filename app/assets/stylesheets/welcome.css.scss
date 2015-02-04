@@ -356,3 +356,7 @@ h6.bigstats{margin: 20px;
   }
 }
 
+label.required:after {
+  content: " *";
+  color: #ff670e;
+}

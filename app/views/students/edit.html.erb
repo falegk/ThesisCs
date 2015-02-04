@@ -12,7 +12,7 @@
             <fieldset>
             <%= user.fields_for :student do |s|  %>
                   <div class="control-group">
-                    <%= s.label :department , class: "control-label"  %>
+                    <%= s.label :department, "Τμήμα", class: "control-label required"  %>
                     <div class="controls">
                     <%= s.select :department,[['Μηχανικών πληροφορικής Τ.Ε','Μηχανικών πληροφορικής Τ.Ε']],
                                  {:prompt => "Επιλέξτε τμήμα"},
@@ -20,21 +20,27 @@
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= s.label :phone , class: "control-label"  %>
+                    <%= s.label :email_communication, "Email Επικοινωνίας" , class: "control-label required" %>
                     <div class="controls">
-                        <%= s.text_field :phone %> <i>Εμφάνιση μόνο σε καθηγητές </i><br/>
+                      <%= s.email_field :email_communication, required: "requires" %>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <%= s.label :phone , "Τηλέφωνο", class: "control-label"  %>
+                    <div class="controls">
+                        <%= s.telephone_field :phone, maxlength: 10 %> <i>Εμφάνιση μόνο σε καθηγητές </i><br/>
                     </div>
                   </div>
                   <div class="control-group">
                     <%= s.label :am, 'Αριθμός μητρώου', class: "control-label" %>
                     <div class="controls">
-                    <%= s.text_field :am %> <i>Εμφάνιση μόνο σε καθηγητές </i> <br/>
+                    <%= s.text_field :am, disabled: true %> <i>Εμφάνιση μόνο σε καθηγητές </i> <br/>
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= s.label :skills, class: "control-label" %>
+                    <%= s.label :skills,"Δεξιότητες", class: "control-label" %>
                     <div class="controls">
-                    <%= s.text_field :skills %><br/>
+                    <%= s.text_field :skills, maxlength: 200 %><br/>
                     </div>
                   </div>
 
