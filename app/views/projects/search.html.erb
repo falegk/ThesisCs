@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="span12">
+
+    <div class="widget widget-nopad">
+      <div class="widget-header"> <i class="icon-list-alt"></i>
+        <h3><span class="badge"><%= @results.count %></span> αποτελέσματα αναζήτησης για "<%= params[:search] %>"</h3>
+      </div>
+      <!-- /widget-header -->
+      <div class="widget-content">
+        <ul class="news-items">
+          <% @results.each do |row| %>
+        <li>
+
+          <div class="news-item-date">
+            <span class="news-item-day"><%= row.created_at.strftime("%d") %></span>
+            <span class="news-item-month"><%= row.created_at.strftime("%b") %></span>
+            <span class="news-item-year"><%= row.created_at.strftime("%Y") %></span>
+          </div>
+          <div class="news-item-detail">
+            <% if row.status == 'pending' %>
+                <span class="label label-success">Διαθέσιμη</span>
+            <% elsif row.status == 'active' %>
+                <span class="label label-danger">μη διαθέσιμη</span>
+          <% end %>
+            <%= link_to row.title, project_path(row), class: 'news-item-title' %>
+            <p class="news-item-preview"> <%= truncate(raw(row.description),length: 150) %> </p>
+            </div>
+
+          </li>
+          <% end %>
+        </ul>
+      </div>
+      <!-- /widget-content -->
+    </div>
+  </div>
+</div>

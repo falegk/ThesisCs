@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   before_action :active_projects, only: [ :index ]
   before_action :pending_projects, only: [ :index ]
   before_action :completed_projects, only: [ :index ]
-  before_action :current_project, only: [ :show, :update, :destroy, :project_completed,:project_prolongation, :create_assignment,:delete_assignments,:destroy_assignment, :update_assignment ]
+  before_action :current_project, only: [:show, :update, :destroy, :project_completed,:project_prolongation, :create_assignment,:delete_assignments,:destroy_assignment, :update_assignment ]
 
   # students valid
   before_action :given_to_students, only: [ :show , :names_of_students]
@@ -14,8 +14,20 @@ class ProjectsController < ApplicationController
   before_action :expressed_interest, only: [ :show ]
   before_action  :department_empty
 
+  def search
+    search = Project.search do
+      fulltext search_params do
+        query_phrase_slop 1
+        minimum_match 1
+      end
+      #with(:status).any_of(['pending','extra'])
+
+    end
+    @results = search.results
+  end
 
   def index
+
     respond_to do |format|
       format.html # index.html.erb
       ajax_respond format, :section_id => "pendingProjectsPage"
@@ -185,5 +197,9 @@ class ProjectsController < ApplicationController
 
   def assignment_params
     params.require(:project_assignment).permit!
+  end
+
+  def search_params
+    params[:search]
   end
 end

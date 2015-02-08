@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   post 'projects/:id/delete_assignments' => 'projects#delete_assignments', as: 'delete_project_assignments' # διαγραφή συσχέτισης
   post 'projects/:id/prolongation' => 'projects#project_prolongation', as: 'project_prolongation'
   post 'projects/:id/completed' => 'projects#project_completed', as: 'project_completed'
+  get 'search' => 'projects#search', as: 'project_search'
 
   resources :projects
   resources :users, only: [ :new, :edit, :update ]

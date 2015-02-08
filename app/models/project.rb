@@ -9,4 +9,11 @@ class Project < ActiveRecord::Base
 
   validates :title, presence: true
   #validates :student_id, presence: true
+
+  searchable do
+    text :title, boost: 2
+    string :status
+    text :keywords
+  end
+
 end
