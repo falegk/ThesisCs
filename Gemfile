@@ -42,7 +42,8 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'bootstrap-sass'
 gem 'devise'
-gem 'devise_ldap_authenticatable', :git => 'git://github.com/cschiewek/devise_ldap_authenticatable.git'
+gem 'devise_ldap_authenticatable'
+#, :git => 'git://github.com/cschiewek/devise_ldap_authenticatable.git'
 
 # pagination
 gem 'will_paginate', '~> 3.0.5'
