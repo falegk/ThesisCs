@@ -6,14 +6,6 @@ GIT
       devise (>= 3.0)
       net-ldap (>= 0.3.1, < 0.6.0)
 
-GIT
-  remote: git://github.com/galetahub/ckeditor.git
-  revision: d0bc44a6fc9fa67d4b007877688f89e5a0cbf79f
-  specs:
-    ckeditor (4.1.1)
-      cocaine
-      orm_adapter (~> 0.5.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -64,6 +56,9 @@ GEM
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
     capistrano-stats (1.1.1)
+    ckeditor (4.1.1)
+      cocaine
+      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.5)
@@ -191,7 +186,7 @@ DEPENDENCIES
   ajax_pagination
   bootstrap-sass
   capistrano-rails
-  ckeditor!
+  ckeditor
   coffee-rails (~> 4.0.0)
   devise
   devise_ldap_authenticatable!

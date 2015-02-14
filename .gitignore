@@ -27,5 +27,6 @@ Capfile
 /config/environments/production.rb
 /config/environments/test.rb
 config/secrets.yml
+/config/secrets*.rb
 test
 

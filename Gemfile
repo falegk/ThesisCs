@@ -49,7 +49,7 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'ajax_pagination'
 
 # Editor
-gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'ckeditor'
 
 # Search
 gem 'sunspot_rails'
