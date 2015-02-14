@@ -13,12 +13,12 @@
               <li><%= link_to 'Αποσύνδεση', destroy_user_session_path, method: :delete  %></li>
             </ul>
           </li>
-            <% else %>
-          <% end %>
         </ul>
-        <%= form_for :search, url: {controller: 'projects', action: 'search'}  , method: :get, html: {class: 'navbar-search pull-right'} do %>
-            <%= text_field_tag :search, params[:searcj], class: 'search-query', placeholder: "Αναζήτηση..." %>
+            <%= form_for :search, url: {controller: 'projects', action: 'search'}  , method: :get, html: {class: 'navbar-search pull-right'} do %>
+                <%= text_field_tag :search, params[:search], class: 'search-query', placeholder: "Αναζήτηση..." %>
+            <% end %>
         <% end %>
+
         <!--<form class="navbar-search pull-right">
           <input type="text" class="search-query" placeholder="Search">
         </form>-->
@@ -40,7 +40,7 @@
                <i class="icon-dashboard"></i><span>Αρχική</span>
             <% end %>
         </li>
-        <li class="<%= 'active' if params[:controller] == 'projects' %>">
+        <li class="<%= 'active' if params[:controller] == 'projects' && params[:action] != 'archive' %>">
           <%= link_to projects_path do %>
               <i class="icon-list-alt"></i><span>Πτυχιακές</span>
           <% end %>
@@ -50,8 +50,8 @@
               <i class="icon-group"></i><span>Καθηγητες</span>
           <% end %>
         </li>
-        <li class="<%= 'active' if params[:controller] == 'archives' %>">
-          <%= link_to '#' do %>
+        <li class="<%= 'active' if params[:action] == 'archive' %>">
+          <%= link_to archive_path do %>
               <i class="icon-archive"></i><span>Αρχειο</span>
           <% end %>
         </li>

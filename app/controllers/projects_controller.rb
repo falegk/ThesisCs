@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   #before_action :all_projects, only: [ :index, :show ]
   before_action :active_projects, only: [ :index ]
   before_action :pending_projects, only: [ :index ]
-  before_action :completed_projects, only: [ :index ]
+  before_action :completed_projects, only: [ :index, :archive ]
   before_action :current_project, only: [:show, :update, :destroy, :project_completed,:project_prolongation, :create_assignment,:delete_assignments,:destroy_assignment, :update_assignment ]
 
   # students valid
@@ -35,6 +35,9 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def archive
+
+  end
 
   def show
     if is_student?
@@ -104,7 +107,7 @@ class ProjectsController < ApplicationController
 
   def project_completed
     redirect_not_teacher
-    @currentProject.update!(status: 'completed')
+    @currentProject.update!(status: 'completed', completion_date: Time.now )
     redirect_to teacher_dashboard_path ,:flash => { :success => t('messages.success.projects.thesis_completed_successfully')}
   end
 
@@ -181,7 +184,7 @@ class ProjectsController < ApplicationController
 
   # @return @completedProjects
   def completed_projects
-    @completedProjects = Project.all.where(status: 'completed')
+    @completedProjects = Project.all.where(status: 'completed').paginate( :page => params[:completedProjectsPage], :per_page => 20)
   end
 
   # @return @extraProjects

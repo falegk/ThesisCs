@@ -40,13 +40,13 @@
           <!-- /widget-header -->
           <div class="widget-content">
         <div class="shortcuts">
-          <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-search"></i>
+          <a href="#searchModal" data-toggle="modal" class="shortcut"><i class="shortcut-icon icon-search"></i>
             <span class="shortcut-label">Αναζήτηση θέματος</span> </a>
-          <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-check"></i>
+          <a href="#expressionsOfInterestModal" data-toggle="modal" class="shortcut"><i class="shortcut-icon icon-check"></i>
             <span class="shortcut-label">Εκδήλωση ενδιαφέροντος </span> </a>
-          <a href="javascript:;" class="shortcut"><i class="shortcut-icon icon-comments-alt"></i>
+          <a href="#contactProfessorModal" data-toggle="modal" class="shortcut"><i class="shortcut-icon icon-comments-alt"></i>
             <span class="shortcut-label">Επικοινωνία με τον καθηγητή</span> </a>
-          <a href="javascript:;" class="shortcut"> <i class="shortcut-icon icon-ok"></i>
+          <a href="#dissertationAssignmentModal" data-toggle="modal" class="shortcut"> <i class="shortcut-icon icon-ok"></i>
             <span class="shortcut-label">Ανάθεση πτυχιακής</span> </a>
         </div>
         <!-- /shortcuts -->
@@ -56,5 +56,77 @@
       <%= render 'welcome/share/quick_manual' %>
 
     </div>
+  </div>
+</div>
+
+
+<!-- Modal Αναζητήστε το θέμα που σας ενδιαφέρει-->
+<div id="searchModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="searchModalLabel">Αναζητήστε το θέμα που σας ενδιαφέρει</h3>
+  </div>
+  <div class="modal-body">
+
+    <p>Υπάρχουν 3 τρόποι για να αναζητήσετε πτυχιακή εργασία.</p>
+
+    <p><strong>Πρώτος τρόπος (όλες οι διαθέσιμες)</strong></br>
+    1. Απο το μενού επιλέγετε “Πτυχιακές” και αναζητάτε ανάμεσα στις “Διαθέσιμες πτυχιακές”</br>
+    2. Αφού βρείτε την πτυχιακή που θέλετε την επιλέγετε (πατώντας κλικ επάνω στο όνομα της) και κάνετε “Εκδήλωση Ενδιαφέροντος”.</br>
+      </p>
+    <p><strong>Δεύτερος τρόπος (ανά καθηγητή)</strong></br>
+    1. Απο το μενού επιλέγετε "Καθηγητές" και στην συνέχεια τον καθηγητή που θέλετε.</br>
+    2. Στο μενού του καθηγητή επιλέγετε "θέματα πτυχιακών" και ακολουθείτε το δεύτερο βήμα που αναφέρθηκε παραπάνω.</br>
+    </p>
+    <p><strong>Τρίτος τρόπος ( Αναζήτηση...)</strong></br>
+    1. Επάνω δεξιά στο site υπάρχει το πεδίο της αναζήτησης.</br>
+      <%= image_tag 'faq/search_field.png' %></br>
+    2. Γράφετε μέσα λέξης κλειδιά που υπάρχουν στον τίτλο ή στα keywords του θέματος (πχ. “Android”, “PLC”, “Ιστοσελίδα σε php” κτλ. )</br>
+   </p>
+    <p><strong>ΠΡΟΣΟΧΗ:</strong> Δεν έχετε “κλειδώσει” το θέμα της πτυχιακής.</br>
+      Για να πάρετε το θέμα πρέπει να επικοινωνήσετε με τον καθηγητή ή να επικοινωνήσει αυτός μαζί σας.</p>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+<div id="expressionsOfInterestModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="expressionsOfInterestModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="expressionsOfInterestModalLabel">Εκδήλωση ενδιαφέροντος</h3>
+  </div>
+  <div class="modal-body">
+    <p></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+<div id="contactProfessorModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="contactProfessorModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="contactProfessorModalLabel">Επικοινωνία με τον καθηγητή</h3>
+  </div>
+  <div class="modal-body">
+    <p></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+
+<div id="dissertationAssignmentModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="dissertationAssignmentModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="dissertationAssignmentModalLabel">Ανάθεση πτυχιακής</h3>
+  </div>
+  <div class="modal-body">
+    <p></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 </div>

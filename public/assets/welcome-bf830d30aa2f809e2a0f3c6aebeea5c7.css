@@ -1,0 +1,367 @@
+/*------------------------------------------------------------------
+Bootstrap Admin Template by EGrappler.com
+------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[1. Shortcuts / .shortcuts]
+*/
+/* line 15, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.shortcuts {
+  text-align: center;
+}
+
+/* line 19, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.shortcuts .shortcut {
+  width: 22.50%;
+  min-height: 100px;
+  display: inline-block;
+  padding: 12px 0;
+  margin: 0 .9% 1em;
+  vertical-align: top;
+  text-decoration: none;
+  background: #f9f6f1;
+  border-radius: 5px;
+}
+
+/* line 34, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.shortcuts .shortcut2 {
+  width: 40%;
+  min-height: 100px;
+  display: inline-block;
+  padding: 12px 0;
+  margin: 0 .9% 1em;
+  vertical-align: top;
+  text-decoration: none;
+  background: #f9f6f1;
+  border-radius: 5px;
+}
+
+/* line 50, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.shortcuts .shortcut .shortcut-icon,
+.shortcuts .shortcut2 .shortcut-icon {
+  margin-top: .25em;
+  margin-bottom: .25em;
+  font-size: 32px;
+  color: #545454;
+}
+
+/* line 59, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.shortcuts .shortcut:hover,
+.shortcuts .shortcut2:hover {
+  background: #00ba8b;
+}
+
+/* line 64, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.shortcuts .shortcut:hover span,
+.shortcuts .shortcut2:hover span {
+  color: #fff;
+}
+
+/* line 69, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.shortcuts .shortcut:hover .shortcut-icon,
+.shortcuts .shortcut2:hover .shortcut-icon {
+  color: #fff;
+}
+
+/* line 74, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.shortcuts .shortcut-label,
+.shortcuts .shortcut2-label {
+  display: block;
+  font-weight: 400;
+  color: #545454;
+}
+
+/*------------------------------------------------------------------
+[2. Stats / .stats]
+*/
+/* line 87, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.stats {
+  width: 100%;
+  display: table;
+  padding: 0 0 0 10px;
+  margin-top: .5em;
+  margin-bottom: 1.9em;
+}
+
+/* line 95, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.stats .stat {
+  display: table-cell;
+  width: 40%;
+  vertical-align: top;
+  font-size: 11px;
+  font-weight: bold;
+  color: #999;
+}
+
+/* line 105, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.stat-value {
+  display: block;
+  margin-bottom: .55em;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: -2px;
+  color: #444;
+}
+
+/* line 115, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.stat-time {
+  text-align: center;
+  padding-top: 1.5em;
+}
+
+/* line 120, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.stat-time .stat-value {
+  color: #19bc9c;
+  font-size: 40px;
+}
+
+/* line 125, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.stats #donut-chart {
+  height: 100px;
+  margin-left: -20px;
+}
+
+/*------------------------------------------------------------------
+[3. News Item / .news-items]
+*/
+/* line 138, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-items {
+  margin: 1em 0 0;
+}
+
+/* line 142, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-items li {
+  display: table;
+  padding: 0 2em 0 1.5em;
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: 1px dotted #CCC;
+}
+
+/* line 150, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-items li:last-child {
+  padding-bottom: 0;
+  border: none;
+}
+
+/* line 152, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-item-date {
+  display: table-cell;
+}
+
+/* line 156, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-item-detail {
+  display: table-cell;
+}
+
+/* line 160, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-item-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* line 165, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-item-date {
+  width: 75px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* line 172, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-item-day {
+  display: block;
+  margin-bottom: .25em;
+  font-size: 24px;
+  color: #888;
+}
+
+/* line 180, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-item-preview {
+  margin-bottom: 0;
+  color: #777;
+}
+
+/* line 186, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-item-month {
+  display: block;
+  padding-right: 1px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+}
+
+/* line 195, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.news-item-year {
+  display: block;
+  padding-right: 1px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #888;
+}
+
+/*------------------------------------------------------------------
+[4. Action Table / .action-table]
+*/
+/* line 208, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.action-table .btn-small {
+  padding: 4px 5px 5px;
+  font-size: 10px;
+}
+
+/* line 214, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.action-table .td-actions {
+  width: 80px;
+  text-align: center;
+}
+
+/* line 220, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.action-table .td-actions .btn {
+  margin-right: .5em;
+}
+
+/* line 224, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.action-table .td-actions .btn:last-child {
+  margin-rigth: 0;
+}
+
+/* line 231, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+#big_stats {
+  width: 100%;
+  display: table;
+  margin-top: 1.5em;
+}
+
+/* line 239, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+.big-stats-container .widget-content {
+  border: 0;
+}
+
+/* line 244, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+#big_stats .stat {
+  width: 25%;
+  height: 90px;
+  text-align: center;
+  display: table-cell;
+  padding: 0;
+  position: relative;
+  border-right: 1px solid #CCC;
+  border-left: 1px solid #FFF;
+}
+
+/* line 255, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+#big_stats i {
+  font-size: 30px;
+  display: block;
+  line-height: 40px;
+  color: #b2afaa;
+}
+
+/* line 256, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+#big_stats .stat:hover i {
+  color: #19bc9c;
+}
+
+/* line 258, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+h6.bigstats {
+  margin: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+  margin-bottom: 26px;
+}
+
+/* line 263, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+#big_stats .stat:first-child {
+  border-left: none;
+}
+
+/* line 267, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+#big_stats .stat:last-child {
+  border-right: none;
+}
+
+/* line 272, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+#big_stats .stat h4 {
+  font-size: 11px;
+  font-weight: bold;
+  color: #777;
+  margin-bottom: 1.5em;
+}
+
+/* line 280, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+#big_stats .stat .value {
+  font-size: 45px;
+  font-weight: bold;
+  color: #545454;
+  line-height: 1em;
+}
+
+@media all and (max-width: 950px) and (min-width: 1px) {
+  /* line 291, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  #big_stats {
+    display: block;
+    margin-bottom: -40px;
+  }
+
+  /* line 296, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  #big_stats .stat {
+    width: 49%;
+    display: block;
+    margin-bottom: 3em;
+    float: left;
+  }
+
+  /* line 303, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  #big_stats .stat:nth-child(2) {
+    border-right: none;
+  }
+
+  /* line 307, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  #big_stats .stat:nth-child(3) {
+    border-left: none;
+  }
+}
+@media (max-width: 767px) {
+  /* line 314, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  #big_stats .stat .value {
+    font-size: 40px;
+  }
+}
+@media (max-width: 979px) {
+  /* line 324, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  .shortcuts .shortcut {
+    width: 31%;
+  }
+}
+@media (max-width: 480px) {
+  /* line 332, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  .stats .stat {
+    margin-bottom: 3em;
+  }
+
+  /* line 337, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  .stats .stat .stat-value {
+    margin-bottom: .15em;
+    font-size: 20px;
+  }
+
+  /* line 343, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  .stats {
+    float: left;
+    display: block;
+    margin-bottom: 0;
+  }
+
+  /* line 351, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  #chart-stats {
+    margin: 2em 0 1em;
+  }
+
+  /* line 355, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+  .shortcuts .shortcut {
+    width: 48%;
+  }
+}
+/* line 360, /home/falegk/RubymineProjects/ThesisCs/app/assets/stylesheets/welcome.css.scss */
+label.required:after {
+  content: " *";
+  color: #ff670e;
+}

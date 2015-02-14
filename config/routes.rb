@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   post 'projects/:id/completed' => 'projects#project_completed', as: 'project_completed'
   get 'search' => 'projects#search', as: 'project_search'
 
+  get 'archive' => 'projects#archive', as: 'archive'
   resources :projects
   resources :users, only: [ :new, :edit, :update ]
   resources :students, path: '/user/student', only: [:edit]
