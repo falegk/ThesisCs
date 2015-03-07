@@ -4,5 +4,6 @@ class Teacher < ActiveRecord::Base
 
   accepts_nested_attributes_for :projects
 
-  validates :department, presence: true
+  #validates :department, presence: true
+  #validates :email_communication, presence: true
 end

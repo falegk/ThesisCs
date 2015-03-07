@@ -14,7 +14,6 @@
     <% end %>
 <% end %>
 
-<div class="page-entries-info"><%= page_entries_info @pendingProjects %></div>
 <%= ajax_links :section_id => "pendingProjectsPage" do %>
     <%= will_paginate @pendingProjects, param_name: 'pendingProjectsPage' %>
 <% end %>

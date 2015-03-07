@@ -5,8 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :developments
-gem 'mysql'
-gem 'mysql2'
+gem 'mysql', '2.9.1'
+gem 'mysql2', '0.3.17'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -19,7 +19,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '2.5.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 
 gem 'jbuilder', '~> 2.0'
@@ -36,13 +36,13 @@ gem 'spring',        group: :development
 # gem 'unicorn'
 
 # Use Capistrano for deployment
- gem 'capistrano-rails', group: :development
+ gem 'capistrano-rails','1.1.2', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 gem 'bootstrap-sass'
-gem 'devise'
-gem 'devise_ldap_authenticatable'
+gem 'devise', '3.4.1'
+gem 'devise_ldap_authenticatable', '0.8.1'
 #, :git => 'git://github.com/cschiewek/devise_ldap_authenticatable.git'
 
 # pagination
@@ -50,7 +50,7 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'ajax_pagination'
 
 # Editor
-gem 'ckeditor'
+gem 'ckeditor', '4.1.1'
 
 # Search
 gem 'sunspot_rails'

@@ -1,0 +1,10 @@
+<div class="alert alert-success">
+  <%= plural_students_expressed_interest(@currentProject,true,false,
+                                         'Έχει ολοκληρωθεί απο τον',
+                                         'Έχει ολοκληρωθεί απο τους') %><br/>
+  <strong>
+    <% detailsOfStudents.each do |s|  %>
+        <%= students_list(s,true) %><br/>
+    <% end %>
+  </strong><br/>
+</div>

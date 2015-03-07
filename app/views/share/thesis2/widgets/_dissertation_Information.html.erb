@@ -12,7 +12,17 @@
             <% if is_teacher_helper? && (@currentProject.teacher == current_user.teacher) %>
                 <%= render partial: 'share/thesis2/plugins/options_arrow', locals: {project: @currentProject} %>
             <% end %>
-            <h1><%= @currentProject.title %></h1><br/>
+            <h1><%= @currentProject.title %></h1></br>
+            <div class="news-item-detail">
+              <% if @currentProject.status == 'pending' || @currentProject.status == 'extra' %>
+                  <span class="label label-info">Διαθέσιμη</span>
+              <% elsif @currentProject.status == 'active' %>
+                  <span class="label label-danger">μη διαθέσιμη</span>
+              <%elsif @currentProject.status == 'completed' %>
+                  <span class="label label-success">Ολοκληρωμένη</span>
+              <% end %>
+            </div>
+            <br/>
           </div>
           <p class="news-item-preview"> <%= raw @currentProject.description  %> </p><br/>
 

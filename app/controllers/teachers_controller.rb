@@ -35,6 +35,9 @@ class TeachersController < ApplicationController
   def add_project
     redirect_not_teacher
     @project = Project.new
+
+    @numberOfAvailable = Project.where(teacher_id: current_user.teacher, status: ['active', 'pending']).count
+    @numberOfExtra = Project.where(teacher_id: current_user.teacher, status: 'extra').count
   end
 
   def edit_project

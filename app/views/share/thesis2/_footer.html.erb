@@ -6,7 +6,7 @@
           <h4>
             Σχετικά με το ThesisCs</h4>
           <ul>
-            <li> <%= link_to 'Δημιουργία ', about_path, data: {no_turbolink: false} %></li>
+            <li> <%= link_to 'Σχεδίαση και Ανάπτυξη ', about_path, data: {no_turbolink: false} %></li>
           </ul>
         </div>
         <!-- /span3 -->
@@ -15,8 +15,9 @@
             Υποστήριξη</h4>
           <ul>
             <li><%= link_to 'Συχνές ερωτήσεις FAQ', faq_path, data: {no_turbolink: false} %></li>
-            <li><a href="javascript:;">Επικοινωνία </a></li>
-            <li><a href="javascript:;">Tutorial</a></li>
+            <li><%= mail_to 'thesiscs@teilar.gr', 'Επικοινωνία' %></li>
+            <li><a href="javascript:;">Οδηγός χρήσης για Καθηγητές</a></li>
+            <li><a href="javascript:;">Οδηγός χρήσης για Φοιτητές</a></li>
           </ul>
         </div>
         <!-- /span3 -->
@@ -24,7 +25,7 @@
           <h4>
             Προσωπικά δεδομένα</h4>
           <ul>
-            <li><a href="javascript:;">Σύνδεση χρηστών με LDAP</a></li>
+            <li><%= link_to 'Σύνδεση χρηστών με LDAP', ldap_path, data: {no_turbolink: false} %></li>
           </ul>
         </div>
         <!-- /span3 -->
@@ -32,8 +33,9 @@
           <h4>
             Χρήσιμοι σύνδεσμοι</h4>
           <ul>
-            <li><a href="http://www.cs.teilar.gr/">Τμήμα Μηχανικών Πληροφορικής T.E.</a></li>
-            <li><a href="http://noc-portal.teilar.gr/">Κέντρου Διαχείρισης Δικτύου (ΚΕΔΔ) ΤΕΙ Θεσσαλίας.</a> </li>
+            <li><a href="http://www.cs.teilar.gr/" target="_blank" >Τμήμα Μηχανικών Πληροφορικής T.E.</a></li>
+            <li><a href="http://www.cs.teilar.gr/CS/Ptyxiakh.jsp" target="_blank"> Πτυχιακή εργασία (Έγγραφα)</a></li>
+            <li><a href="http://noc-portal.teilar.gr/" target="_blank">Κέντρου Διαχείρισης Δικτύου (ΚΕΔΔ) ΤΕΙ Θεσσαλίας.</a> </li>
           </ul>
         </div>
         <!-- /span3 -->

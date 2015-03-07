@@ -3,12 +3,12 @@
 
     <div class="widget widget-nopad">
       <div class="widget-header"> <i class="icon-list-alt"></i>
-        <h3><span class="badge"><%= @completedProjects.count %></span> Ολοκληρωμένες πτυχιακές εργασίες</h3>
+        <h3><span class="badge"><%= @archiveProjects.count %></span> Ολοκληρωμένες πτυχιακές εργασίες</h3>
       </div>
       <!-- /widget-header -->
       <div class="widget-content">
         <ul class="news-items">
-          <% @completedProjects.each do |row| %>
+          <% @archiveProjects.each do |row| %>
               <li>
 
                 <div class="news-item-date">
@@ -32,10 +32,13 @@
                   </strong><br/>
                   </p>
                 </div>
-
               </li>
           <% end %>
+
         </ul>
+        <%= ajax_links :section_id => "archiveProjectsPage" do %>
+            <%= will_paginate @archiveProjects, param_name: 'archiveProjectsPage' %>
+        <% end %>
       </div>
       <!-- /widget-content -->
     </div>

@@ -5,7 +5,8 @@ class ProjectsController < ApplicationController
   #before_action :all_projects, only: [ :index, :show ]
   before_action :active_projects, only: [ :index ]
   before_action :pending_projects, only: [ :index ]
-  before_action :completed_projects, only: [ :index, :archive ]
+  before_action :completed_projects, only: [ :index ]
+  before_action :archive_projects, only: [ :archive ]
   before_action :current_project, only: [:show, :update, :destroy, :project_completed,:project_prolongation, :create_assignment,:delete_assignments,:destroy_assignment, :update_assignment ]
 
   # students valid
@@ -20,10 +21,13 @@ class ProjectsController < ApplicationController
         query_phrase_slop 1
         minimum_match 1
       end
+      #display only as it is to be delivered
       #with(:status).any_of(['pending','extra'])
 
+      paginate :page => params[:page] || 1,:per_page =>10
     end
     @results = search.results
+    @resultsCount = search.total
   end
 
   def index
@@ -95,9 +99,9 @@ class ProjectsController < ApplicationController
         ProjectAssignment.where(assignment_params).destroy_all(given: false)
         @currentProject.update!(status: 'active', start_date: Time.now, completion_date: 1.year.from_now)
       end
-        @currentProject.project_assignments.where(given: true).each do |p|
-          UserMailer.project_assignment(current_user.teacher,p.student,@currentProject).deliver
-        end
+        # @currentProject.project_assignments.where(given: true).each do |p|
+        #   UserMailer.project_assignment(current_user.teacher,p.student,@currentProject).deliver
+        # end
         redirect_to project_path(params[:id]),:flash => { :success => 'Η πτυχιακή εργασία ανατέθηκε επιτυχώς.'}
       rescue
         redirect_to project_path(params[:id]),:flash => { :error => 'Αποτυχία ανάθεσης.'}
@@ -138,7 +142,7 @@ class ProjectsController < ApplicationController
   # Expression of interest from the student
   def create_assignment
     @currentProject.project_assignments.create(student_id: current_user.student.id)
-    UserMailer.expression_interest(@currentProject.teacher,current_user.student,@currentProject).deliver
+    #UserMailer.expression_interest(@currentProject.teacher,current_user.student,@currentProject).deliver
     redirect_to project_path(params[:id])
   end
 
@@ -184,7 +188,12 @@ class ProjectsController < ApplicationController
 
   # @return @completedProjects
   def completed_projects
-    @completedProjects = Project.all.where(status: 'completed').paginate( :page => params[:completedProjectsPage], :per_page => 20)
+    @completedProjects = Project.all.where(status: 'completed').limit(5)
+  end
+
+  # @return @archiveProjects
+  def archive_projects
+    @archiveProjects = Project.all.where(status: 'completed').paginate( :page => params[:archiveProjectsPage], :per_page => 20)
   end
 
   # @return @extraProjects

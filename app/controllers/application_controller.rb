@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   TEACHER_REGEX = /\AΕΚΠΑΙΔΕΥΤΙΚΟΣ[\p{Any}*]*\Z/
-  STUDENT_REGEX = /\AΣΠΟΥΔΑΣΤΗΣ[\p{Word}*]*\Z/
+  STUDENT_REGEX = /\AΣΠΟΥΔΑΣΤΗΣ[\p{Any}*]*\Z/
 
   layout 'thesis2/thesis2'
 
@@ -74,13 +74,17 @@ class ApplicationController < ActionController::Base
     ldap_values = get_ldap_values
     user = User.all.find(current_user)
     if get_user_role_from_ldap(user) == 'student'
-      user.create_student
       user.update(first_name: ldap_values[:firstname],last_name: ldap_values[:lastname])
+      user.create_student
       redirect_to edit_student_path(user.student)
     elsif get_user_role_from_ldap(user) == 'teacher'
-      user.create_teacher
       user.update(first_name: ldap_values[:firstname],last_name: ldap_values[:lastname])
+      user.create_teacher
       redirect_to edit_teacher_path(user.teacher)
+    else
+      # Αν δεν ειναι teacher or student διαγραφει την εγγραφη
+      user.destroy
+      redirect_to root_path, flash: {notice: 'Δεν έχετε δικαίωμα πρόσβασης'}
     end
 
   end
@@ -95,8 +99,6 @@ class ApplicationController < ActionController::Base
       'teacher'
     elsif role.match(STUDENT_REGEX) #Τιμή στο businessCategory του LDAP
       'student'
-    else
-      'none'
     end
   end
 

@@ -11,11 +11,15 @@
       <% unless @given_project_to_students.empty? %>
           <li><span class="news-item-title">Έχει δοθεί παράταση; </span><%= @currentProject.prolongation ? 'Ναι' : 'Οχι' %></li>
           <li><span class="news-item-title">Ημερομηνία ανάθεσης: </span><%= @currentProject.start_date.strftime("%d/%m/%Y") %></li>
-          <% if @currentProject.prolongation == false %>
-              <li><span class="news-item-title">Απαιτούμενη ημερομηνία ολοκλήρωσης έως: </span><%= @currentProject.completion_date.strftime("%d/%m/%Y") %></li>
-            <% else %>
-              <li><span class="news-item-title">Ημερομηνια παράταση: </span><%= @currentProject.completion_date + 6.month %></li>
-          <% end %>
+         <% if @currentProject.status == 'completed' %>
+              <li><span class="news-item-title">Ημερομηνία ολοκλήρωσης: </span><%= @currentProject.completion_date.strftime("%d/%m/%Y") %></li>
+         <% else %>
+              <% if @currentProject.prolongation == false %>
+                  <li><span class="news-item-title">Απαιτούμενη ημερομηνία ολοκλήρωσης έως: </span><%= @currentProject.completion_date.strftime("%d/%m/%Y") %></li>
+                <% else %>
+                  <li><span class="news-item-title">Ημερομηνια παράταση: </span><%= @currentProject.completion_date + 6.month %></li>
+              <% end %>
+         <% end %>
     <% end %>
     </ul>
   </div>

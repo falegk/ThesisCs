@@ -2,7 +2,8 @@ el:
   devise:
     sessions:
       user:
-        signed_in: "Καλωσήρθατε στο ThesisCs "
+        signed_in: "Καλωσήρθατε στο ThesisCs."
+        signed_out: "Επιτυχής αποσύνδεση. Καλή συνέχεια."
   messages:
     error:
       projects:

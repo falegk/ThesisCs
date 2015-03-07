@@ -10,8 +10,8 @@ module ThesisCs
   class Application < Rails::Application
 
     # Global variable
-      NUMBER_OF_PENDING_DISSERTATIONS = 10
-      NUMBER_OF_EXTRA_DISSERTATIONS = 2
+      NUMBER_OF_PENDING_DISSERTATIONS = 20
+      NUMBER_OF_EXTRA_DISSERTATIONS = 5
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -24,5 +24,7 @@ module ThesisCs
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
      config.i18n.default_locale = :el
+
+      config.exceptions_app = self.routes # error pages
   end
 end

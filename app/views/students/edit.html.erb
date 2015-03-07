@@ -26,15 +26,15 @@
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= s.label :phone , "Τηλέφωνο", class: "control-label"  %>
+                    <%= s.label :am, 'Αριθμός μητρώου', class: "control-label required" %>
                     <div class="controls">
-                        <%= s.telephone_field :phone, maxlength: 10 %> <i>Εμφάνιση μόνο σε καθηγητές </i><br/>
+                    <%= s.text_field :am, required: "requires" %> <i>Εμφάνιση μόνο σε καθηγητές </i> <br/>
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= s.label :am, 'Αριθμός μητρώου', class: "control-label" %>
+                    <%= s.label :phone , "Τηλέφωνο", class: "control-label"  %>
                     <div class="controls">
-                    <%= s.text_field :am, disabled: true %> <i>Εμφάνιση μόνο σε καθηγητές </i> <br/>
+                      <%= s.telephone_field :phone, maxlength: 10 %> <i>Εμφάνιση μόνο σε καθηγητές </i><br/>
                     </div>
                   </div>
                   <div class="control-group">

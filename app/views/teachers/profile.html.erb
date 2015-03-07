@@ -32,8 +32,10 @@
           <%= link_to teacher_projects_path(@teacher), {class: "shortcut2"} do %>
             <i class="shortcut-icon icon-search"></i><span class="shortcut-label">Θέματα πτυχιακών</span>
           <% end %>
-          <a href="javascript:;" class="shortcut2"><i class="shortcut-icon icon-comments-alt"></i>
-            <span class="shortcut-label">Επικοινωνία με τον καθηγητή</span> </a>
+            <%= mail_to @teacher.user.email , class: "shortcut2" do %>
+            <i class="shortcut-icon icon-comments-alt"></i>
+            <span class="shortcut-label">Επικοινωνία με τον καθηγητή</span>
+              <% end %>
         </div>
         <!-- /shortcuts -->
       </div>

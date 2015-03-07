@@ -12,8 +12,9 @@ class Project < ActiveRecord::Base
 
   searchable do
     text :title, boost: 2
-    string :status
+    #string :status
     text :keywords
   end
+
 
 end
