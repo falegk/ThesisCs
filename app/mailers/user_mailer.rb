@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
     @studentInfo = student
     @projectInfo = project
 
-    mail to: @teacherInfo.email_communication, subject: "Εκδήλωση ενδιαφέροντος για πτυχιακή"
+    mail to: @teacherInfo.user.email, subject: "Εκδήλωση ενδιαφέροντος για πτυχιακή"
   end
 
   def deadline_completion(teacher, student, project)
@@ -27,6 +27,10 @@ class UserMailer < ActionMailer::Base
     @studentInfo = student
     @projectInfo = project
 
-    mail to: @studentInfo.email_communication, subject: "Ανάθεση θέματος πτυχιακής εργασία"
+    if defined? @studentInfo.email_communication
+      mail to: @studentInfo.email_communication, subject: "Ανάθεση θέματος πτυχιακής εργασία"
+    elsif defined? @studentInfo.user.email
+      mail to: @studentInfo.user.email, subject: "Ανάθεση θέματος πτυχιακής εργασία"
+    end
   end
 end

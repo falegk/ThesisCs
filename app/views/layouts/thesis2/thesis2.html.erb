@@ -71,6 +71,17 @@
     });
 
 </script>
-    <% end %>
+    <script>
+        $('.input-calendar').datepicker({
+            format: "dd/mm/yyyy",
+            todayBtn: "linked",
+            clearBtn: true,
+            language: "el"
+//            daysOfWeekDisabled: "0,6",
+//            autoclose: true,
+//            todayHighlight: true
+        });
+    </script>
+<% end %>
 </body>
 </html>

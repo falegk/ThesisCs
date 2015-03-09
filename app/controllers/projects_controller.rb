@@ -99,9 +99,9 @@ class ProjectsController < ApplicationController
         ProjectAssignment.where(assignment_params).destroy_all(given: false)
         @currentProject.update!(status: 'active', start_date: Time.now, completion_date: 1.year.from_now)
       end
-        # @currentProject.project_assignments.where(given: true).each do |p|
-        #   UserMailer.project_assignment(current_user.teacher,p.student,@currentProject).deliver
-        # end
+         @currentProject.project_assignments.where(given: true).each do |p|
+            UserMailer.project_assignment(current_user.teacher,p.student,@currentProject).deliver
+         end
         redirect_to project_path(params[:id]),:flash => { :success => 'Η πτυχιακή εργασία ανατέθηκε επιτυχώς.'}
       rescue
         redirect_to project_path(params[:id]),:flash => { :error => 'Αποτυχία ανάθεσης.'}
@@ -142,8 +142,8 @@ class ProjectsController < ApplicationController
   # Expression of interest from the student
   def create_assignment
     @currentProject.project_assignments.create(student_id: current_user.student.id)
-    #UserMailer.expression_interest(@currentProject.teacher,current_user.student,@currentProject).deliver
-    redirect_to project_path(params[:id])
+    UserMailer.expression_interest(@currentProject.teacher,current_user.student,@currentProject).deliver
+    redirect_to project_path(@currentProject.id)
   end
 
   def destroy_assignment

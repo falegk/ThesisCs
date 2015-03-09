@@ -12,27 +12,34 @@
 
 
                   <div class="control-group">
-                    <%= project.label :title , class: "control-label"  %>
+                    <%= project.label :title,t('projects.title'), class: "control-label"  %>
                     <div class="controls">
-                      <%= project.text_field :title %><br/>
+                      <%= project.text_field :title, rows: 30 %><br/>
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= project.label :description , class: "control-label"  %>
+                    <%= project.label :description, t('projects.description'), class: "control-label"  %>
                     <div class="controls">
                       <%= project.cktext_area :description, :ckeditor => {:language => 'el-GR', :toolbar => 'mini'} %><br/>
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= project.label :skills_required , class: "control-label"  %>
+                    <%= project.label :skills_required,t('projects.skills_required'), class: "control-label"  %>
                     <div class="controls">
                       <%= project.text_field :skills_required %><br/>
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= project.label :keywords, class: "control-label" %>
+                    <%= project.label :keywords,t('projects.keywords'), class: "control-label" %>
                     <div class="controls">
                       <%= project.text_field :keywords %><br/>
+                    </div>
+                  </div>
+
+                  <div class="control-group">
+                    <%= project.label :start_date, t('projects.start_date'), class: "control-label" %>
+                    <div class="controls" id="calendar">
+                      <%= project.text_field :start_date, class: "input-calendar", data: { provide: "datepicker" } %><br/>
                     </div>
                   </div>
 

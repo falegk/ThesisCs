@@ -33,6 +33,8 @@ GEM
       rails (>= 3.0)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.9)
+    bootstrap-datepicker-rails (1.3.1.1)
+      railties (>= 3.0)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     builder (3.2.2)
@@ -47,6 +49,9 @@ GEM
     capistrano-rails (1.1.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
     capistrano-stats (1.1.1)
     ckeditor (4.1.1)
       cocaine
@@ -179,14 +184,18 @@ PLATFORMS
 
 DEPENDENCIES
   ajax_pagination
-  bootstrap-sass
+  bootstrap-datepicker-rails (~> 1.3.1.1)
+  bootstrap-sass (~> 3.2.0.0)
+  capistrano (~> 3.3.5)
+  capistrano-bundler (= 1.1.3)
   capistrano-rails (= 1.1.2)
+  capistrano-rvm (= 0.1.2)
   ckeditor (= 4.1.1)
   coffee-rails (~> 4.0.0)
   devise (= 3.4.1)
   devise_ldap_authenticatable (= 0.8.1)
   jbuilder (~> 2.0)
-  jquery-rails
+  jquery-rails (~> 3.1.2)
   mysql (= 2.9.1)
   mysql2 (= 0.3.17)
   rails (= 4.1.6)
@@ -194,8 +203,8 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring
   sqlite3
-  sunspot_rails
-  sunspot_solr
+  sunspot_rails (~> 2.1.1)
+  sunspot_solr (~> 2.1.1)
   turbolinks (= 2.5.2)
   uglifier (>= 1.3.0)
   will_paginate (~> 3.0.5)

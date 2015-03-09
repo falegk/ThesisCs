@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.1.2'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '2.5.2'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -36,11 +36,20 @@ gem 'spring',        group: :development
 # gem 'unicorn'
 
 # Use Capistrano for deployment
- gem 'capistrano-rails','1.1.2', group: :development
+group :development do
+  gem 'capistrano', '~> 3.3.5'
+  gem 'capistrano-rails','1.1.2'
+  gem 'capistrano-bundler', '1.1.3'
+  gem 'capistrano-rvm', '0.1.2'
+end
+
+ #gem 'capistrano-rbenv', '~> 2.0', group: :development
+ #gem 'unicorn', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.2.0.0'
+gem 'bootstrap-datepicker-rails', '~> 1.3.1.1'
 gem 'devise', '3.4.1'
 gem 'devise_ldap_authenticatable', '0.8.1'
 #, :git => 'git://github.com/cschiewek/devise_ldap_authenticatable.git'
@@ -53,5 +62,5 @@ gem 'ajax_pagination'
 gem 'ckeditor', '4.1.1'
 
 # Search
-gem 'sunspot_rails'
-gem 'sunspot_solr' # optional pre-packaged Solr distribution for use in development
+gem 'sunspot_rails', '~>2.1.1'
+gem 'sunspot_solr', '~>2.1.1' # optional pre-packaged Solr distribution for use in development
