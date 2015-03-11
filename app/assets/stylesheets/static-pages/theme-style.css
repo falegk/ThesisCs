@@ -123,7 +123,7 @@ nav a#pull {
 	}
 	nav a#pull:after {
 		content:"";
-		background: url('../images/static-pages/nav-icon.png') no-repeat;
+		background: url('nav-icon.png') no-repeat;
 		width: 30px;
 		height: 30px;
 		display: inline-block;
@@ -160,7 +160,7 @@ nav a#pull {
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	background: url(../images/static-pages/slide-bg.jpg) no-repeat 0px 0px;
+	background: url(slide-bg.jpg) no-repeat 0px 0px;
 	min-height: 667px;
 	background-size: cover;
   }
@@ -273,14 +273,14 @@ nav a#pull {
 	color:#FFF;
 }
 .btn{
-	background: url(../images/static-pages/world-ico.png) no-repeat 1% 30% #54D3C3;
+	background: url(world-ico.png) no-repeat 1% 30% #54D3C3;
 	padding: 0.5em 2em 0.5em 3em;
 	font-size: 1.5em;
 	margin-top:1.5em;
 	color:#FFF;
 }
 .btn:hover{
-	background: url(../images/static-pages/world-ico.png) no-repeat 15% 50% #079491;
+	background: url(world-ico.png) no-repeat 15% 50% #079491;
 	color:#fff;
 }
 .divice-info-text{
@@ -491,7 +491,7 @@ h2.resp-accordion:first-child {
 .resp-tabs-list li span{
 	width:100px;
 	height:100px;
-	background:url(../images/static-pages/icons.png) no-repeat 0px 0px;
+	background:url(icons.png) no-repeat 0px 0px;
 	display:inline-block;
 }
 .resp-tabs-list li.tab1{
@@ -531,7 +531,7 @@ h2.resp-accordion:first-child {
 	background-position: -1067px 11px;
 }
 .tab{
-	background:url(../images/static-pages/slide-bg.jpg) no-repeat 0px 0px;
+	background:url(slide-bg.jpg) no-repeat 0px 0px;
 	background-size:cover;
 }
 .tab-divice-info h3{
@@ -884,7 +884,7 @@ h2.resp-accordion:first-child {
 	height: 32px;
 	border: none;
 	text-indent: 100%;
-	background: url(../images/static-pages/arrow_up.png) no-repeat center;
+	background: url(arrow_up.png) no-repeat center;
 }
 /*----start-responsive-Mediaquries-------*/
 /*-----start-Mediaqurie-for-1440px-laptops----*/
@@ -1326,7 +1326,7 @@ h2.resp-accordion:first-child {
 	.resp-tabs-list li span {
 		width: 50px;
 		height: 50px;
-		background: url(../images/static-pages/icons0.png) no-repeat 0px 0px;
+		background: url(icons0.png) no-repeat 0px 0px;
 		display: inline-block;
 	}
 	.resp-tabs-list li.tab1{
@@ -1516,7 +1516,7 @@ h2.resp-accordion:first-child {
 	.resp-tabs-list li span {
 		width: 50px;
 		height: 50px;
-		background: url(../images/static-pages/icons0.png) no-repeat 0px 0px;
+		background: url(icons0.png) no-repeat 0px 0px;
 		display: inline-block;
 	}
 	.resp-tabs-list li.tab1{
