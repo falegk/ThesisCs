@@ -61,7 +61,7 @@
                   <ul class="dropdown-menu">
                     <li><%= link_to 'Dashboard', teacher_dashboard_path %></li>
                     <li><%= link_to 'Επισκόπηση των θεμάτων μου', teacher_projects_path(current_user.teacher.id) %></li>
-                    <li><%= link_to 'Προσθήκη νέου θέματος', add_project_path %></li>
+                    <li><%= link_to 'Προσθήκη νέου θέματος', add_project_path, data: {no_turbolink: true} %></li>
                   </ul>
                 </li>
              <% end %>

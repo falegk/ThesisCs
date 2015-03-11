@@ -10,7 +10,8 @@
         <div class="news-item-detail">
           <div class="news-item-title">
             <% if is_teacher_helper? && (@currentProject.teacher == current_user.teacher) %>
-                <%= render partial: 'share/thesis2/plugins/options_arrow', locals: {project: @currentProject} %>
+                <%= render partial: 'share/thesis2/plugins/options_arrow', locals: {project: @currentProject,
+                                                                                    deleteProject: true} %>
             <% end %>
             <h1><%= @currentProject.title %></h1></br>
             <div class="news-item-detail">
@@ -21,6 +22,7 @@
               <%elsif @currentProject.status == 'completed' %>
                   <span class="label label-success">Ολοκληρωμένη</span>
               <% end %>
+              <em><%= @currentProject.professor_comments %></em>
             </div>
             <br/>
           </div>

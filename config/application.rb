@@ -13,6 +13,11 @@ module ThesisCs
       NUMBER_OF_PENDING_DISSERTATIONS = 20
       NUMBER_OF_EXTRA_DISSERTATIONS = 5
 
+      # Ckeditor
+      config.assets.enabled = true
+      config.assets.precompile += Ckeditor.assets
+      config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+      
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

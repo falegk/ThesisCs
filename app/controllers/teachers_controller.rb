@@ -21,7 +21,7 @@ class TeachersController < ApplicationController
     @availableDissertations = @teacher.projects.where(status: 'pending')
     @activeDissertations = @teacher.projects.where(status: 'active')
     @extraDissertations = @teacher.projects.where(status: 'extra')
-    @completedDissertations = @teacher.projects.where(status: 'completed')
+    @completedDissertations = @teacher.projects.where(status: 'completed').order(completion_date: :asc).limit(10)
   end
 
   def dashboard

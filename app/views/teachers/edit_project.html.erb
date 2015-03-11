@@ -1,5 +1,5 @@
-<div class="row">
-      <div class="span12">
+<div class="row" xmlns="http://www.w3.org/1999/html">
+      <div class="span8">
         <div class="widget widget-nopad">
           <div class="widget-header"><i class="icon-list-alt"></i>
             <h3> Επεξεργασία πτυχιακής </h3>
@@ -9,56 +9,75 @@
             <br/>
             <%= form_for @project, url: project_path(@project) , html: {id: "new-project", class: "form-horizontal"} do |project| %>
                 <fieldset>
-
-
-                  <div class="control-group">
-                    <%= project.label :title,t('projects.title'), class: "control-label"  %>
-                    <div class="controls">
-                      <%= project.text_field :title, rows: 30 %><br/>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <%= project.label :description, t('projects.description'), class: "control-label"  %>
-                    <div class="controls">
-                      <%= project.cktext_area :description, :ckeditor => {:language => 'el-GR', :toolbar => 'mini'} %><br/>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <%= project.label :skills_required,t('projects.skills_required'), class: "control-label"  %>
-                    <div class="controls">
-                      <%= project.text_field :skills_required %><br/>
-                    </div>
-                  </div>
-                  <div class="control-group">
-                    <%= project.label :keywords,t('projects.keywords'), class: "control-label" %>
-                    <div class="controls">
-                      <%= project.text_field :keywords %><br/>
-                    </div>
-                  </div>
-
-                  <div class="control-group">
-                    <%= project.label :start_date, t('projects.start_date'), class: "control-label" %>
-                    <div class="controls" id="calendar">
-                      <%= project.text_field :start_date, class: "input-calendar", data: { provide: "datepicker" } %><br/>
-                    </div>
-                  </div>
-
-                  <div class="form-actions right">
-                    <%= project.submit "Αποθηκευση", class: "btn btn-primary" %>
-                  </div>
+                      <div class="control-group">
+                        <%= project.label :title,t('projects.title'), class: "control-label"  %>
+                        <div class="controls">
+                          <%= project.text_field :title, class: "form-control span6", required: "requires" %><br/>
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <%= project.label :professor_comments, 'Σχόλια καθηγητή', class: "control-label"  %>
+                        <div class="controls">
+                          <%= project.text_area :professor_comments, maxlength: 250, class: 'span6', placeholder: 'π.χ. Η πτυχιακή έχει δοθεί στον φοιτητή ...' %><br/>
+                          <p class="help-block">Μέχρι 250 χαρακτήρες.</p>
+                        </div>
+                      </div>
+                      <div class="control-group">
+                        <%= project.label :description, t('projects.description'), class: "control-label"  %>
+                        <div class="controls">
+                          <%= project.cktext_area :description, :ckeditor => {:language => 'el-GR', :toolbar => 'mini'} %><br/>
+                        </div>
+                      </div>
                 </fieldset>
-            <% end %>
-
           </div>
           <!-- /widget-content -->
         </div>
         <!-- /widget -->
       </div>
+        <div class="span4">
+          <div class="widget widget-nopad">
+                <div class="widget-header"><i class="icon-list-alt"></i>
+                  <h3> Γενικά </h3>
+                </div>
+                <!-- /widget-header -->
+                <div class="widget-content">
+                  <br/>
+                  <fieldset class="form-horizontal">
+                    <div class="control-group">
+                      <%= project.label :skills_required,t('projects.skills_required'), class: "control-label"  %>
+                      <div class="controls">
+                        <%= project.text_field :skills_required, class: "form-control span2"  %><br/>
+                      </div>
+                    </div>
 
+                    <div class="control-group">
+                      <%= project.label :keywords,t('projects.keywords'), class: "control-label" %>
+                      <div class="controls">
+                        <%= project.text_field :keywords, class: "form-control span2" %><br/>
+                      </div>
+                    </div>
+                    <% if @project.project_assignments.where(given: true).count > 0 %>
+                        <div class="control-group">
+                        <%= project.label :start_date, t('projects.start_date'), class: "control-label" %>
+                          <div class="controls">
+                            <%= project.text_field :start_date,:discard_year => true, class: "form-control span2", data: { provide: "datepicker" } %><br/>
+                          </div>
+                        </div>
+                    <% end %>
+                  </fieldset>
+
+                  <div class="form-actions">
+                    <%= project.submit t('options.save'), class: "button btn btn-primary btn-large" %>
+                    <%= button_tag t('options.undo'),class: "button btn btn-danger btn-large", type: :reset %>
+                  </div>
+                  </br>
+                </div>
+            <% end %>
+          </div>
+        </div>
       <!-- /span6 -->
-    </div>
+</div>
     <!-- /row -->
 
-    <br/>
-    <br/>
+
 

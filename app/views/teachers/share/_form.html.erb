@@ -26,6 +26,13 @@
         </div>
       </div>
       <div class="control-group">
+        <%= project.label :professor_comments, 'Σχόλια καθηγητή', class: "control-label"  %>
+        <div class="controls">
+          <%= project.text_area :professor_comments, maxlength: 250, class: 'span6', placeholder: 'π.χ. Η πτυχιακή έχει δοθεί στον φοιτητή ...' %><br/>
+          <p class="help-block"><em>Μέχρι 250 χαρακτήρες.</em></p>
+        </div>
+      </div>
+      <div class="control-group">
         <%= project.label :description, t('projects.description'), class: "control-label"  %>
         <div class="controls">
           <%= project.cktext_area :description, :ckeditor => {:language => 'el-GR', :toolbar => 'mini'} %><br/>
@@ -34,18 +41,18 @@
       <div class="control-group">
         <%= project.label :skills_required, t('projects.skills_required'), class: "control-label"  %>
         <div class="controls">
-          <%= project.text_field :skills_required %><br/>
+          <%= project.text_field :skills_required,class: 'span5', placeholder: 'π.χ. Καλή γνώση CSS, PHP ...' %><br/>
         </div>
       </div>
       <div class="control-group">
         <%= project.label :keywords, t('projects.keywords'), class: "control-label" %>
         <div class="controls">
-          <%= project.text_field :keywords %><br/>
+          <%= project.text_field :keywords,class: 'span5', placeholder: 'π.χ. Web Application, Arduino, Raspberry Pi ...' %><br/>
         </div>
       </div>
 
       <div class="form-actions right">
-        <%= project.submit t("options.save"), class: "btn btn-primary" %>
+        <%= project.submit t("options.save"), class: "button btn btn-primary btn-large" %>
       </div>
     </fieldset>
 <% end %>

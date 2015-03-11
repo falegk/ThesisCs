@@ -54,3 +54,6 @@ Rails.application.config.assets.precompile += %w( jquery-1.11.0.js )
 Rails.application.config.assets.precompile += %w( bootstrap.min.js )
 Rails.application.config.assets.precompile += %w( plugins/metisMenu/metisMenu.min.js )
 Rails.application.config.assets.precompile += %w( sb-admin-2.js )
+
+
+Rails.application.config.assets.precompile += %w( ckeditor/* )

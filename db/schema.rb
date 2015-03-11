@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150121180716) do
+ActiveRecord::Schema.define(version: 20150310150551) do
 
   create_table "project_assignments", force: true do |t|
     t.integer "project_id"
@@ -23,15 +23,16 @@ ActiveRecord::Schema.define(version: 20150121180716) do
     t.string   "title"
     t.text     "description"
     t.string   "skills_required"
-    t.string   "status",          default: "pending"
+    t.string   "status",             default: "pending"
     t.binary   "attached"
     t.string   "keywords"
     t.datetime "start_date"
     t.datetime "completion_date"
-    t.boolean  "prolongation",    default: false
+    t.boolean  "prolongation",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "teacher_id"
+    t.string   "professor_comments"
   end
 
   add_index "projects", ["teacher_id"], name: "index_projects_on_teacher_id", using: :btree

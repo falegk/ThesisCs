@@ -1,7 +1,7 @@
 <div class="options_arrow">
   <div class="dropdown pull-right"> <a class="dropdown-toggle " id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#"> <i class=" icon-caret-down"></i> </a>
     <ul class="dropdown-menu " role="menu" aria-labelledby="dLabel">
-      <li><%= link_to t('options.edit'),  teacher_edit_project_path(current_user.teacher ,project), class: 'icon-edit icon-large' %></li>
+      <li><%= link_to t('options.edit'),  teacher_edit_project_path(current_user.teacher ,project), class: 'icon-edit icon-large',data: {no_turbolink: true} %></li>
       <li><%= link_to t('options.delete'), project, method: :delete , class: 'icon-trash icon-large',data: {confirm: 'Είστε σίγουρος για την διαγραφή?' } if defined? deleteProject %></li>
       <li><%= link_to t('options.completion'), project_completed_path(project), method: :post , class: 'icon-archive icon-large', data: {confirm: t('data.confirm.completed_confirmation') } if defined? archive %></li>
       <li><%= link_to t('options.prolongation'), project_prolongation_path(project), method: :post , class: 'icon-magic icon-large',data: {confirm: t('data.confirm.prolongation') } if defined? prolongation %></li>

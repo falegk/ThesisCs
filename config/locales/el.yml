@@ -38,6 +38,7 @@ el:
       withdrawal_of_interest: "Απόσυρση ενδιαφέροντος"
       expressions_of_interest: "Εκδήλωση ενδιαφέροντος"
     save: "Αποθήκευση"
+    undo: "Αναίρεση"
   student:
     project:
       dashboard:
@@ -63,5 +64,5 @@ el:
     title: "Τίτλος"
     description: "Περιγραφή"
     skills_required: "Απαιτούμενες δεξιότητες"
-    keywords: "Λέξης κλειδιά"
+    keywords: "Λέξεις κλειδιά"
     start_date: "Ημερομηνία ανάθεσης πτυχιακής"
