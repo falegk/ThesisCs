@@ -6,10 +6,13 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :students
 
   serialize :student_id, Array
-
   validates :title, presence: true
   #validates :student_id, presence: true
 
+  # search on [title,keywords]
+  scoped_search on: [:title, :keywords]
+
+  # search with solr
   # searchable do
   #   text :title, boost: 2
   #   #string :status

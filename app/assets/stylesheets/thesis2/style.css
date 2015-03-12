@@ -252,7 +252,7 @@ textarea {
 
 .main {
 	padding-bottom: 2em;
-	
+	min-height: 250px;
 	border-bottom: 1px solid #000;
 }
 

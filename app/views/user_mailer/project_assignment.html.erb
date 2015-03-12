@@ -6,12 +6,16 @@
 <body>
 <h3>Γεια σου, <%= @studentInfo.user.first_name %></h3>
 <p>
-  Ο καθηγητής <strong><%= "#{@teacherInfo.user.last_name} #{@teacherInfo.user.first_name}" %></strong> σου ανέθεσε την πτυχιακή με θέμα <br>
+  Ο καθηγητής κ.<strong><%= "#{@teacherInfo.user.last_name} #{@teacherInfo.user.first_name}" %></strong> σου ανέθεσε την πτυχιακή με θέμα <br>
   <%= link_to @projectInfo.title, project_url(@projectInfo) %>
 </p>
 <p>
-  Απαιτούμενη ημερομηνία ολοκλήρωσης έως: <%= @projectInfo.completion_date %>. </br></br>
-
+  <strong>Προσοχή:</strong> Πρέπει να συμπληρώσεις τα <%= link_to "απαραίτητα έγγραφα", 'http://www.cs.teilar.gr/CS/Ptyxiakh.jsp' %> (αίτηση ανάθεσης πτυχιακής εργασίας) στην γραμματεία του τμήματος για.
+</p>
+<p>
+  Απαιτούμενη ημερομηνία ολοκλήρωσης έως: <%= @projectInfo.completion_date.strftime("%d/%m/%Y") %>. </br></br>
+</p>
+<p>
   <em>* Η ημερομηνία ενδέχεται να διαφέρει απο την πραγματική, αν η αίτηση προς το τμήμα έγινε σε
     διαφορετική ημερομηνία απο την ανάθεση του θέματος στο σύστημα ThesisCs.</em>
 </p>

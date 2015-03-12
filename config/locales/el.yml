@@ -1,5 +1,8 @@
 el:
   devise:
+    failure:
+      user:
+        invalid: "Λάθος email ή κωδικός πρόσβασης."
     sessions:
       user:
         signed_in: "Καλωσήρθατε στο ThesisCs."

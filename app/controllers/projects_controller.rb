@@ -16,21 +16,31 @@ class ProjectsController < ApplicationController
   before_action  :department_empty
 
   def search
-    search = Project.search do
-      fulltext search_params do
-        query_phrase_slop 1
-        minimum_match 1
-      end
-      #display only as it is to be delivered
-      #with(:status).any_of(['pending','extra'])
 
-      paginate :page => params[:page] || 1,:per_page =>10
-    end
-    @results = search.results
-    @resultsCount = search.total
+    @results = Project.search_for(params[:search]).paginate(page: params[:page], per_page: 20)
+
+    # Search with sunspot solr
+    # search = Project.search do
+    #   fulltext search_params do
+    #     query_phrase_slop 1
+    #     minimum_match 1
+    #   end
+    #   #display only as it is to be delivered
+    #   #with(:status).any_of(['pending','extra'])
+    #
+    #   paginate :page => params[:page] || 1,:per_page =>10
+    # end
+    # @results = search.results
+    # @resultsCount = search.total
   end
 
+
   def index
+    if params[:search]
+      @results = Project.search(params[:search]).order("created_at DESC")
+    else
+      @results = Project.all.order('created_at DESC')
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -40,7 +50,6 @@ class ProjectsController < ApplicationController
   end
 
   def archive
-
   end
 
   def show
