@@ -58,7 +58,7 @@
                            'bootstrap.min.js',
                            'thesis2/bootstrap.js',
                            'thesis2/base.js',
-                           'application.js' %>
+                           'application.js','data-turbolinks-eval' => false %>
 
 <%= yield :javascripts %><!-- Stylesheets for specific page -->
 <% if params[:controller] == 'static_pages' %>
