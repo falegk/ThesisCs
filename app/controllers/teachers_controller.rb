@@ -36,6 +36,7 @@ class TeachersController < ApplicationController
     redirect_not_teacher
     @project = Project.new
 
+    @numberDissertations = current_user.teacher.dissertation_number
     @numberOfAvailable = Project.where(teacher_id: current_user.teacher, status: ['active', 'pending']).count
     @numberOfExtra = Project.where(teacher_id: current_user.teacher, status: 'extra').count
   end

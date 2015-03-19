@@ -10,7 +10,10 @@ module ThesisCs
   class Application < Rails::Application
 
     # Global variable
-      NUMBER_OF_PENDING_DISSERTATIONS = 20
+
+      # Default number of dissertations
+      # Call - ThesisCs::Application::NUMBER_OF_PENDING_DISSERTATIONS
+      NUMBER_OF_PENDING_DISSERTATIONS = 10
       NUMBER_OF_EXTRA_DISSERTATIONS = 5
 
       # Ckeditor

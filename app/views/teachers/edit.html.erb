@@ -51,6 +51,13 @@
                     </div>
                   </div>
 
+                  <div class="control-group">
+                    <%= s.label :dissertation_number, 'Αριθμός πτυχιακών', class: "control-label" %>
+                    <div class="controls">
+                      <%= s.select :dissertation_number, options_for_select(10..30,@user.teacher.dissertation_number) %><br/>
+                    </div>
+                  </div>
+
             <% end %>
 
               <div class="form-actions right">

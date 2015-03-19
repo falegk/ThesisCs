@@ -80,6 +80,7 @@ class ApplicationController < ActionController::Base
     elsif get_user_role_from_ldap(user) == 'teacher'
       user.update(first_name: ldap_values[:firstname],last_name: ldap_values[:lastname])
       user.create_teacher
+      user.teacher.update(dissertation_number: ThesisCs::Application::NUMBER_OF_PENDING_DISSERTATIONS)
       redirect_to edit_teacher_path(user.teacher)
     else
       # Αν δεν ειναι teacher or student διαγραφει την εγγραφη
