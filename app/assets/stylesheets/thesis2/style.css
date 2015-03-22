@@ -252,9 +252,8 @@ textarea {
 
 .main {
 	padding-bottom: 2em;
-	/*min-height: 250px;*/
-	border-bottom: 0px solid #000;
-    /*bottom: 0px;*/
+	min-height: 450px;
+	border-bottom: 1px solid #000;
 }
 
 
@@ -264,9 +263,7 @@ textarea {
 */
 
 .extra {
-    position: fixed;
-    width: 100%;
-    bottom: 0px;
+
 	border-top: 1px solid #585858;
 	border-bottom: 1px solid #000;
 
@@ -312,7 +309,7 @@ textarea {
 .footer {
 	margin-top: 0;
 	
-	border-top: 2px solid #292929;
+	border-top: 1px solid #292929;
 }
 
 .footer-inner {
