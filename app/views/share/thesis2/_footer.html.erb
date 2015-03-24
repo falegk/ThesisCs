@@ -16,8 +16,8 @@
           <ul>
             <li><%= link_to 'Συχνές ερωτήσεις FAQ', faq_path, data: {no_turbolink: false} %></li>
             <li><%= mail_to 'thesiscs@teilar.gr', 'Επικοινωνία' %></li>
-            <li><a href="javascript:;">Οδηγός χρήσης για Καθηγητές</a></li>
-            <li><a href="javascript:;">Οδηγός χρήσης για Φοιτητές</a></li>
+            <li><%= link_to 'Οδηγός χρήσης για Καθηγητές', asset_path('teacher_guide.pdf'), target: '_blank' %></li>
+            <li><%= link_to 'Οδηγός χρήσης για Φοιτητές', asset_path('student_guide.pdf'), target: '_blank' %></li>
           </ul>
         </div>
         <!-- /span3 -->
