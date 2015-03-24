@@ -29,7 +29,7 @@
                     <p><%= form_for d.project_assignments.build, url: project_assigning_path(d) do |f| %>
                         <%= f.select :student_id, d.project_assignments.all.collect {|h| ["#{h.student.user.last_name} #{h.student.user.first_name}",h.student_id] },
                                      {},
-                                     {class: 'chosen-select', multiple: true, tabindex: '4'} %>
+                                     {required: "requires", class: 'chosen-select', multiple: true, tabindex: '4'} %>
                         <%= f.submit 'Ανάθεση', data: {confirm: t('data.confirm.assignment_confirmation')} %>
                     <% end %>
                 <% end %>
@@ -50,7 +50,7 @@
         <h3> Ενεργές πτυχιακές </h3>
       </div>
       <!-- /widget-header -->
-      <div class="widget-content">
+      <div class="widget-content" style="padding-bottom: 70px" >
         <ul class="messages_layout">
 
           <% if @activeProjectsOfCurrentTeacher.count == 0 %>
