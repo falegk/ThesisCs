@@ -91,9 +91,7 @@ class ProjectsController < ApplicationController
     redirect_not_teacher
     respond_to do |f|
       if @currentProject.update(project_params)
-        if @currentProject.start_date != project_params[:start_date]
-          @currentProject.update(completion_date: @currentProject.start_date+1.year )
-        end
+          @currentProject.update(completion_date: @currentProject.start_date+1.year)
         f.html {redirect_to project_path(@currentProject), :flash => { :success => t('messages.success.projects.thesis_update_successfully') }}
         #f.json {render json: @user, status: :created, location: @user}
       else
@@ -104,21 +102,26 @@ class ProjectsController < ApplicationController
 
   def update_assignment
       redirect_not_teacher
-      begin
-      Project.transaction do
-        @currentProject.project_assignments.where(assignment_params).update_all(given: true)
-        @currentProject.project_assignments.where(given: false).destroy_all
-        ProjectAssignment.where(assignment_params).destroy_all(given: false)
-        @currentProject.update!(status: 'active', start_date: Time.now, completion_date: 1.year.from_now)
+      # 3 because it sends and an empty value
+      if (assignment_params[:student_id].length > 3) || (assignment_params[:student_id].length <= 1)
+        #if the job was given to more students
+        redirect_to :back,:flash => { :error => 'Δεν μπορείτε να επιλέξετε περισσότερους από 2 φοιτητές.'}
+      else
+        begin
+        Project.transaction do
+          @currentProject.project_assignments.where(assignment_params).update_all(given: true)
+          @currentProject.project_assignments.where(given: false).destroy_all
+          ProjectAssignment.where(assignment_params).destroy_all(given: false)
+          @currentProject.update!(status: 'active', start_date: Time.now, completion_date: 1.year.from_now)
+        end
+           @currentProject.project_assignments.where(given: true).each do |p|
+              UserMailer.project_assignment(current_user.teacher,p.student,@currentProject).deliver
+           end
+          redirect_to :back,:flash => { :success => 'Η πτυχιακή εργασία ανατέθηκε επιτυχώς.'}
+        rescue
+          redirect_to :back,:flash => { :error => 'Αποτυχία ανάθεσης.'}
+        end
       end
-         @currentProject.project_assignments.where(given: true).each do |p|
-            UserMailer.project_assignment(current_user.teacher,p.student,@currentProject).deliver
-         end
-        redirect_to project_path(params[:id]),:flash => { :success => 'Η πτυχιακή εργασία ανατέθηκε επιτυχώς.'}
-      rescue
-        redirect_to project_path(params[:id]),:flash => { :error => 'Αποτυχία ανάθεσης.'}
-      end
-
   end
 
   def project_completed
@@ -169,7 +172,7 @@ class ProjectsController < ApplicationController
 
 
   #@return @given_project_to_students
-  # επιστρέφει πίνακα με μέχρι 2 εγγραφές που ειναι given: true απο τον πίνακα project_assignments
+  # returns a table with up to 2 records are given: true by project_assignments table
   def given_to_students
     @given_project_to_students = @currentProject.project_assignments.where(given: true).first(2)
   end
