@@ -198,7 +198,7 @@ class ProjectsController < ApplicationController
 
   # @return @activeProjects
   def active_projects
-    @activeProjects = Project.all.where(status: 'active').paginate( :page => params[:activeProjectsPage], :per_page => 5)
+    @activeProjects = Project.all.where(status: 'active').order('start_date DESC').paginate( :page => params[:activeProjectsPage], :per_page => 5)
   end
 
   # @return @completedProjects
