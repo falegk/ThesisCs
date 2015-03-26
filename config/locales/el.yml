@@ -46,10 +46,10 @@ el:
     project:
       dashboard:
         singular:
-          expression_of_Interest: " φοιτητής έχει εκδηλώσει ενδιαφέρον"
+          expression_of_Interest: " φοιτητής εκδήλωσε ενδιαφέρον"
           given_to_the_student: "Η πτυχιακή έχει δοθεί στον φοιτητή"
         plural:
-          expression_of_Interest: " φοιτητές έχουν εκδηλώσει ενδιαφέρον"
+          expression_of_Interest: " φοιτητές εκδήλωσαν ενδιαφέρον"
           given_to_the_students: "Η πτυχιακή έχει δοθεί στους φοιτητές"
       show:
         singular:

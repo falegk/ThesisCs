@@ -1,7 +1,8 @@
 <% content_for :javascripts do %>
     <%= javascript_include_tag 'chosen.jquery.js','plugins/chosen/prism.js','plugins/chosen/chosen-configs' %>
 <% end %>
-<div class="row">
+
+<div class="row" xmlns="http://www.w3.org/1999/html">
   <div class="span6">
     <div class="widget">
       <div class="widget-header"> <i class="icon-file"></i>
@@ -10,9 +11,10 @@
       <!-- /widget-header -->
       <div class="widget-content">
         <ul class="messages_layout">
-
+        <% if @pendingProjectsCurrentTeacher.count == 0 %>
+              <li class="fc-content-center">Δεν υπάρχουν αποτελέσματα.</li>
+        <% end %>
        <% @pendingProjectsCurrentTeacher.each do |d| %>
-
         <li class="from_user">
             <div class="message_wrap"> <span class="arrow"></span>
               <div class="info"><%= link_to d.title, project_path(d), class: "name" %>
@@ -21,17 +23,17 @@
                                                                                     deleteProject: true} %>
               </div>
               <div class="text">
-                <span> <%= plural_students_expressed_interest(d,false,true,
+                <span class="label label-success"> <%= plural_students_expressed_interest(d,false,true,
                                                               t('student.project.dashboard.singular.expression_of_Interest'),
                                                               t('student.project.dashboard.plural.expression_of_Interest')) %></span>
 
-                <% if d.project_assignments.count != 0 %>
+
                     <p><%= form_for d.project_assignments.build, url: project_assigning_path(d) do |f| %>
                         <%= f.select :student_id, d.project_assignments.all.collect {|h| ["#{h.student.user.last_name} #{h.student.user.first_name}",h.student_id] },
                                      {},
-                                     {required: "requires", class: 'chosen-select', multiple: true, tabindex: '4'} %>
+                                     {required: "requires", multiple: true, tabindex: '3'} %>
                         <%= f.submit 'Ανάθεση', data: {confirm: t('data.confirm.assignment_confirmation')} %>
-                    <% end %>
+
                 <% end %>
                 </p>
               </div>
@@ -91,4 +93,5 @@
       <!-- /widget-content -->
     </div>
   </div>
+
 </div>

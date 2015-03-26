@@ -9,6 +9,7 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 # thesis2
+Rails.application.config.assets.precompile += %w( bootstrap-datepicker/index.js )
 
 Rails.application.config.assets.precompile += %w( thesis2/bootstrap.min.css )
 Rails.application.config.assets.precompile += %w( thesis2/bootstrap-responsive.min.css )

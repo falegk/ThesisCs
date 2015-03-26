@@ -3,6 +3,8 @@
 <%= form_for @currentProject.project_assignments.build, url: project_assigning_path(@currentProject) do |f| %>
     <%= f.select :student_id, @studentsList.collect {|d| ["#{d.student.user.last_name} #{d.student.user.first_name}",d.student_id] },
                  {},
-                 {required: "requires",class: 'chosen-select', multiple: true, tabindex: '4'} %>
+                 {required: "requires", multiple: true, tabindex: '3'} %>
     <%= f.submit 'Ανάθεση', data: {confirm: t('data.confirm.assignment_confirmation')} %>
 <% end %>
+
+<span><i>*Κρατήστε πατημένο το πλήκτρο ctrl για να επιλέξετε περισσότερους φοιτητές.</i></span>

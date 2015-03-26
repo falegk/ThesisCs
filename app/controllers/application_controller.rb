@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  require 'greek_names'
   TEACHER_REGEX = /\AΕΚΠΑΙΔΕΥΤΙΚΟΣ[\p{Any}*]*\Z/
   STUDENT_REGEX = /\AΣΠΟΥΔΑΣΤΗΣ[\p{Any}*]*\Z/
 

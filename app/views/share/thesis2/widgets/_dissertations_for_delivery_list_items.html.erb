@@ -7,6 +7,9 @@
             <span class="news-item-year"><%= allProjects.created_at.strftime("%Y") %></span>
           </div>
           <div class="news-item-detail">
+            <% if allProjects.project_assignments.count >= 1 %>
+                <i class="icon-bookmark" style="color:#b70005" title="Υπάρχει ενδιαφέρον από φοιτητές για το θέμα."> </i>
+            <% end %>
             <%= link_to allProjects.title, project_path(allProjects.id), {class: "news-item-title"} %>
             <p class="news-item-preview"> <%= truncate(raw(allProjects.description),length: 150) %> </p>
           </div>

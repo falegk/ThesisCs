@@ -1,6 +1,15 @@
 <%= provide(:title, "FAQ" ) %>
 <% content_for :javascripts do %>
     <%= javascript_include_tag 'plugins/faq'%>
+    <script>
+
+        $(function () {
+
+            $('.faq-list').goFaq ();
+
+        });
+
+    </script>
 <% end %>
 <% content_for :stylesheets do %>
     <%= stylesheet_link_tag 'plugins/faq' %>

@@ -1,3 +1,6 @@
+<% content_for :javascripts do %>
+    <% javascript_include_tag 'bootstrap-datepicker' %>
+<% end %>
 <div class="row" xmlns="http://www.w3.org/1999/html">
       <div class="span8">
         <div class="widget widget-nopad">
@@ -60,7 +63,7 @@
                         <div class="control-group">
                         <%= project.label :start_date, t('projects.start_date'), class: "control-label" %>
                           <div class="controls">
-                            <%= project.text_field :start_date,:discard_year => true, class: "form-control span2", data: { provide: "datepicker" } %><br/>
+                            <%= project.text_field :start_date, :discard_year => true, class: "form-control span2", data: { provide: "datepicker" } %><br/>
                           </div>
                         </div>
                     <% end %>

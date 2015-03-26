@@ -66,3 +66,4 @@ gem 'ckeditor', '4.1.1'
 # gem 'sunspot_solr', '~>2.1.1' # optional pre-packaged Solr distribution for use in development
 
 gem 'scoped_search', '3.2.0'
+gem 'greek_names'
