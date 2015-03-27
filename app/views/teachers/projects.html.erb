@@ -16,9 +16,6 @@
                locals: {widgetTitle: "Διαθέσιμες πτυχιακές",
                         dissertations: @availableDissertations } %>
 
-    <%= render partial: 'teachers/share/dissertations_for_delivery',
-               locals: {widgetTitle: "Επιπλέον πτυχιακές",
-                        dissertations: @extraDissertations } if @extraDissertations.count > 0 %>
     </div>
 
  <div class="span4">

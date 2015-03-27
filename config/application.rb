@@ -9,12 +9,6 @@ Bundler.require(*Rails.groups)
 module ThesisCs
   class Application < Rails::Application
 
-    # Global variable
-
-      # Default number of dissertations
-      # Call - ThesisCs::Application::NUMBER_OF_PENDING_DISSERTATIONS
-      NUMBER_OF_PENDING_DISSERTATIONS = 10
-      NUMBER_OF_EXTRA_DISSERTATIONS = 5
 
       # Ckeditor
       config.assets.enabled = true

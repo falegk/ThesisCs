@@ -15,7 +15,7 @@
             <% end %>
             <h1><%= @currentProject.title %></h1></br>
             <div class="news-item-detail">
-              <% if @currentProject.status == 'pending' || @currentProject.status == 'extra' %>
+              <% if @currentProject.status == 'pending' %>
                   <span class="label label-info">Διαθέσιμη</span>
               <% elsif @currentProject.status == 'active' %>
                   <span class="label label-danger">μη διαθέσιμη</span>

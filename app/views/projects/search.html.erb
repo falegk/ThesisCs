@@ -17,7 +17,7 @@
             <span class="news-item-year"><%= row.created_at.strftime("%Y") %></span>
           </div>
           <div class="news-item-detail">
-            <% if row.status == 'pending' || row.status == 'extra' %>
+            <% if row.status == 'pending' %>
                 <span class="label label-info">Διαθέσιμη</span>
             <% elsif row.status == 'active' %>
                 <span class="label label-danger">μη διαθέσιμη</span>

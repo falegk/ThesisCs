@@ -193,7 +193,7 @@ class ProjectsController < ApplicationController
 
   # @return @pendingProjects
   def pending_projects
-    @pendingProjects = Project.all.where(status: ['pending', 'extra ']).order('created_at DESC').paginate( :page => params[:pendingProjectsPage], :per_page => 5)
+    @pendingProjects = Project.all.where(status: 'pending').order('created_at DESC').paginate( :page => params[:pendingProjectsPage], :per_page => 5)
   end
 
   # @return @activeProjects
@@ -209,11 +209,6 @@ class ProjectsController < ApplicationController
   # @return @archiveProjects
   def archive_projects
     @archiveProjects = Project.all.where(status: 'completed').paginate( :page => params[:archiveProjectsPage], :per_page => 20)
-  end
-
-  # @return @extraProjects
-  def extra_projects
-    @extraProjects = Project.all.where(status: 'extra')
   end
 
 

@@ -20,13 +20,12 @@ class TeachersController < ApplicationController
   def projects # user/teacher/:id/projects
     @availableDissertations = @teacher.projects.where(status: 'pending')
     @activeDissertations = @teacher.projects.where(status: 'active')
-    @extraDissertations = @teacher.projects.where(status: 'extra')
     @completedDissertations = @teacher.projects.where(status: 'completed').order(completion_date: :asc).limit(10)
   end
 
   def dashboard
     redirect_not_teacher
-    @pendingProjectsCurrentTeacher = Project.all.where(teacher_id: current_user.teacher, status: ['pending','extra'])
+    @pendingProjectsCurrentTeacher = Project.all.where(teacher_id: current_user.teacher, status: 'pending')
     @activeProjectsOfCurrentTeacher = Project.all.where(teacher_id: current_user.teacher, status: 'active')
     @studentsByProject = ProjectAssignment.where(given: false, project_id: @projectsCurrentTeacher)
   end
@@ -35,10 +34,10 @@ class TeachersController < ApplicationController
   def add_project
     redirect_not_teacher
     @project = Project.new
+    @user = User.all.find(current_user)
 
     @numberDissertations = current_user.teacher.dissertation_number
-    @numberOfAvailable = Project.where(teacher_id: current_user.teacher, status: ['active', 'pending']).count
-    @numberOfExtra = Project.where(teacher_id: current_user.teacher, status: 'extra').count
+    @numberOfAll = Project.where(teacher_id: current_user.teacher, status: ['active', 'pending']).count
   end
 
   def edit_project

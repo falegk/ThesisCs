@@ -14,11 +14,6 @@
         </div>
     <% end %>
     <fieldset>
-
-      <% if @status == 'extra' %>
-          <%= project.hidden_field :status, value: 'extra' %>
-      <% end%>
-
       <div class="control-group">
         <%= project.label :title, t('projects.title'), class: "control-label"  %>
         <div class="controls">
