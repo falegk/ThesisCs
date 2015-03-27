@@ -12,9 +12,9 @@
               <li>
 
                 <div class="news-item-date">
-                  <span class="news-item-day"><%= row.completion_date.strftime("%d") %></span>
-                  <span class="news-item-month"><%= row.completion_date.strftime("%b") %></span>
-                  <span class="news-item-year"><%= row.completion_date.strftime("%Y") %></span>
+                  <span class="news-item-day"><%= row.completion_date.strftime('%d') %></span>
+                  <span class="news-item-month"><%= row.completion_date.strftime('%b') %></span>
+                  <span class="news-item-year"><%= row.completion_date.strftime('%Y') %></span>
                 </div>
                 <div class="news-item-detail"><span class="label label-success">Ολοκληρωμένη</span>
                   <%= link_to row.title, project_path(row), class: 'news-item-title' %>
@@ -36,7 +36,7 @@
           <% end %>
 
         </ul>
-        <%= ajax_links :section_id => "archiveProjectsPage" do %>
+        <%= ajax_links :section_id => 'archiveProjectsPage' do %>
             <%= will_paginate @archiveProjects, param_name: 'archiveProjectsPage' %>
         <% end %>
       </div>

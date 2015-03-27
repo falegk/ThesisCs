@@ -1,8 +1,8 @@
 module TeachersHelper
 
-  # Επιστρέφει ονόματα φοιτητών
+  # Returns names of students
   def students_list(student, link)
-    if link == true
+    if link
       link_to "#{student.user.last_name} #{student.user.first_name}",  profile_student_path(student)
     else
       "#{student.user.last_name} #{student.user.first_name}"
@@ -15,11 +15,12 @@ module TeachersHelper
   end
 
 
-  # Επιστρέφει την φράση στον ενικό ή πληθυντικό ανάλογα με το πλήθος αποτελεσμάτων του ερωτήματος
+  # Returns the words in the singular or plural depending on the number of query results
   # @counter true/false
+  # @given true/false
   def plural_students_expressed_interest(project_id, given, counter, singular, plural)
     count = ProjectAssignment.where(given: given, project_id: project_id).count
-    "#{count if counter == true} #{count == 1 ? singular : plural }"
+    "#{count if counter} #{count == 1 ? singular : plural }"
   end
 
 end

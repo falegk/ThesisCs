@@ -107,8 +107,8 @@ class ApplicationController < ActionController::Base
   # Τραβάει τιμές του χρήστη απο το LDAP
   #@return [Hash]
   def get_ldap_values
-    firstname = Devise::LDAP::Adapter.get_ldap_param(current_user.email,"cn").first.force_encoding("UTF-8")
-    lastname =  Devise::LDAP::Adapter.get_ldap_param(current_user.email,"sn").first.force_encoding("UTF-8")
+    firstname = Devise::LDAP::Adapter.get_ldap_param(current_user.email, 'cn').first.force_encoding('UTF-8')
+    lastname =  Devise::LDAP::Adapter.get_ldap_param(current_user.email, 'sn').first.force_encoding('UTF-8')
 
     { firstname: firstname, lastname: lastname } #επιστρέφει ένα hash με πολλές τιμές
   end

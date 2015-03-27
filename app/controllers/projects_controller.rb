@@ -1,3 +1,4 @@
+# noinspection RubyTooManyInstanceVariablesInspection
 class ProjectsController < ApplicationController
   before_action :auth_user
 
@@ -16,36 +17,21 @@ class ProjectsController < ApplicationController
   before_action  :department_empty
 
   def search
-
     @results = Project.search_for(params[:search]).paginate(page: params[:page], per_page: 20)
-
-    # Search with sunspot solr
-    # search = Project.search do
-    #   fulltext search_params do
-    #     query_phrase_slop 1
-    #     minimum_match 1
-    #   end
-    #   #display only as it is to be delivered
-    #   #with(:status).any_of(['pending','extra'])
-    #
-    #   paginate :page => params[:page] || 1,:per_page =>10
-    # end
-    # @results = search.results
-    # @resultsCount = search.total
   end
 
 
   def index
     if params[:search]
-      @results = Project.search(params[:search]).order("created_at DESC")
+      @results = Project.search(params[:search]).order('created_at DESC')
     else
       @results = Project.all.order('created_at DESC')
     end
 
     respond_to do |format|
       format.html # index.html.erb
-      ajax_respond format, :section_id => "pendingProjectsPage"
-      ajax_respond format, :section_id => "activeProjectsPage"
+      ajax_respond format, :section_id => 'pendingProjectsPage'
+      ajax_respond format, :section_id => 'activeProjectsPage'
     end
   end
 
@@ -95,7 +81,7 @@ class ProjectsController < ApplicationController
         f.html {redirect_to project_path(@currentProject), :flash => { :success => t('messages.success.projects.thesis_update_successfully') }}
         #f.json {render json: @user, status: :created, location: @user}
       else
-        f.html {render action: "edit", :flash => { :error => "Error" } }
+        f.html {render action: 'edit', :flash => { :error => 'Error'} }
       end
     end
   end
@@ -132,7 +118,7 @@ class ProjectsController < ApplicationController
 
   def project_prolongation
     redirect_not_teacher
-    if @currentProject.prolongation == true
+    if @currentProject.prolongation
       redirect_to teacher_dashboard_path , :flash =>  { :notice => t('messages.alert.projects.already_been_given_prolongation')}
     else
       @currentProject.update!(prolongation: true)

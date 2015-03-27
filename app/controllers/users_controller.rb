@@ -16,7 +16,7 @@ class UsersController < ApplicationController
         f.html {redirect_to is_student? ? profile_student_path(current_user.student) : :back, :flash => { :success => t('messages.success.data_storage')}}
         #f.json {render json: @user, status: :created, location: @user}
       else
-        f.html {redirect_to :back ,:flash => { :error => "Κάτι πήγε στραβά. Σιγουρευτείτε ότι συμπληρώσατε όλα τα απαραίτητα πεδία." } }
+        f.html {redirect_to :back ,:flash => { :error => 'Κάτι πήγε στραβά. Σιγουρευτείτε ότι συμπληρώσατε όλα τα απαραίτητα πεδία.'} }
       end
     end
   end

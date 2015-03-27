@@ -1,4 +1,4 @@
-<h2>Log ins</h2>
+<h2>Σύνδεση</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -7,8 +7,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.label :password, 'Κωδικός' %><br />
+    <%= f.password_field :password, autocomplete: 'off' %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
@@ -19,7 +19,7 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit 'Σύνδεση' %>
   </div>
 <% end %>
 

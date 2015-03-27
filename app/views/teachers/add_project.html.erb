@@ -4,19 +4,19 @@
             <div id="target-1" class="widget">
               <div class="widget-content">
                 <p>Το τρέχον όριο των πτυχιακών σας είναι <%= @numberDissertations %>. Αυτή είναι η <%= @numberOfAll+1 %>η πτυχιακή. Θέλετε να αλλάξετε το όριό σας;</p>
-                <p><%= form_for @user, url: user_path(@user), html: {id: "edit-profile", class: "form-horizontal"} do |t| %>
+                <p><%= form_for @user, url: user_path(@user), html: {id: 'edit-profile', class: 'form-horizontal'} do |t| %>
                     <fieldset>
                       <%= t.fields_for :teacher do |s|  %>
 
                     <div class="control-group">
-                        <%= s.label :dissertation_number, 'Αριθμός πτυχιακών', class: "control-label" %>
+                        <%= s.label :dissertation_number, 'Αριθμός πτυχιακών', class: 'control-label' %>
                         <div class="controls">
                           <%= s.select :dissertation_number, options_for_select(10..30,@user.teacher.dissertation_number) %><br/>
                         </div>
                       </div>
                         <% end %>
                 <div class="form-actions right">
-                  <%= t.submit t('options.save'), class: "btn btn-primary" %>
+                  <%= t.submit t('options.save'), class: 'btn btn-primary' %>
                 </div>
                     </fieldset>
                   <% end %>

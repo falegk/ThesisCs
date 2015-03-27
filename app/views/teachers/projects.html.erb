@@ -13,7 +13,7 @@
   <div class="span4">
 
     <%= render partial: 'teachers/share/dissertations_for_delivery',
-               locals: {widgetTitle: "Διαθέσιμες πτυχιακές",
+               locals: {widgetTitle: 'Διαθέσιμες πτυχιακές',
                         dissertations: @availableDissertations } %>
 
     </div>
@@ -21,7 +21,7 @@
  <div class="span4">
     <!-- /widget ενεργές πτυχιακές-->
     <%= render partial: 'teachers/share/dissertations_table_widget',
-               locals: {widgetTitle: "Ενεργές πτυχιακές",
+               locals: {widgetTitle: 'Ενεργές πτυχιακές',
                         activeProjects: @activeDissertations } %>
     <!-- /widget -->
   </div>
@@ -29,7 +29,7 @@
   <div class="span4">
     <!-- /widget ενεργές πτυχιακές-->
     <%= render partial: 'teachers/share/dissertations_table_widget',
-               locals: {widgetTitle: "Ολοκληρωμένες πτυχιακές",
+               locals: {widgetTitle: 'Ολοκληρωμένες πτυχιακές',
                         activeProjects: @completedDissertations } %>
     <!-- /widget -->
   </div>

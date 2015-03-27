@@ -8,37 +8,37 @@
       <!-- /widget-header -->
       <div class="widget-content">
         <br/>
-        <%= form_for @user, url: user_path(@user) , html: {id: "edit-profile", class: "form-horizontal"} do |user| %>
+        <%= form_for @user, url: user_path(@user) , html: {id: 'edit-profile', class: 'form-horizontal'} do |user| %>
             <fieldset>
             <%= user.fields_for :student do |s|  %>
                   <div class="control-group">
-                    <%= s.label :department, "Τμήμα", class: "control-label required"  %>
+                    <%= s.label :department, 'Τμήμα', class: 'control-label required' %>
                     <div class="controls">
                     <%= s.select :department,[['Μηχανικών πληροφορικής Τ.Ε','Μηχανικών πληροφορικής Τ.Ε']],
-                                 {:prompt => "Επιλέξτε τμήμα"},
-                                 {class: "form-control", required: "requires", width: 3 }%><br/>
+                                 {prompt: 'Επιλέξτε τμήμα'},
+                                 {class: 'form-control', required: 'requires', width: 3 }%><br/>
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= s.label :email_communication, "Email Επικοινωνίας" , class: "control-label required" %>
+                    <%= s.label :email_communication, 'Email Επικοινωνίας', class: 'control-label required' %>
                     <div class="controls">
-                      <%= s.email_field :email_communication, required: "requires" %>
+                      <%= s.email_field :email_communication, required: 'requires' %>
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= s.label :am, 'Αριθμός μητρώου', class: "control-label required" %>
+                    <%= s.label :am, 'Αριθμός μητρώου', class: 'control-label required' %>
                     <div class="controls">
-                    <%= s.text_field :am, required: "requires" %> <i>Εμφάνιση μόνο σε καθηγητές </i> <br/>
+                    <%= s.text_field :am, required: 'requires' %> <i>Εμφάνιση μόνο σε καθηγητές </i> <br/>
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= s.label :phone , "Τηλέφωνο", class: "control-label"  %>
+                    <%= s.label :phone , 'Τηλέφωνο', class: 'control-label' %>
                     <div class="controls">
                       <%= s.telephone_field :phone, maxlength: 10 %> <i>Εμφάνιση μόνο σε καθηγητές </i><br/>
                     </div>
                   </div>
                   <div class="control-group">
-                    <%= s.label :skills,"Δεξιότητες", class: "control-label" %>
+                    <%= s.label :skills, 'Δεξιότητες', class: 'control-label' %>
                     <div class="controls">
                     <%= s.text_field :skills, maxlength: 200 %><br/>
                     </div>
@@ -47,7 +47,7 @@
             <% end %>
 
               <div class="form-actions right">
-                <%= user.submit "Αποθηκευση", class: "btn btn-primary" %>
+                <%= user.submit 'Αποθηκευση', class: 'btn btn-primary' %>
               </div>
               </fieldset>
         <% end %>

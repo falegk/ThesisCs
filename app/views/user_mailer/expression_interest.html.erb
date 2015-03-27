@@ -4,16 +4,17 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<h3>Γεια σας κ.<%= @teacherInfo.user.last_name %></h3>
+<h4>Γεια σας κ.<%= GreekNames.vocative(@teacherInfo.user.last_name) %></h4>
 <p>
-  Ο φοιτητής <strong><%= link_to "#{@studentInfo.user.first_name} #{@studentInfo.user.last_name}", profile_student_url(@studentInfo)  %></strong>  ,
+  Ο φοιτητής/τρια <strong><%= link_to "#{@studentInfo.user.first_name} #{@studentInfo.user.last_name}", profile_student_url(@studentInfo)  %></strong>  ,
   εκδήλωσε ενδιαφέρον για την πτυχιακή εργασία με θέμα :<strong><%= @projectInfo.title %>.</strong><br>
 </p>
 <p>
   <strong>Στοιχεία επικοινωνίας φοιτητή: </strong></br>
-  Email Επικοινωνίας: <%= @studentInfo.email_communication %> | <%= @studentInfo.user.email %></br>
+  Email Επικοινωνίας: <%= @studentInfo.email_communication %> | <%= @studentInfo.user.email %><br />
   Τηλέφωνο: <%= @studentInfo.phone %>
 </p>
-<p>Για περισσότερες ενέργειες μεταβείτε στο <%= link_to 'ThesisCs.teilar.gr ', root_url %> </p>
+<p>Για περισσότερες ενέργειες μεταβείτε στο <%= link_to 'ThesisCs.teilar.gr ', root_url %> <br />
+   Οδηγός χρήσης ThesisCs για Καθηγητές: <a href="http://thesiscs.teilar.gr/teacher_guide.pdf">thesiscs.teilar.gr/teacher_guide.pdf</a> </p>
 </body>
 </html>
