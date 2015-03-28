@@ -15,7 +15,7 @@ class TeachersController < ApplicationController
   end
 
   def edit
-    @numberOfAll = Project.where(teacher_id: current_user.teacher, status: %w(active pending)).count
+    #@numberOfAll = Project.where(teacher_id: current_user.teacher, status: %w(active pending)).count
   end
 
   def projects # user/teacher/:id/projects
