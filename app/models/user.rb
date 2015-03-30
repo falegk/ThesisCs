@@ -21,10 +21,8 @@ class User < ActiveRecord::Base
 
 
 
-  # TODO - CleanCode: Αφαίρεση περριτών μεταβλητών value
   def get_ldap_userType
-    value = Devise::LDAP::Adapter.get_ldap_param(self.email, 'businessCategory').first.force_encoding('UTF-8')
-    value
+    Devise::LDAP::Adapter.get_ldap_param(self.email, 'businessCategory').first.force_encoding('UTF-8')
   end
 
 end
