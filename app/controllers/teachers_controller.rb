@@ -46,12 +46,11 @@ class TeachersController < ApplicationController
     else
       @project = @teacher.projects.find(params[:id])
     end
-
   end
 
 
   def number_of_all_destinations
-    @numberOfAll = Project.where(teacher_id: current_user.teacher, status: %w(active pending)).count
+    @numberOfAll = Project.where(teacher_id: current_user.teacher.id, status: ['active', 'pending']).count
     @numberDissertations = current_user.teacher.dissertation_number
   end
 
