@@ -37,7 +37,6 @@ class TeachersController < ApplicationController
     @project = Project.new
     @user = User.all.find(current_user)
 
-    @numberDissertations = current_user.teacher.dissertation_number
   end
 
   def edit_project
@@ -53,6 +52,7 @@ class TeachersController < ApplicationController
 
   def number_of_all_destinations
     @numberOfAll = Project.where(teacher_id: current_user.teacher, status: %w(active pending)).count
+    @numberDissertations = current_user.teacher.dissertation_number
   end
 
   private
