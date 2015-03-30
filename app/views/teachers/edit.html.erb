@@ -54,7 +54,9 @@
                   <div class="control-group">
                     <%= s.label :dissertation_number, 'Μέγιστο πλήθος πτυχιακών', class: 'control-label' %>
                     <div class="controls">
-                      <%= s.select :dissertation_number, options_for_select(10..30,@user.teacher.dissertation_number) %><br/>
+                      <!-- TODO αλλαγή επιλογής @numberOfAll < 10 ? 10 : @numberOfAll -->
+                      <%= s.select :dissertation_number, options_for_select(@numberOfAll < 10 ? 10 : @numberOfAll..30,@user.teacher.dissertation_number) %><br/>
+                        <p><i>Έχετε <%= @numberOfAll %> ανεβασμένες πτυχιακές εργασίες.</i></p>
                     </div>
                   </div>
 

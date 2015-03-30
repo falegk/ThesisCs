@@ -3,6 +3,7 @@ class TeachersController < ApplicationController
   before_action :find_current_user
   before_action :find_params_teacher, only: [:profile ]
   before_action :find_params_teacher_id, only: [:projects, :edit_project]
+  before_action :number_of_all_destinations, only: [:add_project, :edit]
   before_action :department_empty, if: 'is_student?'
 
 
@@ -15,7 +16,6 @@ class TeachersController < ApplicationController
   end
 
   def edit
-    #@numberOfAll = Project.where(teacher_id: current_user.teacher, status: %w(active pending)).count
   end
 
   def projects # user/teacher/:id/projects
@@ -38,7 +38,6 @@ class TeachersController < ApplicationController
     @user = User.all.find(current_user)
 
     @numberDissertations = current_user.teacher.dissertation_number
-    @numberOfAll = Project.where(teacher_id: current_user.teacher, status: %w(active pending)).count
   end
 
   def edit_project
@@ -52,6 +51,9 @@ class TeachersController < ApplicationController
   end
 
 
+  def number_of_all_destinations
+    @numberOfAll = Project.where(teacher_id: current_user.teacher, status: %w(active pending)).count
+  end
 
   private
   def find_params_teacher
