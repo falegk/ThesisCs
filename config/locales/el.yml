@@ -53,7 +53,7 @@ el:
           given_to_the_students: "Η πτυχιακή έχει δοθεί στους φοιτητές"
       show:
         singular:
-          thesis_undertaken_by: "Την πτυχιακή έχει αναλάβει ο"
+          thesis_undertaken_by: "Την πτυχιακή έχει αναλάβει ο/η"
         plural:
           thesis_undertaken_by: "Την πτυχιακή έχουν αναλάβει οι"
   users:
