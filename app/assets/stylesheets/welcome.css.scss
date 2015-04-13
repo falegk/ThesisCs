@@ -140,13 +140,17 @@ Bootstrap Admin Template by EGrappler.com
 
 .news-items li {
   display: table;
-  padding: 0 2em 0 1.5em;
-  padding-bottom: 1em;
+  padding: 0 1em 0.5em 1.5em;
   margin-bottom: 1em;
   border-bottom: 1px dotted #CCC;
+  width: 95%;
 }
 
-.news-items li:last-child { padding-bottom: 0; border: none; }
+.news-items li:last-child {
+  padding-bottom: 0;
+  border: none;
+  width: 95%;
+}
 
 .news-item-date {
   display: table-cell;
@@ -159,6 +163,11 @@ Bootstrap Admin Template by EGrappler.com
 .news-item-title {
   font-size: 13px;
   font-weight: 600;
+  text-overflow-ellipsis: "...";
+}
+
+.news-item-options {
+  float: right;
 }
 
 .news-item-date {

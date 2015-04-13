@@ -551,7 +551,8 @@ ul.messages_layout {
 ul.messages_layout li {
 	float: left;
 	list-style: none;
-	position: relative
+	position: relative;
+    width: 100%;
 }
 ul.messages_layout li.left {
 	padding-left: 75px
@@ -599,7 +600,8 @@ ul.messages_layout li .message_wrap {
 	background: #fefefe;
 	-webkit-box-shadow: rgba(0,0,0,0.1) 0 1px 0px;
 	-moz-box-shadow: rgba(0,0,0,0.1) 0 1px 0px;
-	box-shadow: rgba(0,0,0,0.1) 0 1px 0px
+	box-shadow: rgba(0,0,0,0.1) 0 1px 0px;
+    width: 95%;
 }
 ul.messages_layout li .message_wrap .arrow {
 	background-position: 0 -228px;

@@ -8,11 +8,12 @@
       <li>
 
         <div class="news-item-detail">
-          <div class="news-item-title">
+          <div class="news-item-options">
             <% if is_teacher_helper? && (@currentProject.teacher == current_user.teacher) %>
-                <%= render partial: 'share/thesis2/plugins/options_arrow', locals: {project: @currentProject,
-                                                                                    deleteProject: true} %>
+                <%= render partial: 'share/thesis2/plugins/options_arrow', locals: {project: @currentProject} %>
             <% end %>
+          </div>
+          <div class="news-item-title">
             <h1><%= @currentProject.title %></h1></br>
             <div class="news-item-detail">
               <% if @currentProject.status == 'pending' %>
