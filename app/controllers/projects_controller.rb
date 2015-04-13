@@ -77,7 +77,9 @@ class ProjectsController < ApplicationController
     redirect_not_teacher
     respond_to do |f|
       if @currentProject.update(project_params)
+        if project_params[:start_date]
           @currentProject.update(completion_date: @currentProject.start_date+1.year)
+        end
         f.html {redirect_to project_path(@currentProject), :flash => { :success => t('messages.success.projects.thesis_update_successfully') }}
         #f.json {render json: @user, status: :created, location: @user}
       else
