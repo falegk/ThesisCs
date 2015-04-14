@@ -10,7 +10,7 @@
 </div>
 
 <div class="row">
-  <div class="span4">
+  <div class="span6">
 
     <%= render partial: 'teachers/share/dissertations_for_delivery',
                locals: {widgetTitle: 'Διαθέσιμες πτυχιακές',
@@ -18,7 +18,7 @@
 
     </div>
 
- <div class="span4">
+ <div class="span6">
     <!-- /widget ενεργές πτυχιακές-->
     <%= render partial: 'teachers/share/dissertations_table_widget',
                locals: {widgetTitle: 'Ενεργές πτυχιακές',
@@ -26,7 +26,9 @@
     <!-- /widget -->
   </div>
 
-  <div class="span4">
+</div>
+<div class="row">
+  <div class="span12">
     <!-- /widget ενεργές πτυχιακές-->
     <%= render partial: 'teachers/share/dissertations_table_widget',
                locals: {widgetTitle: 'Ολοκληρωμένες πτυχιακές',
