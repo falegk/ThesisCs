@@ -35,8 +35,6 @@ class TeachersController < ApplicationController
   def add_project
     redirect_not_teacher
     @project = Project.new
-    @user = User.all.find(current_user)
-
   end
 
   def edit_project
@@ -51,7 +49,7 @@ class TeachersController < ApplicationController
 
   def number_of_all_destinations
     @numberOfAll = Project.where(teacher_id: current_user.teacher.id, status: ['active', 'pending']).count
-    @numberDissertations = current_user.teacher.dissertation_number
+    @numberDissertations = @user.teacher.dissertation_number
   end
 
   private
