@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module ThesisCs
   class Application < Rails::Application
-
+    NUMBER_OF_PENDING_DISSERTATIONS = 10;
 
       # Ckeditor
       config.assets.enabled = true
